@@ -1,0 +1,127 @@
+<div class="shhistory-page">
+  
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">Pickup History</div>
+      <h1 class="hero-title">Waste Collected From Your Shop</h1>
+      <p class="hero-subtitle">Track every pickup and your contribution to sustainability</p>
+    </div>
+    <div class="hero-decoration"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- LOADING -->
+    <div *ngIf="loading" class="loading-wrapper">
+      <div class="loading-card">
+        <div class="loading-spinner">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+        </div>
+        <p>Fetching your collection history...</p>
+      </div>
+    </div>
+    
+    <!-- EMPTY STATE -->
+    <div *ngIf="!loading && history.length === 0" class="empty-wrapper">
+      <div class="empty-visual">
+        <div class="empty-circle"></div>
+        <div class="empty-icon">🌱</div>
+      </div>
+      <h2>No Pickup History Yet</h2>
+      <p>Once collectors start picking up waste from your shop, all pickup records will appear here with complete details.</p>
+      <div class="empty-features">
+        <div class="feature-chip">📊 Pickup tracking</div>
+        <div class="feature-chip">♻️ Waste categories</div>
+        <div class="feature-chip">📈 Weight records</div>
+      </div>
+    </div>
+
+    <!-- TIMELINE VIEW -->
+    <div class="timeline-wrapper" *ngIf="!loading && history.length > 0">
+      
+      <div class="timeline-stats">
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-info">
+            <span class="stat-label">Total Pickups</span>
+            <span class="stat-value">{{ history.length }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item" *ngFor="let h of history; let i = index; let isLast = last" 
+             [class.organic]="h.wcategory.toLowerCase().includes('organic')"
+             [class.food]="h.wcategory.toLowerCase().includes('food')">
+          
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line" *ngIf="!isLast"></div>
+          </div>
+
+          <div class="timeline-card">
+            <div class="card-glow"></div>
+            
+            <div class="card-header-alt">
+              <div class="header-left">
+                <div class="collection-number">#{{ history.length - i }}</div>
+                <div class="collection-category">
+                  <span class="category-icon">
+                    {{ h.wcategory.toLowerCase().includes('food') ? '🍽️' : 
+                       h.wcategory.toLowerCase().includes('organic') ? '🌿' : '🗑️' }}
+                  </span>
+                  <span class="category-name">{{ h.wcategory }}</span>
+                </div>
+              </div>
+              <div class="header-right">
+                <div class="waste-type-badge">
+                  <span class="badge-icon">
+                    {{ h.wcategory.toLowerCase().includes('food') ? '🍽️' : 
+                       h.wcategory.toLowerCase().includes('organic') ? '🌿' : '🗑️' }}
+                  </span>
+                  <span class="badge-text">
+                    {{ h.wcategory.toLowerCase().includes('food') ? 'Food Waste' : 
+                       h.wcategory.toLowerCase().includes('organic') ? 'Organic Waste' : 'Mixed Waste' }}
+                  </span>
+                </div>
+                <div class="date-display">
+                  <span class="date-day">{{ h.collecteddate|date:'dd' }}</span>
+                  <div class="date-meta">
+                    <span class="date-month">{{ h.collecteddate|date:'MMM' }}</span>
+                    <span class="date-year">{{ h.collecteddate|date:'yyyy' }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-content-alt">
+              <div class="quantity-display">
+                <div class="quantity-icon">⚖️</div>
+                <div class="quantity-info">
+                  <span class="quantity-label">Waste Picked Up</span>
+                  <span class="quantity-value">{{ h.quantitycollected }}<span class="unit">kg</span></span>
+                </div>
+              </div>
+
+              <div class="collector-row-alt">
+                <div class="collector-avatar-alt">
+                  {{ h.collectorname.charAt(0).toUpperCase() }}
+                </div>
+                <div class="collector-info-alt">
+                  <span class="collector-name">{{ h.collectorname }}</span>
+                  <span class="collector-role">Collected By</span>
+                  <span class="collector-contact">{{ h.collectorcontact }}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

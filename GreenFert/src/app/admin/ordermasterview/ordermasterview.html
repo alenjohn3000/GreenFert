@@ -1,0 +1,131 @@
+<div class="p2026" *ngIf="orderDetails.length">
+
+  <!-- ================= HEADER ================= -->
+  <header class="order-head hero-bg">
+    <div class="hero-content">
+      <div>
+        <span class="meta">ORDER</span>
+        <h1>#ORD-{{ orderDetails[0].order_id }}</h1>
+        <p>{{ orderDetails[0].orderdate }}</p>
+      </div>
+
+      <div class="head-right">
+        <span class="pill paid">
+          {{ orderDetails[0].status }}
+        </span>
+        <span class="amount">
+          ₹{{ orderDetails[0].totalamount }}
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN GRID ================= -->
+  <main class="grid">
+
+    <!-- ================= CUSTOMER ================= -->
+    <section class="card customer-card reveal r1">
+      <h3>Customer</h3>
+
+      <div class="customer-box">
+        <div class="avatar">
+          {{ orderDetails[0].customername[0] }}
+        </div>
+
+        <div>
+          <strong>{{ orderDetails[0].customername }}</strong>
+          <span>{{ orderDetails[0].customeremail }}</span>
+          <span>{{ orderDetails[0].customercontact }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRODUCTS ================= -->
+    <section class="card products-card reveal r2">
+      <h3>Products</h3>
+
+      @for (item of orderDetails; track item.orderdetails_id) {
+
+        <div class="product-row">
+
+          <img
+            src="http://localhost:3000/images/{{item.productimage}}"
+            alt="{{ item.product }}"
+          >
+
+          <div class="p-info">
+            <strong>{{ item.product }}</strong>
+            <span>
+              Qty {{ item.quantity }}
+              · ₹{{ item.product_total / item.quantity }}
+            </span>
+          </div>
+
+          <!-- ✅ TOTAL PER PRODUCT FROM tbl_orderdetails -->
+          <div class="p-total">
+            ₹{{ item.product_total }}
+          </div>
+
+        </div>
+
+      }
+    </section>
+
+  </main>
+
+  <!-- ================= DELIVERY ================= -->
+  <section class="card timeline-card reveal r3">
+    <h3>Delivery Progress</h3>
+
+    <div class="timeline">
+
+      <div class="step done">Confirmed</div>
+      <div class="connector done"></div>
+
+      <div class="step done">Assigned</div>
+      <div class="connector active"></div>
+        @if(orderDetails[0].status=='sent')
+        {
+       <div class="step done">Out for delivery</div>
+      <div class="connector"></div>
+        }
+        @else
+        {
+<div class="step active">Out for delivery</div>
+      <div class="connector"></div>
+        }
+
+      <div class="step">Delivered</div>
+
+    </div>
+  </section>
+
+  <!-- ================= ACTIONS ================= -->
+  <footer class="actions reveal r4">
+     @if(orderDetails[0].status=='sent')
+        {
+   <div class="footer-left">
+    <span class="delivery-status">
+      <span class="icon">🚚</span>
+      <span>Out for delivery</span>
+    </span>
+  </div>
+      }
+        @else
+        {
+<button class="btn primary" (click)="sendToDelivery(order_id)">
+ Send to Delivery
+    </button>
+        }
+
+    <button class="btn ghost" routerLink="/adminmaster/orderview">
+      Back
+    </button>
+  </footer>
+
+</div>
+
+<!-- ================= FALLBACK ================= -->
+<div *ngIf="!orderDetails.length" class="text-center py-5">
+  Loading order details...
+</div>

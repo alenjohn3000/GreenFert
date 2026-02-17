@@ -1,0 +1,79 @@
+<div class="pickup-page">
+
+  <!-- HEADER -->
+  <div class="pickup-header">
+    <h2>Waste Pickup Details</h2>
+    <p>Enter the waste collection information</p>
+  </div>
+
+  <!-- CARD -->
+  <div class="pickup-card">
+
+    <!-- SHOP INFO -->
+    <div class="info-row">
+      <div>
+        <span class="label">Shop: </span>
+        <span class="value">{{ shop[0]?.shopname}}</span>
+      </div>
+      
+    </div>
+
+    <!-- FORM -->
+    <form [formGroup]="dfg">
+
+      <!-- WEIGHT -->
+      <div class="form-group">
+        <label>Waste Collected (kg)</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter weight in kg"
+          step="0.001"
+          min="0"
+ formControlName="kg"
+
+        />
+      </div>
+
+      <!-- WASTE TYPE -->
+      <div class="form-group">
+        <label>Waste Type</label>
+        <div class="select-wrapper">
+          <select class="form-control"  formControlName="wtype">
+            <option value="">Select type</option>
+            <option value="Organic">Organic</option>
+            <option value="Food Waste">Food Waste</option>
+            <option value="Mixed">Mixed</option>
+          </select>
+        </div>
+      </div>
+
+      
+
+      <!-- NOTES -->
+      <div class="form-group">
+        <label>Notes (optional)</label>
+        <textarea
+          class="form-control"
+          rows="3"
+          placeholder="Any additional notes..."
+           formControlName="note"
+
+        ></textarea>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button type="submit" class="btn-save" (click)="sub()">
+          Save Collection
+        </button>
+        <button type="button" class="btn-cancel">
+          Cancel
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

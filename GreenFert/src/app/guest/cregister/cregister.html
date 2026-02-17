@@ -1,0 +1,88 @@
+<!-- FIX WRAPPER TO STOP HEADER JUMP -->
+<div class="register-fix">
+
+    <!-- Customer Register Section -->
+    <div class="register-section mt-50 mb-150">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+
+                    <div class="register-card">
+                        <div class="text-center mb-4">
+                            <h3><span class="orange-text">Customer</span> Registration</h3>
+                            <p class="reg-sub">Create your GreenFert account</p>
+                        </div>
+
+                         <form [formGroup]="customerfg">
+
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text"
+                       class="form-control reg-input"
+                       formControlName="cname">
+                <div *ngIf="savestatus && customerfg.controls['cname'].invalid" class="text-danger small mt-1">
+                  Enter a valid name (min 3 letters).
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email"
+                       class="form-control reg-input"
+                       formControlName="cemail">
+                <div *ngIf="savestatus && customerfg.controls['cemail'].invalid" class="text-danger small mt-1">
+                  Enter a valid email.
+                </div>
+              </div>
+
+              <div cl ass="mb-3">
+                <label class="form-label">Contact Number</label>
+                <input type="text"
+                       class="form-control reg-input"
+                     formControlName="contact">
+
+                <div *ngIf="savestatus && customerfg.controls['contact'].invalid" class="text-danger small mt-1">
+                  Enter a 10-digit phone number.
+                </div>
+                    
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text"
+                       class="form-control reg-input"
+                       formControlName="username">
+                <div *ngIf="savestatus && customerfg.controls['username'].invalid" class="text-danger small mt-1">
+                  Username must be at least 4 characters (letters, numbers, _).
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="text"
+                       class="form-control reg-input"
+                       formControlName="password">
+                <div *ngIf="savestatus && customerfg.controls['password'].invalid" class="text-danger small mt-1">
+                  Password must be at least 6 characters.
+                </div>
+              </div>
+
+              <button class="boxed-btn w-100 reg-btn" type="submit" (click)="creg()">
+                Register
+              </button>
+
+            </form>
+
+                        <div class="text-center mt-4">
+                            <p>Already have an account?
+                                <a routerLink="/login" class="login-link">Login</a>
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,156 @@
+<div class="admin-neo">
+
+  <!-- ================= HEADER ================= -->
+  <header class="neo-header">
+    <div class="header-inner">
+      <h1>Product Edit</h1>
+      <p>Update existing product details</p>
+    </div>
+  </header>
+
+  <!-- ================= FORM CONTAINER ================= -->
+  <div class="neo-container">
+
+    <form class="neo-form"
+          [formGroup]="productfg"
+          enctype="multipart/form-data">
+
+      <!-- ================= PRODUCT INFORMATION ================= -->
+      <section class="neo-section">
+        <h3>Product Information</h3>
+
+        <div class="neo-grid">
+
+          <!-- CATEGORY (FIXED TO categoryid) -->
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select class="neo-input"
+                    formControlName="categoryid">
+              <option value="">Select Category</option>
+              @for(data of carray; track data;) {
+                <option [value]="data.category_id">
+                  {{data.categoryname}}
+                </option>
+              }
+            </select>
+            <label *ngIf="productfg.controls['categoryid'].errors?.['required'] && savestatus" class="text-danger">
+              Category is required
+            </label>
+          </div>
+
+          <!-- PRODUCT NAME -->
+          <div class="form-group">
+            <label class="form-label">Product Name</label>
+            <input type="text"
+                   class="neo-input"
+                   formControlName="product" />
+            <label *ngIf="productfg.controls['product'].errors?.['required'] && savestatus" class="text-danger">
+              Product Name is required
+            </label>
+          </div>
+
+          <!-- PRICE -->
+          <div class="form-group">
+            <label class="form-label">Price / Amount</label>
+            <input type="number"
+                   class="neo-input"
+                   formControlName="amount" />
+            <label *ngIf="productfg.controls['amount'].errors?.['required'] && savestatus" class="text-danger">
+              Amount is required
+            </label>
+          </div>
+
+          <!-- STOCK -->
+          <div class="form-group">
+            <label class="form-label">Stock Quantity</label>
+            <input type="number"
+                   class="neo-input"
+                   formControlName="stock" />
+            <label *ngIf="productfg.controls['stock'].errors?.['required'] && savestatus" class="text-danger">
+              Stock is required
+            </label>
+          </div>
+
+          <!-- WEIGHT -->
+          <div class="form-group">
+            <label class="form-label">Product Weight</label>
+            <input type="text"
+                   class="neo-input"
+                   formControlName="kg" />
+            <label *ngIf="productfg.controls['kg'].errors?.['required'] && savestatus" class="text-danger">
+              Weight is required
+            </label>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= IMAGE SECTION ================= -->
+      <section class="neo-section">
+        <h3>Product Image</h3>
+
+        <div class="image-upload-wrapper">
+
+          <!-- If new preview selected -->
+          <div class="image-preview" *ngIf="previewUrl; else existingImage">
+            <img [src]="previewUrl" alt="Preview">
+
+            <div class="overlay">
+              <label>
+                <i class="fas fa-camera me-2"></i> Change Image
+                <input type="file"
+                       hidden
+                       (change)="selectFile($event)">
+              </label>
+            </div>
+          </div>
+
+          <!-- Existing Image on Load -->
+          <ng-template #existingImage>
+            <div class="image-preview" *ngIf="productarray?.length">
+              <img [src]="'http://localhost:3000/images/' + productarray[0]?.productimage"
+                   alt="Preview">
+
+              <div class="overlay">
+                <label>
+                  <i class="fas fa-camera me-2"></i> Change Image
+                  <input type="file"
+                         hidden
+                         (change)="selectFile($event)">
+                </label>
+              </div>
+            </div>
+          </ng-template>
+
+        </div>
+      </section>
+
+      <!-- ================= DESCRIPTION ================= -->
+      <section class="neo-section">
+        <h3>Description</h3>
+
+        <div class="form-group">
+          <label class="form-label">Product Description</label>
+          <textarea rows="4"
+                    class="neo-input"
+                    formControlName="description">
+          </textarea>
+          <label *ngIf="productfg.controls['description'].errors?.['required'] && savestatus" class="text-danger">
+            Description is required
+          </label>
+        </div>
+      </section>
+
+      <!-- ================= ACTION BUTTON ================= -->
+      <div class="neo-actions">
+        <button class="neo-btn"
+                type="submit"
+                (click)="sproduct()">
+          <i class="fas fa-save me-2"></i> Update Product
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

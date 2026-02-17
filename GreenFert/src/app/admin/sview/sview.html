@@ -1,0 +1,130 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-xl-11 col-lg-11">
+
+    <div class="card admin-register-card">
+
+      <!-- HEADER -->
+      <div class="card-header admin-register-header">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+          <div>
+            <h3 class="card-title">
+              Shop Owner <span>Details</span>
+            </h3>
+            <p class="sub-text">Shop Owner Management</p>
+          </div>
+
+          <!-- Attractive Add Button -->
+          <button class="btn add-collector-btn" [routerLink]="'/adminmaster/sregadmin'">
+            <i class="fas fa-user-plus me-1"></i> Add Shop Owner
+          </button>
+        </div>
+      </div>
+
+      <!-- BODY -->
+      <div class="card-body admin-register-body">
+
+        
+
+        <!-- TABLE -->
+        <div class="table-responsive">
+            <div class="table-responsive gf-table-wrap">
+          <table class="table table-hover gf-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Shope Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>District</th>
+                <th>Location</th>
+                <th>License No</th>
+                <th>Register date</th>
+                <th>Status</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Sample Row -->
+               @for(data of sarray;track data;){ 
+              <tr>
+ <td class="text-center">{{data.owner_id}}</td>                
+                  <td>
+                  <div class="d-flex align-items-center gap-2">
+<img 
+  src="http://localhost:3000/images/{{data.shopimg}}"
+  alt="image"
+  class="table-avatar clickable-img"
+  (click)="selectedImage='http://localhost:3000/images/' + data.shopimg"
+/>
+                    <span class="fw-semibold">{{data.shopname}}</span>
+                  </div>
+                </td>
+                <td>{{data.shopemail}}</td>
+                <td>{{data.shopcontact}}</td>
+                <td>{{data.districtname}}</td>
+                <td>{{data.locationname}}</td>
+                <td>{{data.shoplicence}}</td>
+                <td>{{data.regdate | date:'dd-MM-yyyy'}}</td>
+                <td>
+  <span class="status-badge"
+        [ngClass]="{
+          'status-requested': data.status === 'Requested',
+          'status-accepted': data.status === 'Accepted',
+         
+        }">
+    {{ data.status }}
+  </span>
+</td>
+                <td>{{data.username}}</td>
+                <td>{{data.password}}</td>
+
+                <!-- Horizontal Action Buttons -->
+                
+                
+                  
+               
+                <td class="text-center">
+                  <div class="action-group">
+                     @if (data.status === 'Accepted') {
+                      
+                  <button class="btn action-btn delete-btn" (click)="confirmDelete(data.owner_id)">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                }
+                    @else {
+                    <button class="btn action-btn edit-btn" (click)="confirmAccept(data.login_id)">
+                      <i class="fas fa-edit"></i> Accept
+                    </button>
+                   
+                    <button class="btn action-btn delete-btn" (click)="confirmDelete(data.owner_id)">
+                      <i class="fas fa-trash"></i> Reject
+                    </button>
+                      }
+                  </div>
+                </td>
+              </tr>
+            }
+            </tbody>
+          </table>
+
+          <!-- Image Preview Modal -->
+@if (selectedImage) {
+  <div class="image-modal" (click)="selectedImage=null">
+    <div class="image-modal-content" (click)="$event.stopPropagation()">
+      <img [src]="selectedImage" alt="Preview" />
+      <span class="close-btn" (click)="selectedImage=null">&times;</span>
+    </div>
+  </div>
+}
+  
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

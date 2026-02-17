@@ -1,0 +1,489 @@
+<!-- search area -->
+<div class="search-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="close-btn"><i class="fas fa-window-close"></i></span>
+        <div class="search-bar">
+          <div class="search-bar-tablecell">
+            <h3>Search For:</h3>
+            <input type="text" placeholder="Search fertilizers">
+            <button type="submit">
+              Search <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search area -->
+
+<!-- hero area -->
+<div class="hero-area hero-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 offset-lg-2 text-center">
+        <div class="hero-text">
+          <div class="hero-text-tablecell">
+            <p class="subtitle">Eco-Friendly & Organic</p>
+            <h1>Natural Fertilizers from Recycled Organic Waste</h1>
+            <div class="hero-btns">
+              <a routerLink="/customermaster/allproduct" class="boxed-btn">View Fertilizers</a>
+              <a routerLink="/customermaster/contact" class="bordered-btn">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end hero area -->
+
+<!-- features list section -->
+<div class="list-section pt-80 pb-80">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <div class="list-box d-flex align-items-center">
+          <div class="list-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="content">
+            <h3>100% Organic</h3>
+            <p>Produced from biodegradable waste</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <div class="list-box d-flex align-items-center">
+          <div class="list-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="content">
+            <h3>Soil Friendly</h3>
+            <p>Improves soil fertility naturally</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="list-box d-flex justify-content-start align-items-center">
+          <div class="list-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <div class="content">
+            <h3>Eco Sustainable</h3>
+            <p>Supports waste recycling initiatives</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- end features list section -->
+
+<!-- CATEGORY SECTION - REDESIGNED -->
+<div class="category-section-new">
+  <div class="container">
+
+    <div class="section-header-modern">
+      <span class="section-badge">
+        <i class="fas fa-layer-group"></i> Browse by Category
+      </span>
+      <h2 class="section-title-large">Find the Perfect <span class="gradient-text">Fertilizer</span> for Your Needs</h2>
+      <p class="section-subtitle">Choose from our specialized range of organic fertilizers designed for different crops, soil types, and farming requirements</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      @for (data of categoryarray | slice:0:4; track data) {
+        <div class="col-lg-3 col-md-6">
+          <a [routerLink]="['/customermaster/categoryp',data.category_id]" class="category-card-modern">
+            <div class="category-img-container">
+              <img src="http://localhost:3000/images/{{data.image}}" alt="{{data.categoryname}}">
+              <div class="category-shine"></div>
+            </div>
+            <div class="category-content">
+              <h5>{{data.categoryname}}</h5>
+              <span class="explore-link">
+                Explore <i class="fas fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+      }
+    </div>
+
+    <div class="text-center mt-5">
+      <a [routerLink]="['/customermaster/allcategory']" class="btn-modern-primary">
+        <span>View All Categories</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+</div>
+<!-- END CATEGORY SECTION -->
+
+<!-- BENEFITS SHOWCASE -->
+<section class="benefits-showcase">
+  <div class="container">
+    <div class="benefits-wrapper">
+      <div class="benefit-card-large">
+        <div class="benefit-icon-wrap">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <div class="benefit-content">
+          <h4>Premium Quality</h4>
+          <p>Lab-tested & certified organic fertilizers</p>
+        </div>
+      </div>
+      
+      <div class="benefit-card-large">
+        <div class="benefit-icon-wrap">
+          <i class="fas fa-shipping-fast"></i>
+        </div>
+        <div class="benefit-content">
+          <h4>Fast Delivery</h4>
+          <p>Quick shipping across all districts</p>
+        </div>
+      </div>
+      
+      <div class="benefit-card-large">
+        <div class="benefit-icon-wrap">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <div class="benefit-content">
+          <h4>100% Organic</h4>
+          <p>Made from natural recycled waste</p>
+        </div>
+      </div>
+      
+      <div class="benefit-card-large">
+        <div class="benefit-icon-wrap">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <div class="benefit-content">
+          <h4>Expert Support</h4>
+          <p>Dedicated assistance for farmers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER VALUE PROPOSITION -->
+<section class="value-proposition-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="value-content">
+          <span class="value-badge">
+            <i class="fas fa-star"></i> Why Choose GreenFert
+          </span>
+          <h2 class="value-title">Trusted by Thousands of Farmers Nationwide</h2>
+          <p class="value-description">
+            Experience the difference of premium organic fertilizers that deliver real results. Our products are crafted with care, tested rigorously, and designed to boost your farm's productivity sustainably.
+          </p>
+
+          <div class="value-features">
+            <div class="value-feature-item">
+              <div class="feature-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div>
+                <h5>Scientifically Proven Results</h5>
+                <p>Increase crop yield by up to 40% with our nutrient-rich formulas</p>
+              </div>
+            </div>
+            
+            <div class="value-feature-item">
+              <div class="feature-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div>
+                <h5>Eco-Friendly & Sustainable</h5>
+                <p>Reduce chemical dependence while improving soil health naturally</p>
+              </div>
+            </div>
+            
+            <div class="value-feature-item">
+              <div class="feature-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div>
+                <h5>Affordable Pricing</h5>
+                <p>Premium quality at competitive rates with bulk order discounts</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="value-actions">
+            <a routerLink="/customermaster/allproduct" class="btn-modern-primary">
+              <span>Shop Now</span>
+              <i class="fas fa-shopping-bag"></i>
+            </a>
+            <a routerLink="/customermaster/contact" class="btn-modern-outline">
+              <span>Get Expert Advice</span>
+              <i class="fas fa-phone"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="value-stats-grid">
+          <div class="value-stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>15,000+</h3>
+            <p>Happy Farmers</p>
+          </div>
+          
+          <div class="value-stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-box"></i>
+            </div>
+            <h3>50K+ Tons</h3>
+            <p>Products Delivered</p>
+          </div>
+          
+          <div class="value-stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h3>100+ Districts</h3>
+            <p>Service Coverage</p>
+          </div>
+          
+          <div class="value-stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <h3>ISO Certified</h3>
+            <p>Quality Standards</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR FERTILIZERS -->
+<section class="product-section modern-products">
+  <div class="container">
+
+    <div class="section-header-modern">
+      <span class="section-badge">
+        <i class="fas fa-box-open"></i> Featured Products
+      </span>
+      <h2 class="section-title-large">Premium <span class="gradient-text">Organic Fertilizers</span></h2>
+      <p class="section-subtitle">
+        Discover our best-selling organic fertilizers, made from recycled natural waste. Each product is designed to enhance soil health, boost crop yields, and support sustainable farming practices.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      @for (data of parray  | slice:0:4; track data) {
+        <div class="col-lg-4 col-md-6">
+          <div class="product-card-2025" [class.out-of-stock]="data.stock === 0">
+            <div class="product-img-wrap">
+              <img src="http://localhost:3000/images/{{data.productimage}}" alt="{{data.product}}">
+              <span class="product-tag">{{ data.categoryname }}</span>
+              @if (data.stock === 0) {
+                <span class="stock-badge right">Out of Stock</span>
+              }
+            </div>
+            <div class="product-body">
+              <div class="product-header">
+                <h5>{{ data.product }}</h5>
+                <span class="product-weight">{{ data.productkg }}</span>
+              </div>
+              <p class="price">&#8377;{{ data.amount }}</p>
+              <div class="product-actions">
+                <a [routerLink]="['/customermaster/productsview', data.product_id]" class="view-btn">View</a>
+                @if (data.stock > 0) {
+                  <a (click)="addtocart(data.product_id)" class="buy-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="text-center mt-5">
+      <a [routerLink]="['/customermaster/allproduct']" class="btn-modern-primary btn-large">
+        <span>Explore All Fertilizers</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section class="about-highlight">
+  <div class="container">
+    <div class="about-shell">
+      
+      <!-- Header Section -->
+      <div class="about-header">
+        <p class="about-eyebrow">
+          <i class="fas fa-leaf"></i> About GreenFert
+        </p>
+        <h2>Transforming Organic Waste Into Premium Fertilizers</h2>
+        <p class="about-subtitle">
+          We collect organic waste from registered shops, process it through eco-safe composting, 
+          and deliver high-quality organic fertilizers that nurture healthier soil and sustainable farming.
+        </p>
+        <div class="eco-badge-row">
+          <span class="eco-badge">
+            <i class="fas fa-recycle"></i> 100% Organic
+          </span>
+          <span class="eco-badge">
+            <i class="fas fa-trash-restore"></i> Waste Reduction
+          </span>
+          <span class="eco-badge">
+            <i class="fas fa-leaf"></i> Eco-Friendly
+          </span>
+        </div>
+      </div>
+
+      <!-- Journey Flow Section -->
+      <div class="journey-flow">
+        <div class="journey-step">
+          <div class="journey-icon">
+            <i class="fas fa-store"></i>
+            <span class="journey-number">1</span>
+          </div>
+          <h4>Collection</h4>
+          <p>We collect organic waste from registered shops and partners across districts</p>
+        </div>
+        
+        <div class="journey-step">
+          <div class="journey-icon">
+            <i class="fas fa-recycle"></i>
+            <span class="journey-number">2</span>
+          </div>
+          <h4>Processing</h4>
+          <p>Advanced composting techniques transform waste into nutrient-rich organic matter</p>
+        </div>
+        
+        <div class="journey-step">
+          <div class="journey-icon">
+            <i class="fas fa-flask"></i>
+            <span class="journey-number">3</span>
+          </div>
+          <h4>Quality Testing</h4>
+          <p>Lab-tested and certified to ensure premium quality and soil compatibility</p>
+        </div>
+        
+        <div class="journey-step">
+          <div class="journey-icon">
+            <i class="fas fa-shipping-fast"></i>
+            <span class="journey-number">4</span>
+          </div>
+          <h4>Delivery</h4>
+          <p>Fast and reliable delivery of organic fertilizers to farmers and gardeners</p>
+        </div>
+      </div>
+
+      <!-- Impact Stats Section -->
+      <div class="impact-section">
+        <h3>Our Environmental Impact</h3>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <div class="impact-icon">
+              <i class="fas fa-weight"></i>
+            </div>
+            <div class="impact-number">500+ Tons</div>
+            <p class="impact-label">Waste Collected Monthly</p>
+          </div>
+          
+          <div class="impact-card">
+            <div class="impact-icon">
+              <i class="fas fa-store-alt"></i>
+            </div>
+            <div class="impact-number">250+ Shops</div>
+            <p class="impact-label">Partner Locations</p>
+          </div>
+          
+          <div class="impact-card">
+            <div class="impact-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="impact-number">10,000+ Acres</div>
+            <p class="impact-label">Farmland Nourished</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Choose Us Section -->
+      <div class="why-choose">
+        <div class="why-card">
+          <div class="why-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="why-content">
+            <h5>100% Organic & Natural</h5>
+            <p>All our fertilizers are made from organic waste with no harmful chemicals or synthetic additives</p>
+          </div>
+        </div>
+        
+        <div class="why-card">
+          <div class="why-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="why-content">
+            <h5>Quality Assurance</h5>
+            <p>Every batch is lab-tested and certified to meet the highest standards for soil health</p>
+          </div>
+        </div>
+        
+        <div class="why-card">
+          <div class="why-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="why-content">
+            <h5>Sustainable Practices</h5>
+            <p>We reduce landfill waste while creating valuable products that benefit farmers and the environment</p>
+          </div>
+        </div>
+        
+        <div class="why-card">
+          <div class="why-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="why-content">
+            <h5>Community Partnership</h5>
+            <p>Working together with local shops, collectors, and farmers to build a circular economy</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action Section -->
+      <div class="about-cta">
+        <h4>Ready to Experience the Power of Organic Fertilizers?</h4>
+        <p>Join thousands of farmers who trust GreenFert for healthier crops and sustainable farming</p>
+        <div class="cta-buttons">
+          <a routerLink="/customermaster/allproduct" class="cta-btn-primary">
+            <i class="fas fa-shopping-bag"></i> Shop Now
+          </a>
+          <a routerLink="/customermaster/contact" class="cta-btn-secondary">
+            <i class="fas fa-phone"></i> Contact Us
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+

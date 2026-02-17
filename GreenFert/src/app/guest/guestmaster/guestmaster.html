@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GreenFert</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="/guest/assets/img/favicon.png">
+
+	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+
+	<!-- css -->
+	<link rel="stylesheet" href="/guest/assets/css/all.min.css">
+	<link rel="stylesheet" href="/guest/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/guest/assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="/guest/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="/guest/assets/css/animate.css">
+	<link rel="stylesheet" href="/guest/assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="/guest/assets/css/main.css">
+	<link rel="stylesheet" href="/guest/assets/css/responsive.css">
+
+	<!-- ⭐ HEADER STYLE ⭐ -->
+	<style>
+		.guestmaster-shell {
+			--green-900: #0f766e;
+			--green-700: #059669;
+			--green-500: #10b981;
+			--amber-500: #f59e0b;
+			--amber-300: #fbbf24;
+			--ink-900: #0b1f1d;
+			--ink-700: #1f3a37;
+			--muted-500: #64748b;
+			--line-200: rgba(255, 255, 255, 0.12);
+			font-family: 'Poppins', sans-serif;
+			background: #f7fbf9;
+			color: var(--ink-900);
+		}
+
+		#sticker, .top-header-area {
+			background: #07181c !important;
+			padding: 14px 0 !important;
+			width: 100%;
+			border-bottom: 1px solid #0e2227;
+			position: sticky;
+			top: 0;
+			z-index: 999;
+		}
+
+		.top-header-area .container {
+			max-width: 1250px;
+		}
+
+		.main-menu-wrap {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 !important;
+			gap: 20px;
+		}
+
+		.logo-text {
+			color: #ffffff;
+			font-size: 30px;
+			font-weight: 800;
+			letter-spacing: 0.4px;
+			text-decoration: none;
+		}
+
+		.logo-text span {
+			color: var(--amber-300);
+		}
+
+		.main-menu {
+			flex: 1;
+			text-align: center;
+		}
+
+		.main-menu ul {
+			display: inline-flex;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.main-menu ul li a {
+			color: #ecfeff;
+			font-weight: 600;
+			text-decoration: none;
+			padding: 8px 6px;
+			display: inline-block;
+			letter-spacing: 0.2px;
+			position: relative;
+		}
+
+		.main-menu ul li.current-list-item > a,
+		.main-menu ul li a:hover {
+			color: var(--amber-300);
+		}
+
+		.main-menu ul li a::after {
+			content: '';
+			position: absolute;
+			left: 6px;
+			bottom: -6px;
+			width: 0;
+			height: 2px;
+			background: var(--amber-300);
+			transition: width 0.3s ease;
+		}
+
+		.main-menu ul li a:hover::after,
+		.main-menu ul li.current-list-item > a::after {
+			width: calc(100% - 12px);
+		}
+
+		.header-actions {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.header-actions a {
+			text-decoration: none;
+			font-weight: 700;
+			font-size: 14px;
+			border-radius: 999px;
+			padding: 8px 18px;
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.header-actions .ghost-btn {
+			color: #ffffff;
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		.header-actions .solid-btn {
+			color: #1f2937;
+			background: linear-gradient(135deg, #f59e0b, #fbbf24);
+			box-shadow: 0 10px 26px rgba(245, 158, 11, 0.35);
+		}
+
+		.header-actions a:hover {
+			transform: translateY(-2px);
+		}
+
+
+		@media (max-width: 991px) {
+			.main-menu ul { display: none; }
+			.mobile-menu { display: block; }
+			.header-actions { display: none; }
+		}
+	</style>
+</head>
+
+<body>
+	<div class="guestmaster-shell">
+
+	<!-- ⭐ HEADER ⭐ -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+				
+					<div class="main-menu-wrap">
+
+						<!-- ⭐ UPDATED TEXT LOGO ⭐ -->
+						<div class="site-logo">
+							<a routerLink="/guestmaster/guesthome" class="logo-text">
+								Green<span>Fert</span>
+							</a>
+						</div>
+
+						<!-- Center Navigation -->
+						<nav class="main-menu">
+							<ul>
+								<li class="current-list-item"><a routerLink="/guestmaster/guesthome">Home</a></li>
+								<li><a routerLink="/guestmaster/gabout">About</a></li>
+								<li><a routerLink="/guestmaster/gcontact">Contact</a></li>
+							</ul>
+						</nav>
+
+						<div class="header-actions">
+							<a routerLink="/loginreg" class="ghost-btn">Register</a>
+							<a routerLink="/login" class="solid-btn">Login</a>
+						</div>
+
+						<!-- Mobile Menu -->
+						<div class="mobile-menu"></div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END HEADER -->
+
+
+
+
+	
+
+	
+<router-outlet />
+<!-- footer (project) -->
+<div class="footer-area">
+  <div class="container">
+    <div class="row">
+
+      <!-- Project Info -->
+      <div class="col-lg-4 col-md-6">
+		<div class="footer-box about-widget">
+		  <h2 class="widget-title">GreenFert</h2>
+          <p>
+           GreenFert provides fresh, organic and eco-friendly fertilizers made from natural waste.
+						We focus on sustainable farming and quality products for both customers and shops.
+          </p>
+          <p style="margin-top:8px;"><strong>Course:</strong> BCA — Final Year Project</p>
+        </div>
+      </div>
+
+      <!-- Team & Supervisor -->
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-box get-in-touch">
+          <h2 class="widget-title">Team & Supervisor</h2>
+          <ul>
+            <li><strong>Team:</strong> Alen John (Creator)</li>
+            <li><strong>Roll No:</strong> 230021080642</li>
+            <li><strong>Supervisor:</strong> Ms. Jinu Sabu, Dept. of Computer Science</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project Links / Download -->
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-box pages">
+          <h2 class="widget-title">Project Links</h2>
+          <ul>
+            <li><a routerLink="/guestmaster/guesthome">Home</a></li>
+            <li><a routerLink="/guestmaster/gabout">About</a></li>
+			<li><a routerLink="/guestmaster/gcontact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact / College -->
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-box subscribe">
+          <h2 class="widget-title">Contact</h2>
+          <p style="margin-bottom:6px;">Dept. of Computer Science</p>
+          <ul>
+            <li>Santhigiri College of Computer Science</li>
+            <li>email: <a href="mailto:support@greenfert.com">support@greenfert.com</a></li>
+            <li>Phone: +91 ***** *****</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+	<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+	        <p>© 2026 GreenFert — Final Year Project. All Rights Reserved.</p>
+      </div>
+
+      <div class="col-lg-6 text-right col-md-12">
+        <div class="social-icons">
+          <ul>
+            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-github"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+	</div>
+	</body>
+</html>
+<!-- end copyright -->
+
+
+	

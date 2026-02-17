@@ -1,0 +1,793 @@
+<!-- ABOUT PAGE -->
+<style>
+  .gabout-page {
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    color: #0f766e;
+  }
+
+  .gabout-page .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  .gabout-page .row.g-4,
+  .gabout-page .row.g-5 {
+    row-gap: 20px;
+  }
+
+  .gabout-page .row > [class*="col-"] {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .gabout-page .col-lg-3,
+  .gabout-page .col-lg-4,
+  .gabout-page .col-lg-6,
+  .gabout-page .col-lg-8,
+  .gabout-page .col-md-6,
+  .gabout-page .col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .gabout-page .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    .gabout-page .col-md-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .gabout-page .col-lg-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+
+    .gabout-page .col-lg-4 {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
+
+    .gabout-page .col-lg-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    .gabout-page .col-lg-8 {
+      flex: 0 0 66.6667%;
+      max-width: 66.6667%;
+    }
+  }
+
+  .gabout-page .section-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #0f766e;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .gabout-page .section-title .highlight {
+    color: #059669;
+  }
+
+  .gabout-page .section-subtitle {
+    font-size: 16px;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .gabout-page .about-hero {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #0f766e 0%, #059669 50%, #10b981 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gabout-page .about-hero::before,
+  .gabout-page .about-hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+  }
+
+  .gabout-page .about-hero::before {
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .gabout-page .about-hero::after {
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .gabout-page .about-hero .container,
+  .gabout-page .about-hero .row {
+    position: relative;
+    z-index: 1;
+  }
+
+  .gabout-page .about-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fbbf24;
+    padding: 12px 16px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .gabout-page .about-badge i {
+    margin-right: 8px;
+  }
+
+  .gabout-page .about-title {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  .gabout-page .about-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.95;
+    color: #ffffff;
+    margin-bottom: 0;
+  }
+
+  .gabout-page .mission-section,
+  .gabout-page .values-section,
+  .gabout-page .why-us-section {
+    padding: 80px 0;
+    background: #ffffff;
+  }
+
+  .gabout-page .overview-section,
+  .gabout-page .impact-section {
+    padding: 80px 0;
+    background: #f8fafb;
+  }
+
+  .gabout-page .mission-text {
+    font-size: 18px;
+    color: #64748b;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .gabout-page .mission-points {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .gabout-page .point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .gabout-page .point i {
+    font-size: 24px;
+    color: #059669;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .gabout-page .point h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f766e;
+    margin-bottom: 12px;
+  }
+
+  .gabout-page .point p {
+    color: #64748b;
+    font-size: 16px;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  .gabout-page .mission-image,
+  .gabout-page .why-us-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+
+  .gabout-page .image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(5, 150, 105, 0.05));
+    border-radius: 12px;
+    font-size: 120px;
+    color: #059669;
+    opacity: 0.3;
+  }
+
+  .gabout-page .image-placeholder.large {
+    height: 400px;
+    font-size: 200px;
+  }
+
+  .gabout-page .overview-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    height: 100%;
+  }
+
+  .gabout-page .overview-card h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f766e;
+    margin-bottom: 16px;
+  }
+
+  .gabout-page .overview-card p {
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .gabout-page .value-card,
+  .gabout-page .impact-card {
+    background: #ffffff;
+    padding: 40px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-top: 4px solid #059669;
+    height: 100%;
+  }
+
+  .gabout-page .value-card:hover,
+  .gabout-page .impact-card:hover {
+    box-shadow: 0 12px 30px rgba(5, 150, 105, 0.15);
+    transform: translateY(-8px);
+  }
+
+  .gabout-page .value-icon {
+    font-size: 48px;
+    color: #059669;
+    margin-bottom: 20px;
+  }
+
+  .gabout-page .value-card h4,
+  .gabout-page .impact-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f766e;
+    margin-bottom: 16px;
+  }
+
+  .gabout-page .value-card p,
+  .gabout-page .impact-card p {
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .gabout-page .impact-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: #059669;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .gabout-page .why-us-points {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .gabout-page .why-point {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .gabout-page .point-number {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #059669, #10b981);
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .gabout-page .point-text h5 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f766e;
+    margin-bottom: 12px;
+  }
+
+  .gabout-page .point-text p {
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .gabout-page .about-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #0f766e 0%, #059669 50%, #10b981 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gabout-page .about-cta::before,
+  .gabout-page .about-cta::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+  }
+
+  .gabout-page .about-cta::before {
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .gabout-page .about-cta::after {
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .gabout-page .about-cta .container,
+  .gabout-page .about-cta .row {
+    position: relative;
+    z-index: 1;
+  }
+
+  .gabout-page .about-cta h2 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .gabout-page .about-cta p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .gabout-page .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .gabout-page .cta-btn {
+    padding: 20px 40px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    display: inline-block;
+  }
+
+  .gabout-page .cta-btn.primary {
+    background: #fbbf24;
+    color: #0f766e;
+    border-color: #fbbf24;
+  }
+
+  .gabout-page .cta-btn.primary:hover {
+    background: #f59e0b;
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .gabout-page .cta-btn.secondary {
+    background: transparent;
+    color: #fbbf24;
+    border-color: #fbbf24;
+  }
+
+  .gabout-page .cta-btn.secondary:hover {
+    background: #fbbf24;
+    color: #0f766e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .gabout-page .about-title {
+      font-size: 36px;
+    }
+
+    .gabout-page .section-title {
+      font-size: 32px;
+    }
+
+    .gabout-page .about-hero,
+    .gabout-page .mission-section,
+    .gabout-page .overview-section,
+    .gabout-page .values-section,
+    .gabout-page .impact-section,
+    .gabout-page .why-us-section,
+    .gabout-page .about-cta {
+      padding: 60px 0;
+    }
+
+    .gabout-page .cta-buttons {
+      flex-direction: column;
+    }
+
+    .gabout-page .cta-btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .gabout-page .about-title {
+      font-size: 28px;
+    }
+
+    .gabout-page .section-title {
+      font-size: 24px;
+    }
+
+    .gabout-page .value-card,
+    .gabout-page .impact-card {
+      padding: 20px;
+    }
+  }
+</style>
+
+<div class="gabout-page">
+
+<!-- HERO SECTION -->
+<section class="about-hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8 col-md-12">
+        <span class="about-badge">
+          <i class="fas fa-leaf"></i> About GreenFert
+        </span>
+        <h1 class="about-title">Building a Sustainable Future Through Circular Agriculture</h1>
+        <p class="about-subtitle">We transform organic waste into premium fertilizers, connecting waste providers, processors, and eco-conscious farmers on one transparent platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- MISSION SECTION -->
+<section class="mission-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="mission-content">
+          <h2 class="section-title">
+            Our <span class="highlight">Mission</span>
+          </h2>
+          <p class="mission-text">
+            To build a transparent circular economy where organic waste becomes a valuable resource, supporting sustainable agriculture while reducing environmental impact.
+          </p>
+          
+          <div class="mission-points">
+            <div class="point">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <h4>Zero Waste Philosophy</h4>
+                <p>Convert shop waste into premium fertilizer</p>
+              </div>
+            </div>
+            <div class="point">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <h4>Transparent System</h4>
+                <p>Real-time tracking for all stakeholders</p>
+              </div>
+            </div>
+            <div class="point">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <h4>Quality Assured</h4>
+                <p>Every batch tested for purity and nutrients</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mission-image">
+          <div class="image-placeholder">
+            <i class="fas fa-seedling"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PROJECT OVERVIEW SECTION -->
+<section class="overview-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <h2 class="section-title">
+          Project <span class="highlight">Overview</span>
+        </h2>
+        <p class="section-subtitle">
+          Final-year BCA project showcasing a circular agriculture platform concept
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="overview-card">
+          <h4>Purpose</h4>
+          <p>Demonstrate how organic waste can be collected, processed, and offered as fertilizers through a single platform.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="overview-card">
+          <h4>Scope</h4>
+          <p>Includes guest view, role-based registration, product listing, and a simplified workflow for collection and delivery.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="overview-card">
+          <h4>Disclaimer</h4>
+          <p>This is a student project. Numbers and performance metrics are placeholders for demonstration only.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- VALUES SECTION -->
+<section class="values-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <h2 class="section-title">
+          Our <span class="highlight">Values</span>
+        </h2>
+        <p class="section-subtitle">
+          Guiding principles that define everything we do
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h4>Sustainability</h4>
+          <p>Every decision considers environmental impact. We're committed to reducing waste and building a cleaner future.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h4>Community</h4>
+          <p>We support local businesses, farmers, and communities by creating opportunities and fostering collaboration.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4>Transparency</h4>
+          <p>Clear communication, fair pricing, and honest dealings. Our stakeholders always know what they're getting.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>Quality</h4>
+          <p>No compromises. Every fertilizer batch undergoes rigorous testing to ensure premium quality standards.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h4>Innovation</h4>
+          <p>Constantly improving our processes with technology and research to deliver better solutions.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h4>Partnership</h4>
+          <p>We succeed through strong relationships with providers, customers, and communities we serve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- IMPACT SECTION -->
+<section class="impact-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <h2 class="section-title">
+          Our <span class="highlight">Impact</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="impact-card">
+          <div class="impact-number">—</div>
+          <div class="impact-label">Prototype Users</div>
+          <p>Final-year project demo, no real-world user metrics.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="impact-card">
+          <div class="impact-number">—</div>
+          <div class="impact-label">Partner Shops</div>
+          <p>Conceptual partner network for demonstration purposes.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="impact-card">
+          <div class="impact-number">—</div>
+          <div class="impact-label">Waste Recycled</div>
+          <p>Metrics will be tracked in a real deployment.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="impact-card">
+          <div class="impact-number">—</div>
+          <div class="impact-label">Satisfaction Rate</div>
+          <p>Feedback section reserved for future testing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- WHY CHOOSE US SECTION -->
+<section class="why-us-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="why-us-content">
+          <h2 class="section-title">
+            Why Choose <span class="highlight">GreenFert?</span>
+          </h2>
+          
+          <div class="why-us-points">
+            <div class="why-point">
+              <div class="point-number">1</div>
+              <div class="point-text">
+                <h5>End-to-End Solution</h5>
+                <p>From collection to delivery, we manage the entire process transparently.</p>
+              </div>
+            </div>
+
+            <div class="why-point">
+              <div class="point-number">2</div>
+              <div class="point-text">
+                <h5>Premium Quality</h5>
+                <p>Every product tested and verified for nutrient content and purity.</p>
+              </div>
+            </div>
+
+            <div class="why-point">
+              <div class="point-number">3</div>
+              <div class="point-text">
+                <h5>Fair Pricing</h5>
+                <p>Competitive rates for buyers and attractive incentives for providers.</p>
+              </div>
+            </div>
+
+            <div class="why-point">
+              <div class="point-number">4</div>
+              <div class="point-text">
+                <h5>Real-Time Tracking</h5>
+                <p>Know exactly where your waste is and when your order arrives.</p>
+              </div>
+            </div>
+
+            <div class="why-point">
+              <div class="point-number">5</div>
+              <div class="point-text">
+                <h5>Environmental Impact</h5>
+                <p>Support sustainable practices that benefit our planet and communities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="why-us-image">
+          <div class="image-placeholder large">
+            <i class="fas fa-users"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CTA SECTION -->
+<section class="about-cta">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <h2>Join the GreenFert Community Today</h2>
+        <p>Be part of the sustainable agriculture revolution. Whether as a buyer or provider, let's build a greener future together.</p>
+        
+        <div class="cta-buttons">
+          <a routerLink="/guestmaster/cregister" class="cta-btn primary">Get Started as Buyer</a>
+          <a routerLink="/guestmaster/sregister" class="cta-btn secondary">Partner as Provider</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>

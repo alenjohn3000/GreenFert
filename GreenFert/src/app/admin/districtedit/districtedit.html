@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-md-8">
+
+    <div class="card gf-add-card">
+      <div class="card-header">
+        <h4 class="card-title">Edit District  </h4>
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="districtfg" >
+
+                 <div class="form-group mb-4">
+          <label class="form-label">District Name</label>
+          
+          <input 
+            type="text"
+            class="form-control gf-input"
+            formControlName="districtname"
+          />
+          <label *ngIf="districtfg.controls['districtname'].errors?.['required'] && savestatus" class="text-danger">
+            District Name is required
+          </label>
+          <label *ngIf="districtfg.controls['districtname'].errors?.['pattern'] && savestatus" class="text-danger">
+            District Name can only contain letters and spaces
+          </label>
+        </div>
+
+        <!-- Actions: button aligned with input left edge -->
+        <div class="form-actions">
+          <button class="btn gf-submit-btn-small" type="submit" (click)="edistrict()">
+            <i class="fas fa-plus-circle"></i> Edit District
+          </button>
+        </div>
+
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

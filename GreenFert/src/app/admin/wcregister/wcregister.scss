@@ -1,0 +1,155 @@
+.admin-neo {
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  color: #0f172a;
+}
+
+/* HEADER */
+.neo-header {
+  padding: 70px 24px 50px;
+  background: linear-gradient(135deg, #efa512, #f9c349);
+  color: #ffffff;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.neo-header h1 {
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+.neo-header p {
+  font-size: 15px;
+  opacity: .9;
+}
+
+/* CONTAINER */
+.neo-container {
+  max-width: 900px;
+  margin: -45px auto 0;
+  padding: 0 24px 80px;
+}
+
+/* FORM */
+.neo-form {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.1);
+}
+
+/* SECTION */
+.neo-section {
+  margin-bottom: 40px;
+}
+
+.neo-section h3 {
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #475569;
+}
+
+/* GRID */
+.neo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* INPUT */
+.neo-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #fafafa;
+  font-size: 14px;
+  transition: all .25s ease;
+}
+
+.neo-input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 4px rgba(245,158,11,.18);
+}
+
+/* IMAGE UPLOAD */
+.upload-box {
+  border: 2px dashed #f59e0b;
+  border-radius: 20px;
+  padding: 36px;
+  cursor: pointer;
+  text-align: center;
+  background: #fffaf0;
+}
+
+.upload-content i {
+  font-size: 34px;
+  color: #f59e0b;
+}
+
+.image-preview {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 220px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-preview .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.image-preview:hover .overlay {
+  opacity: 1;
+}
+
+.image-preview .overlay span {
+  color: #fff;
+  font-weight: 600;
+  background: #f59e0b;
+  padding: 10px 20px;
+  border-radius: 999px;
+}
+
+/* BUTTON */
+.neo-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.neo-btn {
+  padding: 16px 36px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.neo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(245,158,11,.4);
+}

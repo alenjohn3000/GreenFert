@@ -1,0 +1,23 @@
+<br><br>
+
+<div class="profile-wrap"> 
+  <div class="profile-card" *ngIf="!loading && profile; else loadState"> 
+    <div class="card-head"> 
+      <h2>Waste Collector Profile</h2> 
+      <a routerLink="/wcmaster/profileedit" class="btn-edit">Edit Profile</a> 
+    </div> 
+
+    <div class="grid"> 
+      <div class="item"><label>Name</label><p>{{ profile.collectorname }}</p></div> 
+      <div class="item"><label>Email</label><p>{{ profile.collectoremail }}</p></div> 
+      <div class="item"><label>Contact</label><p>{{ profile.collectorcontact }}</p></div> 
+      <div class="item"><label>District</label><p>{{ profile.districtname || '-' }}</p></div> 
+      <div class="item"><label>Location</label><p>{{ profile.locationname || '-' }}</p></div> 
+      <div class="item"><label>Username</label><p>{{ profile.username }}</p></div> 
+    </div> 
+  </div> 
+
+  <ng-template #loadState> 
+    <div class="profile-card"><p>{{ loading ? 'Loading profile...' : 'Profile not found.' }}</p></div> 
+  </ng-template> 
+</div>

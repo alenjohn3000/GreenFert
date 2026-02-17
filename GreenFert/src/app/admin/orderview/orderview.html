@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-xl-11 col-lg-11">
+
+    <div class="card admin-register-card">
+
+      <!-- ================= HEADER ================= -->
+      <div class="card-header admin-register-header">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+          <div>
+            <h3 class="card-title">
+              Order <span>Management</span>
+            </h3>
+            <p class="sub-text">
+              Manage customer orders and delivery flow
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= BODY ================= -->
+      <div class="card-body admin-register-body">
+
+        <!-- ================= TABLE ================= -->
+        <div class="table-responsive gf-table-wrap">
+          <table class="table gf-table">
+
+            <!-- TABLE HEAD -->
+            <thead>
+              <tr>
+                <th class="text-center">#</th>
+              <th>Order ID</th>
+               <th>Customer</th>
+                <th>Amount</th>
+                 <th>Order Date </th>
+                  <th class="text-center">Status</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+
+            <!-- TABLE BODY -->
+            <tbody>
+
+              @for (data of orderarray; track data; let i = $index) {
+
+                <tr>
+
+                  <!-- ORDER ID -->
+                  <td class="text-center fw-semibold">
+                    {{ i + 1 }}
+                  </td>
+           <td>
+             #ORD {{ data.order_id }}
+                  </td>
+
+                  <!-- PRODUCT -->
+                  <td class="fw-semibold">
+                 {{ data.customername }}
+                  </td>
+
+                  <!-- AMOUNT -->
+                  <td class="fw-semibold">
+                    ₹{{ data.totalamount }}
+                  </td>
+                   <!-- QUANTITY -->
+                  <td class="text-center">
+                     {{ data.orderdate | date:'dd-MM-yyyy' }}
+                  </td>
+                  <!-- CUSTOMER -->
+                 
+                  <!-- STATUS -->
+                  <td class="text-center">
+                    <span
+                      class="status-badge"
+                      [ngClass]="{
+                        'status-paid': data.status === 'sent',
+                        'status-requested': data.status === 'paid',
+                      }">
+                     @if(data.status=='sent')
+                     {
+                       <div class="footer-left">
+    
+      <span class="icon">🚚</span>
+      <span>Out for delivery</span>
+                 </div>
+                      }
+                      @else
+                      {
+ <div class="footer-left">
+    
+     <i class="fas fa-truck icon"></i>
+  <span>Ready for Delivery</span>
+                 </div>                      }
+                    </span>
+                  </td>
+
+                  <!-- ACTION -->
+                  <td class="text-center">
+                    <div class="action-group">
+
+                      @if (data.status !== 'sent') {
+
+                        <button
+                          class="btn action-btn edit-btn"
+                          (click)="sendToDelivery(data.order_id)">
+                          <i class="fas fa-truck me-1"></i>
+                          Send to Delivery
+                        </button>
+                         } @else {
+
+
+                      }
+
+                        <button
+                          class="btn action-btn view-btn"
+                           [routerLink]="['/adminmaster/ordermasterview',data.order_id]">
+                          <i class="fas fa-eye me-1"></i>
+                          View Details
+                        </button>
+
+                     
+
+                    </div>
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

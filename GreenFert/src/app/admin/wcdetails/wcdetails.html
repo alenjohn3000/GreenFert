@@ -1,0 +1,86 @@
+
+  <div class="admin-page">
+
+    <!-- HEADER + FILTER -->
+    <div class="top-bar">
+      <div class="admin-header">
+        <h2>Waste Collection Dashboard</h2>
+        <p>Daily waste collection summary</p>
+      </div>
+      <form [formGroup]="filterform">
+        <div class="date-filter">
+          <input type="date" formControlName="filterdate"/>
+          <button class="filter-btn" (click)="applyfilter()">Apply</button>
+        </div>
+        <label *ngIf="filterform.controls['filterdate'].errors?.['required'] && savestatus" class="text-danger">
+          Date is required
+        </label>
+      </form>
+    </div>
+
+    <!-- CATEGORY TOTALS -->
+    <div class="stats-grid">
+
+      <div class="stat-card cat-food">
+        <h4>{{ categoryTotal.foodwaste }} kg</h4>
+        <span>Food Waste</span>
+      </div>
+
+      <div class="stat-card cat-mixed">
+        <h4>{{ categoryTotal.mixed }} kg</h4>
+        <span>Mixed Waste</span>
+      </div>
+
+      <div class="stat-card cat-organic">
+        <h4>{{ categoryTotal.organic }} kg</h4>
+        <span>Organic Waste</span>
+      </div>
+
+    </div>
+
+    <!-- COLLECTORS -->
+    <div class="collection-card">
+      <h3>Collectors</h3>
+
+      @for (c of collectors; track c.wastecollector_id) {
+
+      <div class="collection-row">
+
+        <!-- AVATAR -->
+        <div class="avatar">
+          {{ c.collectorname[0] }}
+        </div>
+
+        <!-- INFO -->
+        <div class="collector-info">
+          <h5>{{ c.collectorname }}</h5>
+
+          <div class="collector-sub">
+            <span class="location">
+              <i class="fas fa-location-dot"></i>
+              {{ c.locationname }}, {{ c.districtname }}
+            </span>
+
+            <span class="weight">
+              {{ c.total }} kg
+            </span>
+          </div>
+        </div>
+
+        <!-- ACTION -->
+        <button class="view-btn" [routerLink]="['/adminmaster/todayview', c.wastecollector_id,c.collecteddate]">
+          View
+        </button>
+
+      </div>
+
+
+      }
+
+      @if (collectors.length === 0) {
+      <p class="text-center text-muted">No collection data available</p>
+      }
+
+    </div>
+
+  </div>

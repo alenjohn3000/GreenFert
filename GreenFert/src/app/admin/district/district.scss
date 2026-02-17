@@ -1,0 +1,106 @@
+/* ================================
+   CARD
+================================ */
+.admin-register-card {
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(26, 24, 13, 0.1);
+  margin-top: 25px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* ================================
+   HEADER
+================================ */
+.admin-register-header {
+  background: linear-gradient(135deg, #efa512, #f9e5a1);
+  color: #ffffff;
+  padding: 26px 30px;
+}
+
+.admin-register-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.admin-register-header h3 span {
+  color: #f0eeeb;
+}
+
+.sub-text {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: 6px;
+}
+
+/* ================================
+   BODY
+================================ */
+.admin-register-body {
+  padding: 30px 34px;
+}
+
+/* ================================
+   LABELS
+================================ */
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 6px;
+}
+
+/* ================================
+   INPUT
+================================ */
+.admin-input {
+  height: 46px;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  transition: 0.2s ease;
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: #f39a26;
+  box-shadow: 0 0 0 0.18rem rgba(243, 154, 38, 0.25);
+}
+
+/* ================================
+   ACTIONS
+================================ */
+.admin-submit-btn {
+  background: #fca730;
+  color: #ffffff;
+  padding: 10px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.admin-submit-btn:hover {
+  background: #ffa632;
+  color: #ffffff;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .admin-register-body {
+    padding: 22px;
+  }
+
+  .admin-register-header {
+    padding: 22px;
+  }
+
+  .admin-register-header h3 {
+    font-size: 20px;
+  }
+}

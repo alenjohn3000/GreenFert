@@ -1,0 +1,131 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-xl-11 col-lg-11">
+
+    <div class="card admin-register-card">
+
+      <!-- HEADER -->
+     <div class="card-header admin-register-header">
+  <div class="d-flex justify-content-between align-items-center flex-wrap">
+    
+    <div>
+      <h3 class="card-title">
+        Waste Collector <span>Details</span>
+      </h3>
+      <p class="sub-text">Registered waste collectors</p>
+    </div>
+
+    <div class="d-flex gap-2">
+
+      <!-- Assign Page Button -->
+      <button 
+        class="btn go-assign-btn"
+        [routerLink]="'/adminmaster/wcassignview'"
+      >
+        <i class="fas fa-link me-1"></i> Go to Assign Page
+      </button>
+
+      <!-- Add Collector Button -->
+      <button 
+        class="btn add-collector-btn" 
+        [routerLink]="'/adminmaster/wcregister'"
+      >
+        <i class="fas fa-user-plus me-1"></i> Add Collector
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+      <!-- BODY -->
+      <div class="card-body admin-register-body">
+
+
+
+        <!-- TABLE -->
+        <div class="table-responsive">
+          <div class="table-responsive gf-table-wrap">
+            <table class="table table-hover gf-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Collector Name</th>
+                  <th>Email</th>
+                  <th>Contact</th>
+                  <th>District</th>
+                  <th>Location</th>
+                  <th>Username</th>
+                  <th>Password</th>
+                  <th class="text-center">Status</th>
+
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Sample Row -->
+                @for(data of wcarray;track data; let i=$index) {
+                <tr>
+                  <td class="text-center">{{i + 1}}</td>
+                  <td>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="http://localhost:3000/images/{{data.collectorimage}}" alt="image"
+                        class="table-avatar clickable-img"
+                        (click)="selectedImage='http://localhost:3000/images/' + data.collectorimage" />
+                      <span class="fw-semibold">{{data.collectorname}}</span>
+                    </div>
+                  </td>
+                  <td>{{data.collectoremail}}</td>
+                  <td>{{data.collectorcontact}}</td>
+                  <td>{{data.districtname}}</td>
+                  <td>{{data.locationname}}</td>
+                  <td>{{data.username}}</td>
+                  <td>{{data.password}}</td>
+                  <!-- <td>{{data.wastecollector_id}}</td> -->
+                  <td class="text-center">
+                    @if (data?.assign_id != null) {
+                    <span class="status-badge assigned">
+                      <i class="fas fa-check-circle"></i> Assigned
+                    </span>
+                    }
+                    @else {
+                    <span class="status-badge not-assigned">
+                      <i class="fas fa-times-circle"></i> Not Assigned
+                    </span>
+                    }
+                  </td>
+
+                  <!-- Horizontal Action Buttons -->
+                  <td class="text-center">
+                    <div class="action-group">
+                     
+                      <button class="btn action-btn delete-btn" (click)="confirmDelete(data.wastecollector_id)">
+                        <i class="fas fa-trash"></i> Remove
+                      </button>
+                     
+                    
+                    </div>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+
+            <!-- Image Preview Modal -->
+            @if (selectedImage) {
+            <div class="image-modal" (click)="selectedImage=null">
+              <div class="image-modal-content" (click)="$event.stopPropagation()">
+                <img [src]="selectedImage" alt="Preview" />
+                <span class="close-btn" (click)="selectedImage=null">&times;</span>
+              </div>
+            </div>
+            }
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

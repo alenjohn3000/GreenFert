@@ -1,0 +1,19 @@
+<div class="profile-wrap"> 
+  <div class="profile-card" *ngIf="!loading && profile; else loadState"> 
+    <div class="card-head"> 
+      <h3>Admin Profile</h3> 
+      <a routerLink="/adminmaster/adminprofileedit" class="btn-edit">Edit Profile</a> 
+    </div> 
+
+    <div class="grid"> 
+      <div class="item"><label>Username</label><p>{{ profile.username }}</p></div> 
+      <div class="item"><label>Role</label><p>{{ profile.role }}</p></div> 
+      <div class="item"><label>Status</label><p>{{ profile.status }}</p></div> 
+      <div class="item"><label>Login ID</label><p>#{{ profile.login_id }}</p></div> 
+    </div> 
+  </div> 
+
+  <ng-template #loadState> 
+    <div class="profile-card"><p>{{ loading ? 'Loading profile...' : 'Profile not found.' }}</p></div> 
+  </ng-template> 
+</div>

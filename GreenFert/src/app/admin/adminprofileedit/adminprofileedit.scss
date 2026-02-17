@@ -1,0 +1,10 @@
+.edit-wrap { padding: 12px; }
+.edit-card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08); max-width: 640px; }
+.edit-card h3 { margin: 0 0 16px; color: #1f2937; }
+.form-group { margin-bottom: 14px; }
+.form-group label { font-weight: 600; margin-bottom: 6px; display: block; color: #374151; }
+.form-control { width: 100%; border: 1px solid #d1d5db; border-radius: 10px; padding: 10px 12px; }
+.btn-row { display: flex; gap: 10px; margin-top: 8px; }
+.btn-save, .btn-cancel { border: 0; text-decoration: none; padding: 10px 18px; border-radius: 10px; font-weight: 600; }
+.btn-save { background: #e88325; color: #fff; }
+.btn-cancel { background: #eef2f7; color: #1f2937; }

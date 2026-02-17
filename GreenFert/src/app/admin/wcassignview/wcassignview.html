@@ -1,0 +1,78 @@
+<div class="assignment-page">
+
+  <!-- HEADER (Same style as table pages) -->
+  <div class="admin-register-card mb-4">
+    <div class="admin-register-header d-flex justify-content-between align-items-center">
+
+      <div>
+        <h3>Waste Collector <span>Assignment</span></h3>
+        <div class="sub-text">
+          Assign shops to registered waste collectors
+        </div>
+      </div>
+
+      <div class="header-count">
+        {{ wcarray.length }} Collectors
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COLLECTOR GRID -->
+  <div class="collector-grid">
+
+    @for(data of wcarray; track data;) {
+
+      <div class="collector-card">
+
+        <!-- Profile -->
+        <div class="collector-profile">
+          <img 
+            src="http://localhost:3000/images/{{data.collectorimage}}" 
+            alt="Collector"
+          />
+
+          <div>
+            <h4>{{data.collectorname}}</h4>
+            <span>{{data.collectoremail}}</span>
+            <small>{{data.collectorcontact}}</small>
+          </div>
+        </div>
+
+        <!-- Meta Info -->
+        <div class="collector-meta">
+          <div class="meta-item">
+            <label>District</label>
+            <span>{{data.districtname}}</span>
+          </div>
+          <div class="meta-item">
+            <label>Location</label>
+            <span>{{data.locationname}}</span>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="collector-footer">
+
+          @if (data?.assign_id != null) {
+            <span class="status-pill assigned">Assigned</span>
+          }
+          @else {
+            <span class="status-pill not-assigned">Not Assigned</span>
+          }
+
+          <button 
+            class="assign-btn"
+            [routerLink]="['/adminmaster/wcassign',data.wastecollector_id]"
+          >
+            Assign Shop
+          </button>
+
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+</div>

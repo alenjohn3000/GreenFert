@@ -1,0 +1,76 @@
+<br><br>
+<div class="row justify-content-center">
+  <div class="col-xl-11 col-lg-12">
+
+    <!-- Header -->
+   <div class="admin-register-card mb-4">
+
+  <div class="admin-register-header d-flex justify-content-between align-items-center">
+    <div>
+      <h3>Category <span>Management</span></h3>
+      <div class="sub-text">
+        Visual overview of all product categories
+      </div>
+    </div>
+
+    <button
+      class="add-collector-btn"
+      [routerLink]="['/adminmaster/pcategory']"
+    >
+      <i class="fa-solid fa-plus"></i>
+      Add Category
+    </button>
+  </div>
+
+<br>
+
+      <!-- Body -->
+      <div class="admin-register-body">
+
+        <!-- GRID -->
+        <div class="category-grid">
+
+          @for (data of categoryarray; track data) {
+            <div class="category-card">
+
+              <!-- Image -->
+              <div class="category-image">
+                <img
+                  src="http://localhost:3000/images/{{ data.image }}"
+                  alt="{{ data.categoryname }}"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class="category-content">
+                <h5>{{ data.categoryname }}</h5>
+                <span class="category-id">ID: {{ data.category_id }}</span>
+              </div>
+
+              <!-- Actions -->
+              <div class="category-actions">
+                <button
+                  class="action-btn edit-btn"
+                  [routerLink]="['/adminmaster/pcategoryedit', data.category_id]"
+                >
+                  <i class="fas fa-pen"></i>
+                </button>
+
+                <button
+                  class="action-btn delete-btn"
+                  (click)="categorydelete(data.category_id)"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+
+            </div>
+          }
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

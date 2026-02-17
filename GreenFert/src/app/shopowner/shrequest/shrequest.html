@@ -1,0 +1,144 @@
+<div class="shrequest-page">
+
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+    <div class="hero-background">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+    </div>
+    <h1 class="hero-title">Report Missed Collection</h1>
+    <p class="hero-subtitle">We're here to help resolve any collection issues</p>
+  </div>
+
+  <!-- CONTENT WRAPPER -->
+  <div class="content-wrapper">
+
+    <!-- REQUEST CARD -->
+    <div class="request-card">
+      <div class="card-glow"></div>
+
+      <!-- CARD HEADER -->
+      <div class="card-header">
+        <div class="header-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="header-text">
+          <h2>Collection Request</h2>
+          <p>Submit a complaint about missed waste pickup</p>
+        </div>
+      </div>
+
+      <!-- INFO BANNER -->
+      <div class="info-banner">
+        <div class="banner-icon">💡</div>
+        <div class="banner-content">
+          <p><strong>When to report?</strong> If your scheduled waste collection was missed, please report it here with the date and details.</p>
+        </div>
+      </div>
+
+      <!-- FORM SECTION -->
+      <div class="form-section">
+        
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-icon">📅</span>
+            <span class="label-text">Missed Collection Date</span>
+            <span class="label-required">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="date" 
+              class="form-input" 
+              [value]="pendingDate" 
+              (change)="pendingDate = $any($event.target).value"
+              placeholder="Select date">
+            <div class="input-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="6" width="18" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 10H21M8 3V6M16 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <span class="form-hint">Select the date when waste was not collected</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-icon">✉️</span>
+            <span class="label-text">Message to Admin</span>
+            <span class="label-required">*</span>
+          </label>
+          <div class="textarea-wrapper">
+            <textarea 
+              class="form-textarea" 
+              rows="5" 
+              placeholder="Describe the issue in detail... (e.g., Collector didn't arrive, waste not picked up, etc.)" 
+              (input)="requestMessage = $any($event.target).value">{{ requestMessage }}</textarea>
+            <div class="textarea-counter">{{ requestMessage?.length || 0 }} characters</div>
+          </div>
+          <span class="form-hint">Provide as much detail as possible to help us resolve the issue</span>
+        </div>
+
+      </div>
+
+      <!-- GUIDELINES -->
+      <div class="guidelines-section">
+        <h3 class="guidelines-title">📋 Reporting Guidelines</h3>
+        <ul class="guidelines-list">
+          <li>
+            <span class="guideline-bullet">✓</span>
+            <span>Include the exact date of missed collection</span>
+          </li>
+          <li>
+            <span class="guideline-bullet">✓</span>
+            <span>Mention any communication with the collector</span>
+          </li>
+          <li>
+            <span class="guideline-bullet">✓</span>
+            <span>Specify if waste was prepared and ready for pickup</span>
+          </li>
+          <li>
+            <span class="guideline-bullet">✓</span>
+            <span>Note any unusual circumstances or reasons if known</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="action-section">
+        <button class="submit-button" (click)="sendCollectionRequest()">
+          <span class="button-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Submit Request</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- HELP CARD -->
+    <div class="help-card">
+      <div class="help-icon">❓</div>
+      <h3>Need Immediate Assistance?</h3>
+      <p>For urgent collection issues, you can also contact your assigned collector directly.</p>
+      <div class="help-actions">
+        <a href="tel:+91" class="help-link">
+          <span>📞</span>
+          <span>Call Collector</span>
+        </a>
+        <a href="#" class="help-link">
+          <span>💬</span>
+          <span>View History</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,83 @@
+<div class="crx-page">
+
+  <!-- ================= HERO ================= -->
+  <div class="crx-hero replied-hero">
+
+    <div class="crx-hero-left">
+      <h1>Replied Requests</h1>
+      <p>All collection requests that have been successfully responded to</p>
+    </div>
+
+    <a class="crx-btn ghost"
+       routerLink="/adminmaster/collectionrequest">
+       Back to Requests
+    </a>
+
+  </div>
+
+
+  <!-- ================= GRID WRAPPER ================= -->
+  <div class="crx-wrapper">
+
+    @if (replied.length === 0) {
+      <div class="crx-empty">
+        <i class="fas fa-check-circle"></i>
+        <h4>No Replied Requests</h4>
+        <p>Nothing has been replied yet.</p>
+      </div>
+    }
+
+    @for (req of replied; track req.collectionrequest_id) {
+
+      <div class="crx-card">
+
+        <!-- TOP -->
+        <div class="crx-top">
+
+          <div>
+            <h4>{{ req.shopname }}</h4>
+
+            <div class="crx-meta-inline">
+              <span>
+                <strong>Pending:</strong>
+                {{ req.pending_date | date:'mediumDate' }}
+              </span>
+
+              <span class="dot-divider">•</span>
+
+              <span>
+                <strong>Message:</strong>
+                {{ req.message_date | date:'mediumDate' }}
+              </span>
+            </div>
+
+          </div>
+
+          <span class="crx-status done">
+            Replied
+          </span>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+        <div class="crx-body">
+          {{ req.message }}
+        </div>
+
+
+        <!-- REPLY -->
+        <div class="crx-reply-view">
+          <div class="reply-label">Admin Reply</div>
+          <div class="reply-content">
+            {{ req.reply_message }}
+          </div>
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

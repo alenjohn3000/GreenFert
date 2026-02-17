@@ -1,0 +1,71 @@
+﻿<br ><br>
+<!-- =======================
+     HERO SECTION
+======================= -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Categories</h1>
+        <p>Discover our range of premium fertilizers and agricultural products</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-icon"></span>
+                <span>{{ categoryarray.length }} Categories</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END HERO SECTION -->
+
+<!-- =======================
+     CATEGORIES SECTION
+======================= -->
+<div class="categories-section">
+    <div class="container">
+        <!-- SECTION TITLE -->
+        <div class="section-header">
+            <h2>Browse Our Collections</h2>
+            <p>Select a category to explore products</p>
+        </div>
+
+        <!-- CATEGORIES GRID -->
+        <div class="categories-grid">
+            @if (categoryarray.length > 0) {
+                @for(data of categoryarray; track data.category_id) {
+                    <a [routerLink]="['/smaster/categoryproduct', data.category_id]" class="category-card">
+                        <!-- IMAGE SECTION -->
+                        <div class="category-image-wrap">
+                            <img src="http://localhost:3000/images/{{ data.image }}" alt="{{ data.categoryname }}">
+                            <div class="image-overlay"></div>
+                            <span class="category-icon"></span>
+                        </div>
+
+                        <!-- CARD BODY -->
+                        <div class="card-body">
+                            <h3 class="category-name">{{ data.categoryname }}</h3>
+                            <p class="category-desc">Explore our selection of premium products</p>
+                            
+                            <!-- ACTION -->
+                            <div class="card-action">
+                                <span class="view-link">
+                                    View Products
+                                    <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- HOVER EFFECT -->
+                        <div class="card-hover-effect"></div>
+                    </a>
+                }
+            } @else {
+                <!-- EMPTY STATE -->
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <h3>No Categories</h3>
+                    <p>Categories will appear here soon.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- END CATEGORIES SECTION -->

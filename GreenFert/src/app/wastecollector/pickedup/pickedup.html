@@ -1,0 +1,68 @@
+<div class="collector-page">
+
+  <!-- PAGE HEADER -->
+  <div class="collector-header">
+    <h2>Today’s Collected Waste</h2>
+    <p>Waste you have collected today</p>
+  </div>
+
+  <!-- EMPTY STATE -->
+  @if (collectedArray.length === 0) {
+    <div class="empty-state">
+      <i class="fas fa-recycle"></i>
+      <h4>No collections today</h4>
+      <p>You haven’t collected waste from any shop today.</p>
+    </div>
+  }
+
+  <!-- COLLECTION LIST -->
+  <div class="collection-list">
+
+    @for (data of collectedArray; track data) {
+
+      <div class="collection-card">
+
+        <!-- SHOP IMAGE -->
+        <img
+          src="http://localhost:3000/images/{{ data.shopimg }}"
+          class="shop-thumb"
+          alt="Shop"
+        />
+
+        <!-- DETAILS -->
+        <div class="collection-details">
+          <h5>{{ data.shopname }}</h5>
+          
+
+          <div class="meta">
+            <span>
+              <i class="fas fa-weight-scale"></i>
+              {{ data.quantitycollected }} kg
+            </span>
+
+            <span>
+              <i class="fas fa-leaf"></i>
+              {{ data.wcategory }}
+            </span>
+          </div>
+
+          @if (data.note) {
+            <p class="note">
+              <i class="fas fa-note-sticky"></i>
+              {{ data.note }}
+            </p>
+          }
+        </div>
+
+        <!-- DATE -->
+        <span class="date-pill">
+          Today
+        </span>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

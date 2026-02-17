@@ -1,0 +1,173 @@
+/* ================= PAGE ================= */
+.assignment-page {
+  padding: 40px;
+  min-height: 100vh;
+}
+
+/* ================= HEADER CARD ================= */
+.admin-register-card {
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(26, 24, 13, 0.08);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* ================= HEADER ================= */
+.admin-register-header {
+  background: linear-gradient(135deg, #efa512, #f9c349);
+  padding: 26px 30px;
+  color: #ffffff;
+}
+
+.admin-register-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.admin-register-header h3 span {
+  opacity: .9;
+}
+
+.sub-text {
+  font-size: 14px;
+  margin-top: 4px;
+  opacity: .9;
+}
+
+/* ================= COUNT CHIP ================= */
+.header-count {
+  background: rgba(255,255,255,0.25);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ================= GRID ================= */
+.collector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+/* ================= CARD ================= */
+.collector-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.06);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.collector-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 60px rgba(0,0,0,.1);
+}
+
+/* ================= PROFILE ================= */
+.collector-profile {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.collector-profile img {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.collector-profile h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.collector-profile span {
+  display: block;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.collector-profile small {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ================= META ================= */
+.collector-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.meta-item label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #94a3b8;
+}
+
+.meta-item span {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ================= FOOTER ================= */
+.collector-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Status Pills */
+.status-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-pill.assigned {
+  background: #e6f4ea;
+  color: #16a34a;
+}
+
+.status-pill.not-assigned {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Assign Button */
+.assign-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 13px;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+  transition: all .25s ease;
+}
+
+.assign-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(245,158,11,.4);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .assignment-page {
+    padding: 24px;
+  }
+
+  .collector-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

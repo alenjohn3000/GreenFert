@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GreenFert</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="/guest/assets/img/favicon.png">
+
+	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+
+	<!-- css -->
+	<link rel="stylesheet" href="/guest/assets/css/all.min.css">
+	<link rel="stylesheet" href="/guest/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/guest/assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="/guest/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="/guest/assets/css/animate.css">
+	<link rel="stylesheet" href="/guest/assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="/guest/assets/css/main.css">
+	<link rel="stylesheet" href="/guest/assets/css/responsive.css">
+
+	<!-- ⭐ HEADER STYLE ⭐ -->
+	<style>
+		body {
+			--amber-500: #f59f0b;
+			--amber-300: #fb9a24;
+			--ink-900: #0b1f1d;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		#sticker, .top-header-area {
+			background: #07181c !important;
+			padding: 14px 0 !important;
+			width: 100%;
+			border-bottom: 1px solid #0e2227;
+			position: sticky;
+			top: 0;
+			z-index: 999;
+		}
+
+		.top-header-area .container {
+			max-width: 1250px;
+		}
+
+		.main-menu-wrap {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 !important;
+			gap: 20px;
+		}
+
+		.site-logo {
+			display: inline-block;
+		}
+
+		.logo-text {
+			color: #ffffff;
+			font-size: 30px;
+			font-weight: 800;
+			letter-spacing: 0.4px;
+			text-decoration: none;
+		}
+
+		.logo-text span {
+			color: var(--amber-300);
+		}
+
+		.main-menu {
+			flex: 1;
+			text-align: center;
+		}
+
+		.main-menu ul {
+			display: inline-flex;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.main-menu ul li {
+			margin: 0;
+		}
+
+		.main-menu ul li a {
+			color: #ecfeff;
+			font-weight: 600;
+			text-decoration: none;
+			padding: 8px 6px;
+			display: inline-block;
+			letter-spacing: 0.2px;
+			position: relative;
+		}
+
+		.main-menu ul li.current-list-item > a,
+		.main-menu ul li a:hover {
+			color: var(--amber-300);
+		}
+
+		.main-menu ul li a::after {
+			content: '';
+			position: absolute;
+			left: 6px;
+			bottom: -6px;
+			width: 0;
+			height: 2px;
+			background: var(--amber-300);
+			transition: width 0.3s ease;
+		}
+
+		.main-menu ul li a:hover::after,
+		.main-menu ul li.current-list-item > a::after {
+			width: calc(100% - 12px);
+		}
+
+		/* Header Icons - Cart & Profile */
+		.header-icons {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.cart-icon-wrapper {
+			position: relative;
+			color: #ffffff;
+			font-size: 20px;
+			text-decoration: none;
+			padding: 8px 12px;
+			border-radius: 8px;
+			transition: all 0.2s ease;
+		}
+
+		.cart-icon-wrapper:hover {
+			color: var(--amber-300);
+			transform: translateY(-2px);
+		}
+
+		.cart-badge {
+			position: absolute;
+			top: 0;
+			right: 2px;
+			background: linear-gradient(135deg, #f28123, #d96b12);
+			color: #ffffff;
+			font-size: 10px;
+			font-weight: 700;
+			min-width: 18px;
+			height: 18px;
+			border-radius: 9px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 5px;
+			box-shadow: 0 2px 8px rgba(242, 129, 35, 0.4);
+			border: 2px solid #07181c;
+		}
+
+		/* Search Icon */
+		.header-icons > a {
+			color: #ffffff;
+			font-size: 20px;
+			text-decoration: none;
+			padding: 8px 12px;
+			border-radius: 8px;
+			transition: all 0.2s ease;
+		}
+
+		.header-icons > a:hover {
+			color: var(--amber-300);
+			transform: translateY(-2px);
+		}
+
+		/* Profile Dropdown */
+		.profile-dropdown {
+			position: relative;
+		}
+
+		.profile-toggle {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			color: #ffffff;
+			text-decoration: none;
+			padding: 8px 12px;
+			border-radius: 8px;
+			transition: all 0.2s ease;
+			cursor: pointer;
+		}
+
+		.profile-toggle:hover {
+			color: var(--amber-300);
+			transform: translateY(-2px);
+		}
+
+		.profile-toggle i {
+			font-size: 20px;
+		}
+
+		.profile-toggle .fa-angle-down {
+			font-size: 14px;
+			transition: transform 0.3s ease;
+		}
+
+		.profile-dropdown:hover .profile-toggle .fa-angle-down {
+			transform: rotate(180deg);
+		}
+
+		.profile-menu {
+			position: absolute;
+			top: 120%;
+			right: 0;
+			background: #ffffff;
+			border-radius: 12px;
+			box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+			min-width: 200px;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-10px);
+			transition: all 0.3s ease;
+			list-style: none;
+			padding: 8px;
+			margin: 0;
+			z-index: 1000;
+		}
+
+		.profile-dropdown:hover .profile-menu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		.profile-menu li {
+			margin: 0;
+		}
+
+		.profile-menu li a {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 12px 16px;
+			color: #2f2f2f;
+			text-decoration: none;
+			border-radius: 8px;
+			transition: all 0.2s ease;
+			font-weight: 500;
+			font-size: 14px;
+		}
+
+		.profile-menu li a:hover {
+			background: rgba(242, 129, 35, 0.1);
+			color: #f28123;
+			padding-left: 20px;
+		}
+
+		.profile-menu li a i {
+			font-size: 16px;
+			width: 20px;
+			text-align: center;
+		}
+
+		.profile-menu .divider {
+			height: 1px;
+			background: #e5e5e5;
+			margin: 8px 0;
+		}
+
+		.logout-link {
+			color: #dc3545 !important;
+		}
+
+		.logout-link:hover {
+			background: rgba(220, 53, 69, 0.1) !important;
+			color: #dc3545 !important;
+			padding-left: 20px !important;
+		}
+
+		.mobile-menu {
+			display: none;
+		}
+
+		@media (max-width: 991px) {
+			.main-menu ul { display: none; }
+			.mobile-menu { display: block; }
+			.header-icons { display: none; }
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- ⭐ HEADER ⭐ -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+
+					<div class="main-menu-wrap">
+
+						<!-- ⭐ MODERN LOGO ⭐ -->
+						<div class="site-logo">
+							<a routerLink="customermaster/customerhome" class="logo-text">
+								Green<span>Fert</span>
+							</a>
+						</div>
+
+						<!-- Center Navigation -->
+						<nav class="main-menu">
+							<ul>
+								<li class="current-list-item"><a routerLink="/customermaster/customerhome">Home</a></li>
+								<li><a routerLink="/customermaster/allproduct">Shop</a></li>
+								<li><a routerLink="/customermaster/allcategory">Categories</a></li>
+								<li><a routerLink="/customermaster/about">About</a></li>
+								<li><a routerLink="/customermaster/contact">Contact</a></li>
+
+
+							</ul>
+						</nav>
+
+						<!-- Right Icons + Login -->
+						<div class="header-icons">
+							<a routerLink="/customermaster/cart" class="cart-icon-wrapper">
+								<i class="fas fa-shopping-cart"></i>
+
+								@if (cartCount > 0) {
+								<span class="cart-badge">{{ cartCount }}</span>
+								}
+							</a>
+
+							<a routerLink="/customermaster/cart"><i class="fas fa-search"></i></a>
+
+							<!-- ⭐ LOGIN BUTTON ⭐ -->
+							<!-- ⭐ PROFILE DROPDOWN ⭐ -->
+							<div class="profile-dropdown">
+
+								<a href="javascript:void(0)" class="profile-toggle">
+									<i class="fas fa-user-circle"></i>
+									<i class="fas fa-angle-down"></i>
+								</a>
+
+								<ul class="profile-menu">
+									<li>
+										<a routerLink="/customermaster/profile">
+											<i class="fas fa-user"></i> Profile
+										</a>
+									</li>
+									<li>
+										<a routerLink="/customermaster/orders">
+											<i class="fas fa-box"></i> Orders
+										</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a routerLink="/login" class="logout-link">
+											<i class="fas fa-sign-out-alt"></i> Logout
+										</a>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+
+						<!-- Mobile Menu -->
+						<div class="mobile-menu"></div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END HEADER -->
+
+
+
+
+
+
+
+	<router-outlet />
+	<!-- footer (project) -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+
+				<!-- Project Info -->
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">GreenFert </h2>
+						<p>
+							GreenFert provides fresh, organic and eco-friendly fertilizers made from natural waste.
+							We focus on sustainable farming and quality products for both customers and shops.
+						</p>
+						<p style="margin-top:8px;"><strong>Course:</strong> BCA — Final Year Project</p>
+					</div>
+				</div>
+
+				<!-- Team & Supervisor -->
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Team & Supervisor</h2>
+						<ul>
+							<li><strong>Team:</strong> Alen John (Creator)</li>
+							<li><strong>Roll No:</strong> 230021080642</li>
+							<li><strong>Supervisor:</strong> Ms. Jinu Sabu, Dept. of Computer Science</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Project Links / Download -->
+				<div class="col-lg-2 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Project Links</h2>
+						<ul>
+							<li><a routerLink="/guesthome">Home</a></li>
+							<li><a routerLink="/shop">Shop</a></li>
+							<li><a routerLink="/about">About</a></li>
+							<li><a routerLink="/contact">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Contact / College -->
+				<div class="col-lg-2 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Contact</h2>
+						<p style="margin-bottom:6px;">Dept. of Computer Science</p>
+						<ul>
+							<li>Santhigiri College of Computer Science</li>
+							<li>email: <a href="mailto:support@greenfert.com">support@greenfert.com</a></li>
+							<li>Phone: +91 ***** *****</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>© 2025 GreenFert — Final Year Project. All Rights Reserved.</p>
+				</div>
+
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-github"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
+<!-- end copyright -->

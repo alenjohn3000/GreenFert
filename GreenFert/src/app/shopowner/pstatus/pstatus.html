@@ -1,0 +1,182 @@
+<div class="pstatus-page">
+
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+    <div class="hero-background">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+    </div>
+    <h1 class="hero-title">Today's Pickup Status</h1>
+    <p class="hero-subtitle">Real-time waste collection tracking</p>
+  </div>
+
+  <!-- CONTENT WRAPPER -->
+  <div class="content-wrapper">
+
+    @if (collectedToday) {
+      <!-- COLLECTED STATUS CARD -->
+      <div class="status-card collected">
+        <div class="card-glow collected-glow"></div>
+        
+        <div class="status-header">
+          <div class="status-icon success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="status-header-text">
+            <h2>Collection Completed</h2>
+            <p>Your waste was successfully collected today</p>
+          </div>
+          <div class="status-badge success-badge">✓ Collected</div>
+        </div>
+
+        <div class="collection-details">
+          @for (d of collectedDetails; track $index) {
+            <div class="detail-card" 
+              [class.organic]="d.wcategory === 'Organic waste'"
+              [class.food]="d.wcategory === 'Food waste'">
+              
+              <div class="detail-header">
+                <div class="category-icon">
+                  @if (d.wcategory === 'Food waste') {
+                    🍽️
+                  } @else if (d.wcategory === 'Organic waste') {
+                    🌿
+                  } @else {
+                    🗑️
+                  }
+                </div>
+                <div class="category-info">
+                  <h3>{{ d.wcategory }}</h3>
+                  <span class="collection-time">{{ d.collecteddate | date:'MMM dd, yyyy - hh:mm a' }}</span>
+                </div>
+              </div>
+
+              <div class="detail-stats">
+                <div class="stat-item">
+                  <div class="stat-icon">⚖️</div>
+                  <div class="stat-content">
+                    <span class="stat-label">Quantity</span>
+                    <span class="stat-value">{{ d.quantitycollected }} kg</span>
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-icon">👤</div>
+                  <div class="stat-content">
+                    <span class="stat-label">Collected By</span>
+                    <span class="stat-value">{{ d.collectorname }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="success-message">
+          <div class="message-icon">🌱</div>
+          <p>Thank you for contributing to sustainable waste management!</p>
+        </div>
+      </div>
+
+    } @else {
+      @for (data of warray; track $index) {
+        <!-- SCHEDULED/CANCELLED STATUS CARD -->
+        <div class="status-card" [class.cancelled]="wcdetails.length > 0">
+          <div class="card-glow" [class.cancelled-glow]="wcdetails.length > 0"></div>
+          
+          <div class="status-header">
+            <div class="status-icon" [class.cancelled-icon]="wcdetails.length > 0">
+              @if (wcdetails.length == 0) {
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              } @else {
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M15 9l-6 6M9 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              }
+            </div>
+            <div class="status-header-text">
+              @if (wcdetails.length == 0) {
+                <h2>Pickup Scheduled</h2>
+                <p>Waste collection planned for today</p>
+              } @else {
+                <h2>Pickup Cancelled</h2>
+                <p>Collection cancelled for today</p>
+              }
+            </div>
+            <div class="status-badge" [class.scheduled-badge]="wcdetails.length == 0" [class.cancelled-badge]="wcdetails.length > 0">
+              @if (wcdetails.length == 0) {
+                ⏰ Scheduled
+              } @else {
+                ❌ Cancelled
+              }
+            </div>
+          </div>
+
+          <!-- INFO BOX -->
+          <div class="info-box">
+            <button class="info-toggle" (click)="showHelp = !showHelp">
+              <span class="info-icon">💡</span>
+              <span>Quick Help</span>
+              <span class="toggle-arrow" [class.open]="showHelp">▼</span>
+            </button>
+            @if (showHelp) {
+              <div class="info-content">
+                <p><strong>No waste today?</strong> Cancel the pickup so the collector doesn't make an unnecessary trip.</p>
+                <p>If you have waste ready, no action needed - the collector will arrive as scheduled.</p>
+                <div class="info-note">
+                  <span class="note-icon">🔄</span>
+                  <span>Pickup schedules reset automatically each day</span>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- COLLECTOR INFO -->
+          <div class="collector-card">
+            <div class="collector-avatar">
+              <img src="/logom.png" alt="Collector">
+              <div class="avatar-ring"></div>
+            </div>
+            <div class="collector-details">
+              <h3>{{ data.collectorname }}</h3>
+              <span class="collector-role">Assigned Waste Collector</span>
+              <span class="collector-contact">📞 +91 {{ data.collectorcontact }}</span>
+            </div>
+          </div>
+
+          <!-- ACTION SECTION -->
+          @if (wcdetails.length == 0) {
+            <div class="action-section">
+              <div class="action-info">
+                <span class="action-emoji">💭</span>
+                <p>If your shop has no waste today, you can cancel the scheduled pickup</p>
+              </div>
+              <button class="cancel-button" (click)="cancelWaste()">
+                <span class="button-icon">🚫</span>
+                <span>Cancel Today's Pickup</span>
+              </button>
+            </div>
+          } @else {
+            <div class="cancelled-notice">
+              <div class="notice-icon">⚠️</div>
+              <div class="notice-content">
+                <h4>Pickup Cancelled</h4>
+                <p>Today's waste collection has been cancelled. The schedule will reset tomorrow.</p>
+              </div>
+            </div>
+          }
+
+        </div>
+      }
+    }
+
+  </div>
+
+</div>

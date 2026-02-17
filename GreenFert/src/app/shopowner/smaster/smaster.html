@@ -1,0 +1,218 @@
+
+
+<!-- ⭐ PREMIUM SHOP OWNER HEADER ⭐ -->
+<header class="premium-header" id="sticker">
+	<div class="header-glow"></div>
+	<div class="container">
+		<div class="header-content">
+			
+			<!-- LOGO -->
+			<div class="site-logo">
+				<a routerLink="/smaster/shome" class="logo-link">
+					<div class="logo-icon">
+						<svg viewBox="0 0 24 24" fill="none">
+							<path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#goldGradient)" opacity="0.8"/>
+							<path d="M2 17L12 22L22 17" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+							<path d="M2 12L12 17L22 12" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+							<defs>
+								<linearGradient id="goldGradient" x1="2" y1="2" x2="22" y2="12">								<stop offset="0%" stop-color="#ffd700"/>
+								<stop offset="100%" stop-color="#ffed4e"/>
+							</linearGradient>
+						</defs>
+					</svg>
+				</div>
+				<span class="logo-text">Green<span class="logo-accent">Fert</span></span>
+			</a>
+		</div>
+		
+		<!-- NAVIGATION -->			<nav class="main-nav">
+				<ul class="nav-menu">
+					<li class="nav-item">
+						<a routerLink="/smaster/shome" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+							<span class="nav-icon">🏠</span>
+							<span>Home</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/smaster/sshop" routerLinkActive="active" class="nav-link">
+							<span class="nav-icon">🛒</span>
+							<span>Shop</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/smaster/sorders" routerLinkActive="active" class="nav-link">
+							<span class="nav-icon">📦</span>
+							<span>Orders</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/smaster/categoryview" routerLinkActive="active" class="nav-link">
+							<span class="nav-icon">🗂️</span>
+							<span>Categories</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/smaster/sabout" routerLinkActive="active" class="nav-link">
+							<span class="nav-icon">ℹ️</span>
+							<span>About</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/smaster/scontact" routerLinkActive="active" class="nav-link">
+							<span class="nav-icon">📞</span>
+							<span>Contact</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/smaster/pstatus" routerLinkActive="active" class="nav-link">
+							<span class="nav-icon">📍</span>
+							<span>Pickup</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/smaster/shhistory" routerLinkActive="active" class="nav-link">
+							<span class="nav-icon">📜</span>
+							<span>History</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			
+			<!-- RIGHT ACTIONS -->
+			<div class="header-actions">
+				<!-- Cart -->
+				<a routerLink="/smaster/scart" class="action-btn cart-btn">
+					<i class="fas fa-shopping-cart action-icon-fa"></i>
+					@if (cartCount > 0) {
+						<span class="action-badge">{{ cartCount }}</span>
+					}
+				</a>
+
+				<!-- Report Flag -->
+				<a routerLink="/smaster/shrequest" class="action-btn" title="Report missed collection">
+					<svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+					</svg>
+				</a>
+
+				<!-- Notifications -->
+				<div class="dropdown">
+					<button class="action-btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="Admin replies">
+						<svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+						</svg>
+						<span class="action-badge" *ngIf="replyCount > 0">{{ replyCount }}</span>
+					</button>
+					<ul class="dropdown-menu premium-dropdown">
+						<li class="dropdown-header">
+							<i class="fas fa-inbox"></i> Admin Replies
+						</li>
+						<li *ngIf="replyPreview.length === 0" class="dropdown-item text-muted">No replies yet</li>
+						<li *ngFor="let r of replyPreview" class="dropdown-item reply-item">
+							<div class="reply-date">{{ r.pending_date }}</div>
+							<div class="reply-message">{{ r.reply_message }}</div>
+						</li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item view-all" routerLink="/smaster/shreplies">
+								<i class="fas fa-arrow-right"></i> View all replies
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Profile -->
+				<div class="dropdown profile-dropdown">
+					<button class="profile-btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						<img class="profile-avatar" [src]="profile?.shopimg ? 'http://localhost:3000/images/' + profile.shopimg : '/guest/assets/img/avaters/avatar1.png'" [alt]="profile?.shopname || 'Profile'">
+						<span class="profile-name">{{ profile?.shopname || 'Shop Owner' }}</span>
+						<svg class="profile-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+						</svg>
+					</button>
+					<ul class="dropdown-menu premium-dropdown profile-menu">
+						<li class="dropdown-header">
+							<i class="fas fa-store"></i> My Account
+						</li>
+						<li>
+							<a class="dropdown-item" routerLink="/smaster/profile">
+								<i class="fas fa-user"></i> My Profile
+							</a>
+						</li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item logout-item" routerLink="/login">
+								<i class="fas fa-sign-out-alt"></i> Logout
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</header>
+<!-- ⭐ END PREMIUM HEADER ⭐ -->
+
+<!-- PAGE CONTENT -->
+<router-outlet></router-outlet>
+
+
+
+	<!-- FOOTER (UNCHANGED) -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">GreenFert</h2>
+						<p>
+							GreenFert provides fresh, organic and eco-friendly fertilizers made from natural waste.
+							We focus on sustainable farming and quality products for both customers and shops.
+						</p>
+						<p><strong>Course:</strong> BCA — Final Year Project</p>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Team & Supervisor</h2>
+						<ul>
+							<li><strong>Team:</strong> Alen John</li>
+							<li><strong>Roll No:</strong> 230021080642</li>
+							<li><strong>Supervisor:</strong> Ms. Jinu Sabu</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-2 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Project Links</h2>
+						<ul>
+							<li><a routerLink="/guesthome">Home</a></li>
+							<li><a routerLink="/about">About</a></li>
+							<li><a routerLink="/contact">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-2 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Contact</h2>
+						<ul>
+							<li>Santhigiri College of Computer Science</li>
+							<li>support@greenfert.com</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="copyright">
+		<div class="container">
+			<p>© 2025 GreenFert — Final Year Project</p>
+		</div>
+	</div>

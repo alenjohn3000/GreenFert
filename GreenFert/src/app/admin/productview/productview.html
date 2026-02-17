@@ -1,0 +1,124 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-xl-11 col-lg-11">
+
+    <div class="card admin-register-card">
+
+      <!-- HEADER -->
+      <div class="card-header admin-register-header">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+          <div>
+            <h3 class="card-title">
+              Product <span>Details</span>
+            </h3>
+            <p class="sub-text">Registered products</p>
+          </div>
+
+          <div class="header-actions">
+  <!-- Filter -->
+  <label class="stock-filter">
+    <input
+      type="checkbox"
+      [(ngModel)]="showOutOfStockOnly"
+    />
+    <span>Out of Stock</span>
+  </label>
+
+  <!-- Add Button -->
+  <button class="btn add-collector-btn" [routerLink]="'/adminmaster/product'">
+    <i class="fas fa-user-plus me-1"></i> Add Product
+  </button>
+</div>
+
+          <!-- Attractive Add Button -->
+        
+        </div>
+      </div>
+
+      <!-- BODY -->
+      <div class="card-body admin-register-body">
+
+        
+
+        <!-- TABLE -->
+        <div class="table-responsive">
+            <div class="table-responsive gf-table-wrap">
+          <table class="table table-hover gf-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Stock</th>
+                <th>Amount/price</th>
+                <th>Description</th>
+                <th>Kg</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Sample Row -->
+              @for (data of filteredProducts(); track data) {
+
+              <tr>
+ <td class="text-center">{{data.product_id}}</td>                
+                  <td>
+                  <div class="d-flex align-items-center gap-2">
+<img 
+  src="http://localhost:3000/images/{{data.productimage}}"
+  alt="image"
+  class="table-avatar clickable-img"
+  (click)="selectedImage='http://localhost:3000/images/' + data.productimage"
+/>
+                    <span class="fw-semibold">{{data.product}}</span>
+                  </div>
+                </td>
+                <td>
+  @if (data.stock > 0) {
+    <span class="stock-count">{{ data.stock }}</span>
+  } @else {
+    <span class="stock-badge stock-out">
+      Out of Stock
+    </span>
+  }
+</td>
+                <td>{{data.amount}}</td>
+                <td>{{data.description}}</td>
+                <td>{{data.productkg}}</td>
+
+                <!-- Horizontal Action Buttons -->
+                <td class="text-center">
+                  <div class="action-group">
+                    <button class="btn action-btn edit-btn" [routerLink]="['/adminmaster/productedit',data.product_id]">
+                      <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn action-btn delete-btn" (click)="confirmDelete(data.product_id)">
+                      <i class="fas fa-trash"></i> Delete
+                    </button>
+                    <button class="btn action-btn update-btn" [routerLink]="['/adminmaster/productupdate',data.product_id]">
+                     Update Stock
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+            </tbody>
+          </table>
+
+          <!-- Image Preview Modal -->
+@if (selectedImage) {
+  <div class="image-modal" (click)="selectedImage=null">
+    <div class="image-modal-content" (click)="$event.stopPropagation()">
+      <img [src]="selectedImage" alt="Preview" />
+      <span class="close-btn" (click)="selectedImage=null">&times;</span>
+    </div>
+  </div>
+}
+  
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

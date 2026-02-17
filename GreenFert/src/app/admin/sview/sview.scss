@@ -1,0 +1,255 @@
+/* Card */
+.admin-register-card {
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(26, 24, 13, 0.1);
+  margin-top: 25px;
+  overflow: hidden;
+}
+
+/* Header – SAME AS REGISTER PAGE */
+.admin-register-header {
+  background: linear-gradient(135deg, #efa512, #f9e5a1);
+  color: #fff;
+  padding: 26px 30px;
+}
+
+.admin-register-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.admin-register-header h3 span {
+  color: #f0eeeb;
+}
+
+.sub-text {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+/* Body */
+.admin-register-body {
+  padding: 30px 34px;
+}
+
+/* Inputs (same as form) */
+.admin-input {
+  height: 46px;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+}
+
+.admin-input:focus {
+  border-color: #f39a26;
+  box-shadow: 0 0 0 0.18rem rgba(243, 154, 38, 0.25);
+}
+
+/* TABLE – SIMPLE & CLEAN */
+.register-style-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.register-style-table thead th {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  padding: 10px 8px;
+  border-bottom: 2px solid #f0c15a;
+}
+
+.register-style-table tbody td {
+  padding: 12px 8px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.register-style-table tbody tr:hover {
+  background: #fffaf0;
+}
+
+/* Small avatar (same tone as register page) */
+.table-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid #f0c15a;
+}
+/* Wider container already handled via col-xl-11 */
+
+/* Add Collector Button */
+.add-collector-btn {
+  background: linear-gradient(135deg, #d99e1e, #f5c04a);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(217, 158, 30, 0.35);
+  transition: all 0.2s ease;
+}
+
+.add-collector-btn:hover {
+  background: linear-gradient(135deg, #c88f12, #ebb53a);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Table */
+.register-style-table {
+  width: 100%;
+  min-width: 900px; /* prevents squeezing */
+  border-collapse: collapse;
+}
+
+/* Avatar */
+.table-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #f0c15a;
+}
+
+/* Action buttons container */
+.action-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Common Action Button */
+.action-btn {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: #e4ffe0;
+  color: #59ca3d;
+  border: 1px solid #b4f1a4;
+}
+
+.edit-btn:hover {
+  background: #54e74a;
+  color: #fff;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #fff;
+  color: #dc3545;
+  border: 1px solid #f1b0b7;
+}
+
+.delete-btn:hover {
+  background: #dc3545;
+  color: #fff;
+}
+.gf-table tbody tr:hover {
+  transform: translateY(-4px);
+  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 5px 10px rgba(2,6,23,0.06);
+}
+
+
+
+
+
+/* Click cursor */
+.clickable-img {
+  cursor: pointer;
+}
+
+/* Modal background */
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal box */
+.image-modal-content {
+  position: relative;
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Large image */
+.image-modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #dc3545;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+/* Status badge – common */
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 999px;
+  text-align: center;
+  min-width: 90px;
+  transition: all 0.2s ease;
+}
+
+/* Requested – warning style */
+.status-requested {
+  background: #fff7e0;
+  color: #d99e1e;
+  border: 1px solid #f3d27a;
+}
+
+/* Accepted – success style */
+.status-accepted {
+  background: #e8fbe8;
+  color: #2e9f3f;
+  border: 1px solid #9fe0b1;
+}
+
+
+
+/* Hover effect */
+.status-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(2, 6, 23, 0.08);
+}
+

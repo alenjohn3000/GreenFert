@@ -1,0 +1,148 @@
+<!-- ⭐ SHOP OWNER - PRODUCT SHOP - PREMIUM DESIGN ⭐ -->
+<div class="shop-2026">
+
+  <!-- HERO SECTION -->
+  <section class="shop-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <span class="hero-badge">
+            <i class="fas fa-leaf"></i> Premium Organic Products
+          </span>
+          <h1 class="hero-title">Shop Fertilizers for <span class="text-highlight">Your Business</span></h1>
+          <p class="hero-subtitle">High-quality organic fertilizers with exclusive shop owner discounts</p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>{{ parray.length }}</strong>
+            <span>Products</span>
+          </div>
+          <div class="stat">
+            <strong>20%</strong>
+            <span>Off Eligible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP LAYOUT -->
+  <div class="shop-container">
+    <div class="container-full">
+
+      <!-- FILTER & SEARCH -->
+      <div class="shop-controls">
+        <div class="filter-section">
+          <h3><i class="fas fa-filter"></i> Filter by Category</h3>
+          <div class="filter-buttons">
+            <button 
+              class="filter-btn" 
+              [class.active]="selectedCategory === 'all'"
+              (click)="filterProducts('all')">
+              <i class="fas fa-th"></i>
+              All Products
+              <span class="count">{{ parray.length }}</span>
+            </button>
+            
+            @for (cat of categoryarray; track cat) {
+              <button 
+                class="filter-btn"
+                [class.active]="selectedCategory === cat.category_id"
+                (click)="filterProducts(cat.category_id)">
+                <i class="fas fa-tag"></i>
+                {{ cat.categoryname }}
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS INFO -->
+      <div class="results-info">
+        <h4><i class="fas fa-boxes"></i> Showing {{ filteredProducts.length }} of {{ parray.length }} products</h4>
+      </div>
+
+      <!-- PRODUCTS GRID -->
+      <section class="products-grid">
+        @if (filteredProducts.length > 0) {
+          @for (data of filteredProducts; track data.product_id) {
+            <div class="product-card" [class.out-of-stock]="data.stock === 0">
+              
+              <!-- IMAGE SECTION -->
+              <div class="product-image-wrapper">
+                <div class="product-image">
+                  <img
+                    src="http://localhost:3000/images/{{ data.productimage }}"
+                    alt="{{ data.product }}"
+                    class="product-img">
+                  
+                  <!-- BADGES -->
+                  <div class="product-badges">
+                    @if (data.stock === 0) {
+                      <span class="badge badge-out"><i class="fas fa-ban"></i> Out of Stock</span>
+                    }
+                    @else if (data.stock <= 10) {
+                      <span class="badge badge-low"><i class="fas fa-exclamation"></i> Only {{ data.stock }} left</span>
+                    }
+                    @else {
+                      <span class="badge badge-in"><i class="fas fa-check"></i> In Stock</span>
+                    }
+                  </div>
+                  
+                  <!-- QUICK VIEW -->
+                  <div class="quick-view-overlay">
+                    <a [routerLink]="['/smaster/productsingleview', data.product_id]" 
+                       class="btn-quick-view">
+                      <i class="fas fa-eye"></i> View Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- CONTENT SECTION -->
+              <div class="product-content">
+                <div class="product-category">
+                  <i class="fas fa-tag"></i> {{ data.categoryname }}
+                </div>
+                
+                <h3 class="product-name">{{ data.product }}</h3>
+                
+                <div class="product-meta">
+                  <span class="weight"><i class="fas fa-weight"></i> {{ data.productkg }}</span>
+                </div>
+                
+                @if (data.description) {
+                  <p class="product-description">{{ data.description | slice:0:80 }}...</p>
+                }
+                
+                <!-- FOOTER -->
+                <div class="product-footer">
+                  <div class="price-section">
+                    <span class="price">₹{{ data.amount }}</span>
+                  </div>
+                  
+                  <div class="product-actions">
+                    @if (data.stock > 0) {
+                      <button class="btn-add" (click)="addtocart(data.product_id)">
+                        <i class="fas fa-cart-plus"></i>
+                        Add
+                      </button>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        } @else {
+          <div class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <h3>No Products Found</h3>
+            <p>Try selecting a different category</p>
+          </div>
+        }
+      </section>
+
+    </div>
+  </div>
+
+</div>

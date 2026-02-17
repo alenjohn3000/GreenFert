@@ -1,0 +1,88 @@
+<div class="product-section single-product-page">
+  <div class="container">
+    <div class="row align-items-center">
+
+      @for(data of product; track data;) {
+
+      <!-- IMAGE -->
+      <div class="col-lg-6 col-md-12">
+        <div class="single-product-img-wrap">
+          <img
+            src="http://localhost:3000/images/{{data.productimage}}"
+            alt="{{data.product}}"
+          />
+        </div>
+      </div>
+
+      <!-- DETAILS -->
+      <div class="col-lg-6 col-md-12">
+        <div class="single-product-details">
+
+          <!-- PRODUCT NAME -->
+          <h1 class="product-title">{{ data.product }}</h1>
+
+          <!-- STOCK + WEIGHT -->
+          <div class="product-meta-top">
+            <span class="product-weight-badge">{{ data.productkg }}</span>
+            <span class="stock-badge">
+<span class="stock-text" *ngIf="data.stock > 5">
+  In stock • {{ data.stock }} available
+</span>
+
+<span class="stock-text low" *ngIf="data.stock > 0 && data.stock <= 5">
+  Hurry! Only {{ data.stock }} left
+</span>
+
+<span class="stock-text out" *ngIf="data.stock === 0">
+  Out of stock
+</span>
+            </span>
+          </div>
+
+          <!-- PRICE -->
+          <p class="price">₹{{ sum }}</p>
+
+          <!-- DESCRIPTION -->
+          <p class="description">
+            {{ data.description }}
+          </p>
+              @if (data.stock > 0) {
+
+          <!-- QUANTITY -->
+          <div class="qty-box-modern">
+  <button class="qty-btn" (click)="decreaseQty(data.product_id)">−</button>
+
+  <span class="qty-value">
+    {{ quantity[data.product_id] }}
+  </span>
+
+  <button class="qty-btn" (click)="increaseQty(data.product_id)">+</button>
+</div>
+<br><br>
+
+
+          <!-- ACTION BUTTONS -->
+          <div class="product-actions">
+            <button class="btn-cart" (click)="addtocart(data.product_id)">
+              <i class="fas fa-shopping-cart" ></i> Add to Cart
+            </button>
+
+            <button class="btn-buy" (click)="buy(data.product_id)">
+              Buy Now
+            </button>
+          </div>
+           } @else {
+                
+  <p class="out-stock-note">
+    This product is currently unavailable.
+  </p>
+
+              }
+
+        </div>
+      </div>
+
+      }
+    </div>
+  </div>
+</div>

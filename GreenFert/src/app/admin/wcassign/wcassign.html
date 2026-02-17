@@ -1,0 +1,183 @@
+<div class="wc-assign-page container-fluid mt-4">
+
+  <!-- =========================
+       TOP BANNER
+  ========================== -->
+  <div class="wc-banner">
+
+    <div class="wc-banner-left">
+      <h2>Waste Collector Assignment</h2>
+      <p>Assign shops to registered waste collectors</p>
+    </div>
+
+    <div class="wc-banner-right">
+
+      <div class="wc-chip">
+        <i class="fas fa-user"></i>
+        {{ warray[0]?.collectorname }}
+      </div>
+
+      <button class="wc-toggle-btn"
+              (click)="toggleAssigned()">
+        <i class="fas"
+           [ngClass]="showAssigned ? 'fa-eye-slash' : 'fa-eye'"></i>
+        {{ showAssigned ? 'Hide Assigned' : 'Show Assigned' }}
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+  <div class="row mt-4 g-4">
+
+    <!-- LEFT SIDE : SHOPS -->
+    <div class="col-12"
+         [ngClass]="showAssigned ? 'col-lg-8' : 'col-lg-12'">
+
+      <div class="wc-content">
+
+        <div class="row g-4">
+
+          @for (data of sarray; track data;) {
+
+          <div [ngClass]="showAssigned ? 'col-md-6' : 'col-md-4'">
+
+            <div class="wc-shop-card">
+
+              <!-- SHOP IMAGE -->
+              <img
+                src="http://localhost:3000/images/{{ data.shopimg }}"
+                class="wc-shop-img"
+                alt="Shop Image"
+              />
+
+              <!-- DARK OVERLAY -->
+              <div class="wc-dark-overlay"></div>
+
+              <!-- ASSIGNED OVERLAY -->
+              <div class="assigned-overlay"
+                   *ngIf="data.assign_id !== null">
+                <i class="fas fa-check-circle"></i>
+                <span>Already Assigned</span>
+              </div>
+
+              <!-- SHOP CONTENT -->
+              <div class="wc-shop-content">
+
+                <h5>{{ data.shopname }}</h5>
+
+                <div class="hover-meta">
+                  <span>
+                    <i class="fas fa-location-dot"></i>
+                    {{ data.locationname }}
+                  </span>
+                  <span>
+                    <i class="fas fa-phone"></i>
+                    {{ data.shopcontact }}
+                  </span>
+                </div>
+
+                <button
+                  class="wc-assign-btn"
+                  *ngIf="data.assign_id === null"
+                  (click)="assignwc(
+                    warray[0]?.wastecollector_id,
+                    data.owner_id
+                  )">
+                  Assign to Collector
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE : ASSIGNED SHOPS -->
+    <div class="col-12 col-lg-4">
+
+      <div class="wc-assigned-panel"
+           [class.show]="showAssigned">
+
+        <div class="wc-assigned-section">
+
+          <h4 class="mb-3">Assigned Shops</h4>
+
+          <div class="assigned-modern-list">
+
+            @if (assignedShops.length > 0) {
+
+              @for (data of assignedShops; track data;) {
+
+              <div class="assigned-modern-card">
+
+                <img
+                  src="http://localhost:3000/images/{{ data.shopimg }}"
+                  class="assigned-img"
+                  alt="Shop"
+                />
+
+                <div class="assigned-details">
+                  <h5>{{ data.shopname }}</h5>
+
+                  <div class="assigned-meta">
+                    <span>
+                      <i class="fas fa-location-dot"></i>
+                      {{ data.locationname }}
+                    </span>
+                    <span>
+                      <i class="fas fa-phone"></i>
+                      {{ data.shopcontact }}
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  class="assigned-remove-btn"
+                  (click)="removeassign(
+                    data.wastecollector_id,
+                    data.owner_id
+                  )">
+                  Remove
+                </button>
+
+              </div>
+
+              }
+
+            }
+            @else {
+
+              <!-- EMPTY STATE -->
+              <div class="assigned-empty">
+                <i class="fas fa-store-slash"></i>
+                <h5>No Shops Assigned</h5>
+                <p>This waste collector has no assigned shops yet.</p>
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,91 @@
+<br><br><br><br>
+<div class="payment-page">
+
+  <div class="payment-container">
+
+    <!-- HEADER -->
+    <div class="payment-header">
+      <h2>Complete Your <span class="highlight">Order</span></h2>
+      <p>Secure Payment Gateway</p>
+    </div>
+
+    <!-- BODY -->
+    <div class="payment-body">
+
+      <div class="payment-left">
+
+        <!-- QUICK PAYMENT -->
+        <div class="quick-payment-methods">
+          <h3>Quick Payment</h3>
+
+          <div class="payment-buttons image-style">
+            <button class="payment-btn google-pay" type="button">
+              <span class="g">G</span><span class="o">o</span><span class="o2">o</span><span class="g2">g</span><span class="l">l</span><span class="e">e</span>
+              <span class="pay-text">Pay</span>
+            </button>
+
+            <button class="payment-btn apple-pay" type="button">
+               Pay
+            </button>
+
+            <button class="payment-btn paypal" type="button">
+              Pay<span class="pp">Pal</span>
+            </button>
+
+            <button class="payment-btn amazon-pay" type="button">
+              amazon
+            </button>
+          </div>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="payment-divider">
+          <span>Or pay with card</span>
+        </div>
+
+        <!-- CARD FORM -->
+        <form [formGroup]="paymentForm">
+
+          <div class="form-group">
+            <label>Cardholder Name</label>
+            <input type="text" placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label>Card Number</label>
+            <input type="text" placeholder="1234 5678 9012 3456">
+          </div>
+
+          <div class="card-row">
+            <div class="form-group">
+              <label>Expiry Date</label>
+              <input type="text" placeholder="MM/YY">
+            </div>
+
+            <div class="form-group">
+              <label>CVV</label>
+              <input type="text" placeholder="123">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@example.com">
+          </div>
+
+          <button class="btn-pay" (click)="placepayment()">
+            Pay ₹{{ total }}
+          </button>
+
+          <div class="secure-badge">
+            Secure SSL Encrypted Payment
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

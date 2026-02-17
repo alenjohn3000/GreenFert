@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-md-8">
+
+    <div class="card gf-add-card">
+      <div class="card-header">
+        <h4 class="card-title">Location Registration</h4>
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="locationfg">
+
+          <!-- District Dropdown -->
+          <div class="form-group mb-4">
+            <label class="form-label">Select District</label>
+            <select 
+              class="form-control gf-input"
+              formControlName="districtid"
+            >
+              <option value="" disabled selected>Select District</option>
+               @for(data of locationarray;track data;){ 
+
+              <option value="{{data.district_id}}" >
+               {{data.districtname}}
+              </option>
+            }
+            </select>
+            <label *ngIf="locationfg.controls['districtid'].errors?.['required'] && savestatus" class="text-danger">
+              District is required
+            </label>
+          </div>
+
+          <!-- Location Name -->
+          <div class="form-group mb-4">
+            <label class="form-label">Location Name</label>
+            <input 
+              type="text"
+              class="form-control gf-input"
+              formControlName="locationname"
+            />
+            <label *ngIf="locationfg.controls['locationname'].errors?.['required'] && savestatus" class="text-danger">
+              Location Name is required
+            </label>
+            <label *ngIf="locationfg.controls['locationname'].errors?.['pattern'] && savestatus" class="text-danger">
+              Location Name can only contain letters and spaces
+            </label>
+          </div>
+
+          <!-- Button -->
+          <div class="form-actions">
+            <button class="btn gf-submit-btn-small" type="submit" (click)="slocation()">
+              <i class="fas fa-plus-circle"></i> Add Location
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

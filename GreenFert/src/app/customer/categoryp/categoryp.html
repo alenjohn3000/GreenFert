@@ -1,0 +1,125 @@
+<!-- =======================
+     SEARCH AREA
+======================= -->
+<div class="search-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="close-btn">
+          <i class="fas fa-window-close"></i>
+        </span>
+
+        <div class="search-bar">
+          <div class="search-bar-tablecell">
+            <h3>Search For:</h3>
+            <input type="text" placeholder="Search fertilizers">
+            <button type="submit">
+              Search <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END SEARCH AREA -->
+
+
+<!-- =======================
+     BREADCRUMB
+======================= -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <p>Organic & Eco-Friendly</p>
+          <h1>{{ parray[0]?.categoryname }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END BREADCRUMB -->
+
+
+
+<!-- =======================
+     PRODUCT SECTION
+======================= -->
+<div class="product-section mt-150 mb-150">
+  <div class="container">
+
+    <div class="row g-4">
+
+    
+ @for(data of parray;track data;){ 
+
+
+        <div class="col-lg-4 col-md-6">
+        <div class="product-card-2025"
+             [class.out-of-stock]="data.stock === 0">
+
+          <!-- IMAGE -->
+          <div class="product-img-wrap">
+            <img src="http://localhost:3000/images/{{data.productimage}}" alt="Organic Compost">
+
+            <span class="product-tag">{{ data.categoryname }}</span>
+
+            <!-- OUT OF STOCK BADGE -->
+            @if (data.stock === 0) {
+              <span class="stock-badge right">Out of Stock</span>
+            }
+          </div>
+
+          <!-- BODY -->
+          <div class="product-body">
+            <div class="product-header">
+              <h5>{{ data.product }}</h5>
+              <span class="product-weight">{{ data.productkg }}</span>
+            </div>
+
+            <p class="price">₹{{ data.amount }}</p>
+
+            <!-- ACTIONS -->
+            <div class="product-actions">
+
+              <!-- VIEW (ALWAYS AVAILABLE) -->
+              <a
+                [routerLink]="['/customermaster/productsview', data.product_id]"
+                class="view-btn">
+                View
+              </a>
+
+              <!-- ADD TO CART ONLY IF IN STOCK -->
+              @if (data.stock > 0) {
+                <a (click)="addtocart(data.product_id)" class="buy-btn">
+                  <i class="fas fa-shopping-cart"></i>
+                </a>
+              } @else {
+                
+              }
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      
+
+   
+
+    }
+
+      
+
+    </div>
+
+    
+   
+
+  </div>
+</div>
+<!-- END PRODUCT SECTION -->

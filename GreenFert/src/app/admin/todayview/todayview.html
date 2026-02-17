@@ -1,0 +1,71 @@
+<div class="admin-page">
+
+  <!-- HEADER -->
+  <div class="admin-header">
+    <h2>Waste Collection Details</h2>
+    <p>
+      Collected Today · {{ todayDate | date:'dd MMM yyyy' }}
+    </p>
+  </div>
+
+  <!-- COLLECTION CARD -->
+  <div class="collection-card">
+
+    <h3>Collected Shops</h3>
+
+    @for (d of wcarray; track d.collectiondetail_id) {
+
+      <div class="collection-row">
+
+        <!-- LEFT -->
+        <div class="details">
+          <h5>{{ d.shopname }}</h5>
+
+          <p class="location">
+            {{ d.locationname }}, {{ d.districtname }}
+          </p>
+
+          <div class="meta-info">
+            <span
+        class="badge"
+        [ngClass]="{
+          'food': d.wcategory === 'Foodwaste' || d.wcategory === 'FoodWaste',
+          'mixed': d.wcategory === 'mixed' || d.wcategory === 'Mixed',
+          'organic': d.wcategory === 'organic' || d.wcategory === 'Organic'
+        }"
+      >
+        {{ d.wcategory | titlecase }}
+      </span>
+
+
+            @if (d.note) {
+              <span class="note">
+                {{ d.note }}
+              </span>
+            }
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="meta">
+          <span class="weight">
+            {{ d.quantitycollected }} kg
+          </span>
+          <span class="date">
+            {{ d.collecteddate | date:'dd MMM' }}
+          </span>
+        </div>
+
+      </div>
+
+    }
+
+    @if (wcarray.length === 0) {
+      <p class="text-center text-muted">
+        No waste collected today
+      </p>
+    }
+
+  </div>
+
+</div>

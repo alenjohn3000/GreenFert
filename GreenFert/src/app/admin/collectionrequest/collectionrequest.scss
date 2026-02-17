@@ -1,0 +1,239 @@
+/* =====================================
+   PAGE BACKGROUND
+===================================== */
+.crx-page {
+  min-height: 100vh;
+  padding: 40px;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(244,160,0,0.08), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255,200,0,0.06), transparent 40%),
+    #f7f9fc;
+  font-family: 'Inter', sans-serif;
+}
+
+/* =====================================
+   HERO HEADER
+===================================== */
+.crx-hero {
+  background: linear-gradient(135deg, #f4a000, #f7b733);
+  padding: 50px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.crx-hero::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+}
+
+.crx-hero h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.crx-hero p {
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+/* =====================================
+   WRAPPER
+===================================== */
+.crx-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* =====================================
+   CARD (GLASS STYLE)
+===================================== */
+.crx-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(18px);
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.crx-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+}
+
+.crx-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-radius: 20px 0 0 20px;
+  background: linear-gradient(#f4a000, #f7b733);
+}
+
+.crx-card.replied::before {
+  background: linear-gradient(#28a745, #34d058);
+}
+
+/* =====================================
+   TOP SECTION
+===================================== */
+.crx-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crx-top h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.crx-meta {
+  font-size: 13px;
+  color: #666;
+  display: flex;
+  gap: 15px;
+  margin-top: 6px;
+}
+
+/* =====================================
+   STATUS BADGE
+===================================== */
+.crx-status {
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  background: #fff3d6;
+  color: #a66a00;
+  animation: pulse 2s infinite;
+}
+
+.crx-status.done {
+  background: #e6f9ec;
+  color: #1f8f4e;
+  animation: none;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(244,160,0,0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(244,160,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(244,160,0,0); }
+}
+
+/* =====================================
+   MESSAGE
+===================================== */
+.crx-body {
+  margin-top: 18px;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* =====================================
+   REPLY SECTION
+===================================== */
+.crx-reply {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.crx-reply textarea {
+  flex: 1;
+  border-radius: 12px;
+  border: 1px solid #e2e6f0;
+  padding: 12px;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.crx-reply textarea:focus {
+  outline: none;
+  border-color: #f4a000;
+  box-shadow: 0 0 0 4px rgba(244,160,0,0.15);
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+.crx-btn {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.crx-btn.primary {
+  background: linear-gradient(135deg, #f4a000, #f7b733);
+  color: white;
+  box-shadow: 0 10px 25px rgba(244,160,0,0.4);
+}
+
+.crx-btn.primary:hover {
+  transform: translateY(-2px);
+}
+
+.crx-btn.ghost {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  backdrop-filter: blur(5px);
+}
+
+.crx-btn.ghost:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+.crx-empty {
+  background: rgba(255,255,255,0.85);
+  padding: 60px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+}
+
+.crx-empty i {
+  font-size: 42px;
+  color: #f4a000;
+  margin-bottom: 10px;
+}
+.crx-hero {
+  position: relative;
+  z-index: 1;
+}
+
+.crx-hero::after {
+  z-index: 0;
+  pointer-events: none;   /* 🔥 THIS IS THE FIX */
+}
+
+.crx-hero-left,
+.crx-btn {
+  position: relative;
+  z-index: 2;
+}

@@ -1,0 +1,97 @@
+<div class="gf-page">
+
+  <!-- ================= HERO ================= -->
+  <div class="gf-hero">
+
+    <div>
+      <h2>Sales Report</h2>
+      <p>Summary of fertilizer orders and revenue</p>
+    </div>
+
+    <button class="gf-btn primary" (click)="load()">
+      <i class="fas fa-rotate"></i> Refresh
+    </button>
+
+  </div>
+
+
+  <!-- ================= STATS ================= -->
+  <div class="gf-stats">
+
+    <div class="gf-stat-card orders">
+      <div class="stat-icon">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+      <div class="label">Total Orders</div>
+      <div class="value">{{ totalOrders }}</div>
+    </div>
+
+    <div class="gf-stat-card revenue">
+      <div class="stat-icon">
+        <i class="fas fa-indian-rupee-sign"></i>
+      </div>
+      <div class="label">Total Revenue</div>
+      <div class="value">₹ {{ totalRevenue }}</div>
+    </div>
+
+    <div class="gf-stat-card paid">
+      <div class="stat-icon">
+        <i class="fas fa-credit-card"></i>
+      </div>
+      <div class="label">Paid and Pending</div>
+      <div class="value">{{ paidCount }}</div>
+    </div>
+
+    <div class="gf-stat-card sent">
+      <div class="stat-icon">
+        <i class="fas fa-truck"></i>
+      </div>
+      <div class="label">Sent to Delivery</div>
+      <div class="value">{{ sentCount }}</div>
+    </div>
+
+  </div>
+
+
+  <!-- ================= TABLE ================= -->
+  <div class="gf-table-card">
+
+    <div class="table-responsive">
+      <table class="table gf-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Amount</th>
+            <th>Order Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (o of orders; track o; let i = $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>#ORD {{ o.order_id }}</td>
+              <td class="fw-semibold">{{ o.customername }}</td>
+              <td class="fw-semibold">₹ {{ o.totalamount }}</td>
+              <td>{{ o.orderdate | date:'dd-MM-yyyy' }}</td>
+              <td>
+                <span class="gf-status"
+                  [ngClass]="{
+                    'status-sent': o.status === 'sent',
+                    'status-paid': o.status === 'paid'
+                  }">
+                  {{ o.status }}
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>

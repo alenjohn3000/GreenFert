@@ -1,0 +1,48 @@
+<div class="login-page">
+  <div class="login-shell">
+    <div class="login-card">
+      <a routerLink="/guestmaster/guesthome" class="logo">
+        Green<span class="green">Fert</span>
+      </a>
+
+      <h2>Welcome back</h2>
+      <p class="subtitle">Sign in to continue to your dashboard.</p>
+
+      <form [formGroup]="loginfg">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" formControlName="username" placeholder="Enter username">
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Enter password">
+            <button type="button" class="toggle-eye" (click)="togglePassword()" aria-label="Toggle password visibility">
+              <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </div>
+          <div class="forgot"><a routerLink="/fpassword">Forgot Password?</a></div>
+        </div>
+
+        <button type="submit" (click)="loginf()" class="btn">Login</button>
+      </form>
+
+      <div class="bottom-text">
+        Don't have an account?
+        <a routerLink="/loginreg">Register</a>
+      </div>
+    </div>
+
+    <div class="login-side">
+      <div class="side-badge"><i class="fas fa-leaf"></i> GreenFert</div>
+      <h3>Grow smarter with organic fertilizers</h3>
+      <p>Access trusted suppliers, transparent tracking, and sustainable waste-to-fertilizer workflows.</p>
+      <div class="side-highlights">
+        <div><i class="fas fa-check-circle"></i> Cleaner, greener supply chain</div>
+        <div><i class="fas fa-check-circle"></i> Verified roles and access</div>
+        <div><i class="fas fa-check-circle"></i> Real-time order visibility</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+.main-menu ul li {
+  position: relative;
+}
+
+.main-menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  min-width: 200px;
+  padding: 10px 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 999;
+}
+
+.main-menu .sub-menu li {
+  display: block;
+}
+
+.main-menu .sub-menu li a {
+  padding: 10px 20px;
+  display: block;
+  color: #333;
+  font-size: 14px;
+}
+
+.main-menu .sub-menu li a:hover {
+  background: #f5f5f5;
+}
+
+.main-menu li.dropdown:hover .sub-menu {
+  display: block;
+}
+/* ===========================
+   PROFILE DROPDOWN
+=========================== */
+.profile-dropdown {
+  position: relative;
+}
+
+.profile-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  i.fa-user-circle {
+    font-size: 22px;
+    color: #ff9f38;
+  }
+
+  i.fa-angle-down {
+    font-size: 12px;
+  }
+}
+
+/* DROPDOWN MENU */
+.profile-menu {
+  position: absolute;
+  top: 140%;
+  right: 0;
+  width: 180px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+  list-style: none;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  z-index: 9999;
+}
+
+/* SHOW ON HOVER */
+.profile-dropdown:hover .profile-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.profile-menu li {
+  padding: 0;
+}
+
+.profile-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #333;
+  transition: background 0.2s ease;
+}
+
+.profile-menu li a:hover {
+  background: #f5f5f5;
+}
+
+.profile-menu .divider {
+  height: 1px;
+  background: #eee;
+  margin: 6px 0;
+}
+
+.logout-link {
+  color: #c0392b;
+}
+.cart-icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff; /* matches navbar */
+}
+
+/* cart icon size */
+.cart-icon-wrapper i {
+  font-size: 18px;   /* ⬅️ reduced from 22px */
+}
+
+/* badge (count) */
+.cart-badge {
+  position: absolute;
+  top: -4px;         /* ⬅️ closer to icon */
+  right: -6px;       /* ⬅️ tighter alignment */
+  background: #e53935;
+  color: #fff;
+  font-size: 10px;   /* ⬅️ smaller text */
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 10px;
+  min-width: 16px;
+  height: 16px;
+  line-height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

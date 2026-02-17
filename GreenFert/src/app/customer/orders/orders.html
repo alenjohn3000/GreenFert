@@ -1,0 +1,123 @@
+<div class="orders-page">
+  <div class="orders-wrap container">
+
+    <!-- ===== HEADER ===== -->
+    <div class="orders-head">
+      <div>
+        <p class="eyebrow">Account Center</p>
+        <h2>My Orders</h2>
+        <p class="sub">Track, manage and review your recent purchases.</p>
+      </div>
+
+    </div>
+
+    <!-- ===== SUMMARY CARDS ===== -->
+    <div class="summary-grid">
+      <div class="summary-card">
+        <p>Total Orders</p>
+        <h3>{{ totalOrders }}</h3>
+      </div>
+
+      <div class="summary-card highlight">
+        <p>Total Spent</p>
+        <h3>&#8377;{{ totalSpent }}</h3>
+      </div>
+
+      <div class="summary-card success">
+        <p>Confirmed</p>
+        <h3>{{ paidCount }}</h3>
+      </div>
+
+      <div class="summary-card info">
+        <p>Out for Delivery</p>
+        <h3>{{ sentCount }}</h3>
+      </div>
+    </div>
+
+    <!-- ===== EMPTY STATES ===== -->
+    <div *ngIf="loading" class="empty-card">Loading orders...</div>
+    <div *ngIf="!loading && orders.length === 0" class="empty-card">
+      No orders found yet.
+    </div>
+
+    <!-- ===== ORDER LIST ===== -->
+    <div class="order-list" *ngIf="!loading && orders.length > 0">
+
+      @for (o of orders; track o) {
+        <div class="order-card">
+
+          <!-- ORDER HEADER STRIP -->
+          <div class="order-strip">
+            <div class="strip-block">
+              <span class="label">Placed</span>
+              <p>{{ o.orderdate | date:'dd MMM yyyy' }}</p>
+            </div>
+
+            <div class="strip-block">
+              <span class="label">Total</span>
+              <p class="price">&#8377;{{ o.totalamount }}</p>
+            </div>
+
+           
+
+            <div class="strip-block strip-right">
+              <span class="status"
+                [ngClass]="{
+                  'status-sent': o.status === 'sent',
+                  'status-paid': o.status === 'paid'
+                }">
+                {{ getStatusLabel(o.status) }}
+              </span>
+            </div>
+          </div>
+
+          <!-- ORDER BODY -->
+          <div class="order-body">
+
+            <div class="body-head">
+              <h4>{{ o.item_count }} item(s)</h4>
+              <button class="view-btn"
+                      (click)="toggleDetails(o.order_id)">
+                {{ expanded[o.order_id] ? 'Hide Items' : 'View Items' }}
+              </button>
+            </div>
+
+            <!-- ITEMS -->
+            <div class="items-list" *ngIf="expanded[o.order_id]">
+
+              @for (d of orderDetails[o.order_id]; track d) {
+                <div class="item-row">
+
+                  <img
+                    [src]="d.productimage ? 
+                      ('http://localhost:3000/images/' + d.productimage) 
+                      : '/guest/assets/img/products/product-img-1.jpg'"
+                    alt="Product" />
+
+                  <div class="item-main">
+                    <h5>{{ d.product }}</h5>
+                    <p>Quantity: {{ d.quantity }}</p>
+                  </div>
+
+                  <div class="item-price">
+                    <span>Total</span>
+                    <strong>&#8377;{{ d.product_total }}</strong>
+                  </div>
+
+                </div>
+              }
+
+              <div class="items-total">
+                <span>Order Total</span>
+                <strong>&#8377;{{ o.totalamount }}</strong>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</div>

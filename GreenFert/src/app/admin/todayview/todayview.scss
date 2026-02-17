@@ -1,0 +1,195 @@
+/* ===============================
+   PAGE
+================================ */
+.admin-page {
+  padding: 60px 40px;
+ 
+}
+
+/* ===============================
+   HEADER
+================================ */
+.admin-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.admin-header h2 {
+  font-size: 30px;
+  font-weight: 800;
+ color: #f28123;
+}
+
+.admin-header p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ===============================
+   COLLECTION CARD
+================================ */
+.collection-card {
+  max-width: 1000px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 36px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eef2f7;
+}
+
+/* CARD HEADER */
+.collection-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f1f3f6;
+}
+
+/* ===============================
+   COLLECTION ROW (MODERN STYLE)
+================================ */
+.collection-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 18px;
+  border-radius: 18px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.collection-row:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+/* Hover Effect */
+.collection-row:hover {
+  background: #fff7ed;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(242,129,35,0.15);
+}
+
+/* ===============================
+   DETAILS (LEFT SIDE)
+================================ */
+.details {
+  flex: 1;
+}
+
+.details h5 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.details .location {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   META INFO (BADGE + NOTE)
+================================ */
+.meta-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===============================
+   CATEGORY BADGES
+================================ */
+.badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ORANGE BRAND COLORS */
+.badge.food {
+  background: #fff1e5;
+  color: #f28123;
+}
+
+.badge.mixed {
+  background: #eef2ff;
+  color: #6366f1;
+}
+
+.badge.organic {
+  background: #ecfdf3;
+  color: #22c55e;
+}
+
+/* ===============================
+   NOTE CHIP
+================================ */
+.note {
+  font-size: 12px;
+  color: #475569;
+  background: #f8fafc;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===============================
+   RIGHT SIDE META
+================================ */
+.meta {
+  text-align: right;
+  min-width: 120px;
+}
+
+.weight {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  color: #f28123;
+  margin-bottom: 6px;
+}
+
+.date {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ===============================
+   EMPTY STATE
+================================ */
+.text-muted {
+  color: #9ca3af;
+}
+
+.text-center {
+  text-align: center;
+  padding: 50px 0;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+
+  .admin-page {
+    padding: 40px 20px;
+  }
+
+  .collection-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .meta {
+    text-align: left;
+  }
+
+}

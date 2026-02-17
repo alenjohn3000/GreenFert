@@ -1,0 +1,252 @@
+/* =====================================
+   PAGE BACKGROUND
+===================================== */
+.gf-page {
+  padding: 40px;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(40,167,69,0.08), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(40,167,69,0.05), transparent 40%),
+    #f7f9fc;
+  font-family: 'Inter', sans-serif;
+}
+
+/* =====================================
+   HERO SECTION
+===================================== */
+.gf-hero {
+  background: linear-gradient(135deg, #28a745, #34d058);
+  padding: 40px;
+  border-radius: 22px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  box-shadow: 0 25px 70px rgba(40,167,69,0.35);
+}
+
+.gf-hero h2 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.gf-hero p {
+  margin-top: 6px;
+  opacity: 0.9;
+}
+
+/* =====================================
+   BUTTON
+===================================== */
+.gf-btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.gf-btn.primary {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.gf-btn.primary:hover {
+  background: rgba(255,255,255,0.4);
+  transform: translateY(-2px);
+}
+
+/* =====================================
+   STATS GRID
+===================================== */
+.gf-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* =====================================
+   STAT CARD BASE (LIGHT STYLE)
+===================================== */
+.gf-stat-card {
+  padding: 28px;
+  border-radius: 22px;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.gf-stat-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Icon */
+.stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Label */
+.gf-stat-card .label {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Value */
+.gf-stat-card .value {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+/* =====================================
+   LIGHT COLOR VARIANTS
+===================================== */
+
+.orders {
+  background: #e9f9ee;
+  color: #1e7e34;
+}
+
+.orders .stat-icon {
+  background: #d4f5df;
+  color: #1e7e34;
+}
+
+.revenue {
+  background: #eaf4ff;
+  color: #0d6efd;
+}
+
+.revenue .stat-icon {
+  background: #d6e9ff;
+  color: #0d6efd;
+}
+
+.paid {
+  background: #fff8e6;
+  color: #b78103;
+}
+
+.paid .stat-icon {
+  background: #ffefc2;
+  color: #b78103;
+}
+
+.sent {
+  background: #f3ecff;
+  color: #6f42c1;
+}
+
+.sent .stat-icon {
+  background: #e5d8ff;
+  color: #6f42c1;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+@media (max-width: 992px) {
+  .gf-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .gf-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================
+   TABLE CARD
+===================================== */
+.gf-table-card {
+  background: rgba(255,255,255,0.95);
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+}
+
+/* =====================================
+   TABLE
+===================================== */
+.gf-table thead {
+  background: #e9f7ef;
+}
+
+.gf-table th {
+  font-weight: 600;
+  padding: 14px;
+  border: none;
+}
+
+.gf-table td {
+  padding: 14px;
+  border: none;
+}
+
+.gf-table tbody tr {
+  transition: 0.25s ease;
+}
+
+.gf-table tbody tr:hover {
+  background: #f4fbf6;
+  transform: scale(1.01);
+}
+
+/* =====================================
+   STATUS BADGES
+===================================== */
+.gf-status {
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-paid {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-sent {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+@media (max-width: 992px) {
+  .gf-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .gf-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .gf-page {
+    padding: 20px;
+  }
+
+  .gf-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

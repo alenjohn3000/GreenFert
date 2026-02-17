@@ -1,0 +1,96 @@
+<br><br><br>
+<div class="shop-2026">
+
+  <!-- PAGE HEADER -->
+  <div class="shop-header">
+    <h1>All Products</h1>
+    <p>Browse our complete range of organic fertilizers</p>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="shop-container">
+
+    <!-- FILTER SIDEBAR -->
+    <aside class="shop-filter">
+      <h4>Categories</h4>
+
+      <ul>
+        <li
+          [class.active]="selectedCategory === 'all'"
+          (click)="filterProducts('all')">
+          All Products
+        </li>
+
+        @for (cat of categoryarray; track cat) {
+          <li
+            [class.active]="selectedCategory === cat.category_id"
+            (click)="filterProducts(cat.category_id)">
+            {{ cat.categoryname }}
+          </li>
+        }
+      </ul>
+    </aside>
+
+    <!-- PRODUCTS LIST -->
+    <section class="shop-products">
+
+      @for (data of filteredProducts; track data) {
+
+        <div class="product-row-card"
+             [class.out-of-stock]="data.stock === 0">
+
+          <!-- IMAGE -->
+          <div class="product-row-image">
+            <img
+              src="http://localhost:3000/images/{{ data.productimage }}"
+              alt="{{ data.product }}">
+
+            @if (data.stock === 0) {
+              <span class="stock-pill">Out of stock</span>
+            }
+          </div>
+
+          <!-- DETAILS -->
+          <div class="product-row-details">
+
+            <div class="row-top">
+              <h3>{{ data.product }}</h3>
+              <span class="category-tag">{{ data.categoryname }}</span>
+            </div>
+
+            <p class="product-weight">{{ data.productkg }}</p>
+
+            <p class="product-desc">
+              {{ data.description | slice:0:110 }}...
+            </p>
+
+            <div class="row-bottom">
+              <span class="price">₹{{ data.amount }}</span>
+
+              <div class="row-actions">
+                <a
+                  [routerLink]="['/customermaster/productsview', data.product_id]"
+                  class="btn-outline">
+                  View
+                </a>
+
+                @if (data.stock > 0) {
+                  <button
+                    class="gf-btn-primary"
+                    (click)="addtocart(data.product_id)">
+                    <i class="fas fa-shopping-cart"></i>
+                    Add
+                  </button>
+                }
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      }
+
+    </section>
+
+  </div>
+</div>

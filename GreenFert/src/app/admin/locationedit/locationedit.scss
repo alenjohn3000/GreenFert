@@ -1,0 +1,111 @@
+/* ================================
+   CARD
+================================ */
+.gf-add-card {
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(26, 24, 13, 0.1);
+  margin-top: 25px;
+  overflow: hidden;
+  background: #ffffff;
+  border: none;
+}
+
+/* ================================
+   HEADER
+================================ */
+.gf-add-card .card-header {
+  background: linear-gradient(135deg, #efa512, #f9e5a1);
+  padding: 24px 28px;
+  border-bottom: none;
+}
+
+.gf-add-card .card-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ================================
+   BODY
+================================ */
+.gf-add-card .card-body {
+  padding: 30px 34px;
+}
+
+/* ================================
+   LABEL
+================================ */
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* ================================
+   INPUT
+================================ */
+.gf-input {
+  height: 46px;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  transition: all 0.2s ease;
+}
+
+.gf-input:focus {
+  outline: none;
+  border-color: #f39a26;
+  box-shadow: 0 0 0 0.18rem rgba(243, 154, 38, 0.25);
+}
+
+/* ================================
+   ACTIONS
+================================ */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Submit Button */
+.gf-submit-btn-small {
+  background: linear-gradient(135deg, #d99e1e, #f5c04a);
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(217, 158, 30, 0.35);
+  transition: all 0.2s ease;
+}
+
+.gf-submit-btn-small i {
+  margin-right: 6px;
+}
+
+.gf-submit-btn-small:hover {
+  background: linear-gradient(135deg, #c88f12, #ebb53a);
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .gf-add-card .card-body {
+    padding: 22px;
+  }
+
+  .gf-add-card .card-header {
+    padding: 22px;
+  }
+
+  .gf-submit-btn-small {
+    width: 100%;
+    text-align: center;
+  }
+}

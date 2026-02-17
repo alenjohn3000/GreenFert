@@ -1,0 +1,96 @@
+﻿<br><br>
+<!-- =======================
+     HERO SECTION
+======================= -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>{{ parray[0]?.categoryname || "Products" }}</h1>
+        <p>Explore our premium collection</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-icon"></span>
+                <span>{{ parray.length }} Products</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END HERO SECTION -->
+
+<!-- =======================
+     PRODUCT SECTION
+======================= -->
+<div class="product-section">
+    <div class="container">
+        <!-- RESULTS INFO -->
+        <div class="results-info">
+        </div>
+
+        <!-- PRODUCTS GRID -->
+        <div class="products-grid">
+            @if (parray.length > 0) {
+                @for(data of parray; track data.product_id) {
+                    <div class="product-card" [class.out-of-stock]="data.stock === 0">
+                        <!-- IMAGE SECTION -->
+                        <div class="product-image-wrap">
+                            <img src="http://localhost:3000/images/{{data.productimage}}" alt="{{data.product}}">
+                            
+                            <!-- STOCK BADGE -->
+                            @if (data.stock === 0) {
+                                <div class="stock-badge out-of-stock-badge">
+                                    <i class="fas fa-ban"></i> Out of Stock
+                                </div>
+                            } @else if (data.stock < 5) {
+                                <div class="stock-badge low-stock-badge">
+                                    <i class="fas fa-exclamation-triangle"></i> Low Stock
+                                </div>
+                            } @else {
+                                <div class="stock-badge in-stock-badge">
+                                    <i class="fas fa-check-circle"></i> In Stock
+                                </div>
+                            }
+                            
+                            <!-- QUICK VIEW OVERLAY -->
+                            <div class="quick-view-overlay">
+                                <a [routerLink]="['/smaster/productsingleview', data.product_id]" class="quick-view-btn">
+                                    <i class="fas fa-eye"></i> Quick View
+                                </a>
+                            </div>
+                            
+                            <!-- CATEGORY TAG -->
+                            <span class="category-tag">{{ data.categoryname }}</span>
+                        </div>
+                        
+                        <!-- CARD BODY -->
+                        <div class="card-body">
+                            <h3 class="product-name">{{ data.product }}</h3>
+                            <p class="product-weight">{{ data.productkg }}</p>
+                            <p class="product-desc">{{ data.description | slice:0:50 }}...</p>
+                            <p class="product-price">₹{{ data.amount }}</p>
+                            
+                            <!-- ACTIONS -->
+                            <div class="card-actions">
+                                <a [routerLink]="['/smaster/productsingleview', data.product_id]" class="btn-view">
+                                    View
+                                </a>
+                                @if (data.stock > 0) {
+                                    <button (click)="addtocart(data.product_id)" class="btn-cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            } @else {
+                <!-- EMPTY STATE -->
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <h3>No Products Found</h3>
+                    <p>This category doesn't have any products yet.</p>
+                    <a routerLink="/smaster/sshop" class="btn-shop">Back to Shop</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- END PRODUCT SECTION -->

@@ -1,0 +1,80 @@
+<div class="crx-page">
+
+  <!-- ===== PREMIUM HEADER ===== -->
+  <div class="crx-hero">
+
+    <div class="crx-hero-left">
+      <h1>Collection Requests</h1>
+      <p>Manage missed collection messages from shop owners</p>
+    </div>
+
+    <a class="crx-btn ghost"
+       routerLink="/adminmaster/collectionrequest-replied">
+       View Replied
+    </a>
+
+  </div>
+
+
+  <!-- ===== REQUEST LIST ===== -->
+  <div class="crx-wrapper">
+
+    @if (requests.length === 0) {
+      <div class="crx-empty">
+        <i class="fas fa-inbox"></i>
+        <h4>No Requests Available</h4>
+        <p>Everything looks clean. No pending issues.</p>
+      </div>
+    }
+
+    @for (req of requests; track req.collectionrequest_id) {
+
+      <div class="crx-card"
+           [class.replied]="req.reply_message">
+
+        <!-- TOP SECTION -->
+        <div class="crx-top">
+
+          <div>
+            <h4>{{ req.shopname }}</h4>
+            <div class="crx-meta">
+              <span>Pending: {{ req.pending_date }}</span>
+              <span>Message: {{ req.message_date }}</span>
+            </div>
+          </div>
+
+          <span class="crx-status"
+                [class.done]="req.reply_message">
+            {{ req.reply_message ? 'Replied' : 'Pending' }}
+          </span>
+
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="crx-body">
+          <p>{{ req.message }}</p>
+        </div>
+
+        <!-- REPLY -->
+        <div class="crx-reply">
+
+          <textarea
+            rows="2"
+            placeholder="Write your reply..."
+            [(ngModel)]="req.reply_message">
+          </textarea>
+
+          <button class="crx-btn primary"
+                  (click)="sendReply(req)">
+            Send Reply
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

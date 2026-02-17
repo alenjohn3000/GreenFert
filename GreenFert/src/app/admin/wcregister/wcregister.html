@@ -1,0 +1,145 @@
+<div class="admin-neo">
+
+  <!-- HEADER -->
+  <header class="neo-header">
+    <div class="header-inner">
+      <h1>Register Waste Collector</h1>
+      <p>Add and manage waste collectors</p>
+    </div>
+  </header>
+
+  <!-- FORM CONTAINER -->
+  <div class="neo-container">
+
+    <form class="neo-form"
+          [formGroup]="wcfg"
+          enctype="multipart/form-data">
+
+      <!-- PERSONAL INFO -->
+      <section class="neo-section">
+        <h3>Collector Information</h3>
+
+        <div class="neo-grid">
+          <input class="neo-input" placeholder="Collector Name" formControlName="name">
+          <label *ngIf="wcfg.controls['name'].errors?.['required'] && savestatus" class="text-danger">
+            Name is required
+          </label>
+          <input class="neo-input" placeholder="Email Address" formControlName="email">
+          <label *ngIf="wcfg.controls['email'].errors?.['required'] && savestatus" class="text-danger">
+            Email is required
+          </label>
+          <label *ngIf="wcfg.controls['email'].errors?.['email'] && savestatus" class="text-danger">
+            Enter a valid email
+          </label>
+          <input class="neo-input" placeholder="Contact Number" formControlName="contact">
+          <label *ngIf="wcfg.controls['contact'].errors?.['required'] && savestatus" class="text-danger">
+            Contact number is required
+          </label>
+          <label *ngIf="wcfg.controls['contact'].errors?.['pattern'] && savestatus" class="text-danger">
+            Contact must be 10 digits
+          </label>
+          <input class="neo-input" placeholder="Username" formControlName="username">
+          <label *ngIf="wcfg.controls['username'].errors?.['required'] && savestatus" class="text-danger">
+            Username is required
+          </label>
+        </div>
+      </section>
+
+      <!-- LOCATION -->
+      <section class="neo-section">
+        <h3>Location</h3>
+
+        <div class="neo-grid">
+          <select class="neo-input"
+                  formControlName="districtid"
+                  (change)="onchange()">
+            <option value="">Select District</option>
+            @for(data of locationarray; track data;) {
+              <option value="{{data.district_id}}">
+                {{data.districtname}}
+              </option>
+            }
+          </select>
+          <label *ngIf="wcfg.controls['districtid'].errors?.['required'] && savestatus" class="text-danger">
+            District is required
+          </label>
+
+          <select class="neo-input"
+                  formControlName="locationid">
+            <option value="">Select Location</option>
+            @for(data of districtarray; track data;) {
+              <option value="{{data.location_id}}">
+                {{data.locationname}}
+              </option>
+            }
+          </select>
+          <label *ngIf="wcfg.controls['locationid'].errors?.['required'] && savestatus" class="text-danger">
+            Location is required
+          </label>
+        </div>
+      </section>
+
+      <!-- IMAGE UPLOAD WITH PREVIEW -->
+      <section class="neo-section">
+        <h3>Collector Image</h3>
+
+        <div class="image-upload">
+
+          <!-- Preview -->
+          <div class="image-preview" *ngIf="previewUrl; else uploadBox">
+            <img [src]="previewUrl" alt="Preview">
+            <label class="overlay">
+              <span>Change Image</span>
+              <input type="file"
+                     hidden
+                     (change)="selectFile($event)">
+            </label>
+          </div>
+
+          <!-- Upload box -->
+          <ng-template #uploadBox>
+            <label class="upload-box">
+              <input type="file"
+                     hidden
+                     (change)="selectFile($event)">
+              <div class="upload-content">
+                <i class="fas fa-image"></i>
+                <p>Upload Collector Image</p>
+                <span>PNG or JPG · Max 5MB</span>
+              </div>
+            </label>
+            <label *ngIf="wcfg.controls['image'].errors?.['required'] && savestatus" class="text-danger">
+              Collector image is required
+            </label>
+          </ng-template>
+
+        </div>
+      </section>
+
+      <!-- PASSWORD -->
+      <section class="neo-section">
+        <h3>Credentials</h3>
+        <div class="neo-grid">
+          <input type="password"
+                 class="neo-input"
+                 placeholder="Password"
+                 formControlName="password">
+          <label *ngIf="wcfg.controls['password'].errors?.['required'] && savestatus" class="text-danger">
+            Password is required
+          </label>
+        </div>
+      </section>
+
+      <!-- ACTION -->
+      <div class="neo-actions">
+        <button class="neo-btn"
+                type="submit"
+                (click)="wcregister()">
+          Register Collector
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

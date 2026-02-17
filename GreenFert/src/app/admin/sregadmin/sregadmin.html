@@ -1,0 +1,145 @@
+<div class="admin-neo">
+
+  <!-- HEADER -->
+  <header class="neo-header">
+    <div class="header-inner">
+     
+      <h1>Register Shop</h1>
+      <p>Create and verify a new shop account</p>
+    </div>
+  </header>
+
+  <!-- FORM CONTAINER -->
+  <div class="neo-container">
+
+    <form class="neo-form"
+          [formGroup]="shopfg"
+          enctype="multipart/form-data">
+
+      <!-- SHOP INFO -->
+      <section class="neo-section reveal">
+        <h3>Shop Information</h3>
+
+        <div class="neo-grid">
+          <input class="neo-input" placeholder="Shop Name" formControlName="shopname">
+          <label *ngIf="shopfg.controls['shopname'].errors?.['required'] && savestatus" class="text-danger">
+            Shop Name is required
+          </label>
+          <input class="neo-input" placeholder="Email" formControlName="shopemail">
+          <label *ngIf="shopfg.controls['shopemail'].errors?.['required'] && savestatus" class="text-danger">
+            Email is required
+          </label>
+          <label *ngIf="shopfg.controls['shopemail'].errors?.['email'] && savestatus" class="text-danger">
+            Enter a valid email
+          </label>
+          <input class="neo-input" placeholder="Contact Number" formControlName="contact">
+          <label *ngIf="shopfg.controls['contact'].errors?.['required'] && savestatus" class="text-danger">
+            Contact is required
+          </label>
+          <label *ngIf="shopfg.controls['contact'].errors?.['pattern'] && savestatus" class="text-danger">
+            Contact must be 10 digits
+          </label>
+          <input class="neo-input" placeholder="Shop Licence" formControlName="shoplicence">
+          <label *ngIf="shopfg.controls['shoplicence'].errors?.['required'] && savestatus" class="text-danger">
+            Shop Licence is required
+          </label>
+        </div>
+      </section>
+
+      <!-- LOCATION -->
+      <section class="neo-section reveal delay-1">
+        <h3>Location</h3>
+
+        <div class="neo-grid">
+          <select class="neo-input" formControlName="districtid" (change)="onchange()">
+            <option value="">Select District</option>
+            @for(data of locationarray; track data;) {
+              <option value="{{data.district_id}}">
+                {{data.districtname}}
+              </option>
+            }
+          </select>
+          <label *ngIf="shopfg.controls['districtid'].errors?.['required'] && savestatus" class="text-danger">
+            District is required
+          </label>
+
+          <select class="neo-input" formControlName="locationid">
+            <option value="">Select Location</option>
+            @for(data of districtarray; track data;) {
+              <option value="{{data.location_id}}">
+                {{data.locationname}}
+              </option>
+            }
+          </select>
+          <label *ngIf="shopfg.controls['locationid'].errors?.['required'] && savestatus" class="text-danger">
+            Location is required
+          </label>
+        </div>
+      </section>
+
+      <!-- IMAGE UPLOAD WITH PREVIEW -->
+      <section class="neo-section reveal delay-2">
+        <h3>Shop Image</h3>
+
+        <div class="image-upload">
+
+          <!-- Preview -->
+          <div class="image-preview" *ngIf="previewUrl; else uploadBox">
+            <img [src]="previewUrl" alt="Shop Image Preview">
+            <label class="overlay">
+              <span>Change Image</span>
+              <input type="file"
+                     hidden
+                     formControlName="image"
+                     (change)="selectFile($event)">
+            </label>
+          </div>
+
+          <!-- Upload box -->
+          <ng-template #uploadBox>
+            <label class="upload-box">
+              <input type="file"
+                     hidden
+                     formControlName="image"
+                     (change)="selectFile($event)">
+              <div class="upload-content">
+                <i class="fas fa-image"></i>
+                <p>Upload Shop Image</p>
+                <span>PNG or JPG · Max 5MB</span>
+              </div>
+            </label>
+          </ng-template>
+          <label *ngIf="shopfg.controls['image'].errors?.['required'] && savestatus" class="text-danger">
+            Shop image is required
+          </label>
+
+        </div>
+      </section>
+
+      <!-- CREDENTIALS -->
+      <section class="neo-section reveal delay-3">
+        <h3>Credentials</h3>
+
+        <div class="neo-grid">
+          <input class="neo-input" placeholder="Username" formControlName="username">
+          <label *ngIf="shopfg.controls['username'].errors?.['required'] && savestatus" class="text-danger">
+            Username is required
+          </label>
+          <input class="neo-input" type="password" placeholder="Password" formControlName="password">
+          <label *ngIf="shopfg.controls['password'].errors?.['required'] && savestatus" class="text-danger">
+            Password is required
+          </label>
+        </div>
+      </section>
+
+      <!-- ACTION -->
+      <div class="neo-actions reveal delay-4">
+        <button class="neo-btn" type="submit" (click)="sreg()">
+          Create Shop
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+  <div class="col-xl-11 col-lg-12">
+
+    <!-- Card -->
+    <div class="admin-register-card">
+
+      <!-- Header -->
+      <div class="admin-register-header d-flex justify-content-between align-items-center">
+        <div>
+          <h3>Location <span>List</span></h3>
+          <div class="sub-text">Manage all registered locations</div>
+        </div>
+
+        <button
+          class="add-collector-btn"
+          [routerLink]="['/adminmaster/location']"
+        >
+          <i class="fas fa-plus"></i> Add Location
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="admin-register-body">
+
+        <div class="table-responsive">
+          <table class="register-style-table">
+
+            <thead>
+              <tr>
+                <th class="text-center">Location ID</th>
+                <th class="text-center">District ID</th>
+                <th>Location Name</th>
+                <th class="text-center">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (data of locationarray; track data) {
+                <tr>
+                  <td class="text-center">{{ data.location_id }}</td>
+                  <td class="text-center">{{ data.district_id }}</td>
+                  <td>{{ data.locationname }}</td>
+
+                  <td class="text-center">
+                    <div class="action-group">
+                      <button
+                        class="action-btn edit-btn"
+                        [routerLink]="['/adminmaster/locationedit', data.location_id]"
+                      >
+                        <i class="fas fa-pen"></i> Edit
+                      </button>
+
+                      <button
+                        class="action-btn delete-btn"
+                        (click)="locationdelete(data.location_id)"
+                      >
+                        <i class="fas fa-trash"></i> Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,261 @@
+/* ===============================
+   PAGE BASE
+================================ */
+.shop-2026 {
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+/* ===============================
+   HEADER
+================================ */
+.shop-header {
+  text-align: center;
+  padding: 70px 20px 40px;
+}
+
+.shop-header h1 {
+  font-size: 44px;
+  font-weight: 800;
+  color: #102a1c;
+  margin-bottom: 10px;
+}
+
+.shop-header p {
+  font-size: 18px;
+  color: #4a6b5c;
+}
+
+/* ===============================
+   MAIN LAYOUT (FIXED ALIGNMENT)
+================================ */
+.shop-container {
+  max-width: 1200px;      /* 🔥 centers everything */
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+}
+
+/* ===============================
+   FILTER SIDEBAR
+================================ */
+.shop-filter {
+  position: sticky;
+  top: 120px;
+}
+
+.shop-filter h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #102a1c;
+}
+
+.shop-filter ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shop-filter li {
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 6px;
+  transition: background 0.25s ease;
+}
+
+.shop-filter li:hover {
+  background: #f1f8f4;
+}
+
+.shop-filter li.active {
+  background: #eaf6ee;
+  color: #f9b042;
+  font-weight: 600;
+}
+
+/* ===============================
+   PRODUCTS LIST
+================================ */
+.shop-products {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===============================
+   PRODUCT ROW CARD
+================================ */
+.product-row-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-row-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.1);
+}
+
+.product-row-card.out-of-stock {
+  opacity: 0.7;
+}
+
+/* ===============================
+   IMAGE
+================================ */
+.product-row-image {
+  width: 220px;
+  padding: 12px;
+  background: #f9fbfa;
+  border-radius: 12px;
+  margin-right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-row-image img {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+/* STOCK BADGE */
+.stock-pill {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #d32f2f;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* ===============================
+   DETAILS
+================================ */
+.product-row-details {
+  flex: 1;
+  padding: 8px 6px;
+}
+
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.row-top h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.category-tag {
+  background: #219c2b;
+  color: #ffffff;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.product-weight {
+  font-size: 14px;
+  color: #777;
+  margin: 6px 0;
+}
+
+.product-desc {
+  font-size: 13.5px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   BOTTOM ROW
+================================ */
+.row-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f5ad39;
+}
+
+.row-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.btn-outline {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid #f1a43e;
+  background: transparent;
+  color: #fa9e35;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.gf-btn-primary {
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #f0a32f;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.gf-btn-primary i {
+  margin-right: 6px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 992px) {
+  .shop-container {
+    grid-template-columns: 1fr;
+  }
+
+  .product-row-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-row-image {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+
+  .row-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

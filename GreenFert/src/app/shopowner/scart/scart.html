@@ -1,0 +1,107 @@
+<div class="cart-page">
+  <!-- CART HERO HEADER -->
+  <div class="cart-hero">
+    <div class="hero-content">
+      <div class="breadcrumb-link">
+        <a routerLink="/smaster/sshop">
+          <i class="fas fa-arrow-left"></i> Continue Shopping
+        </a>
+      </div>
+      <div class="hero-title-section">
+        <span class="hero-badge">Shopping Cart</span>
+        <h1>Review Your Order</h1>
+        <p>{{ parray.length }} items in cart</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART CONTENT -->
+  @if(parray.length==0) {
+  <div class="empty-cart" style="margin-left: 550px;">
+    <h3>Your Cart is Empty</h3>
+    <p>Add products to your cart to see them here.</p>
+    <a routerLink="/smaster/categoryview" class="shop-now-btn">Shop Now</a>
+  </div>
+  } 
+  @else {
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- CART ITEMS -->
+      <div class="col-lg-8">
+        <div class="cart-card">
+
+          @for (data of parray; track data) {
+
+          <div class="cart-item">
+
+            <div class="item-img">
+              <img src="http://localhost:3000/images/{{data.productimage}}" alt="">
+            </div>
+
+            <div class="item-info">
+              <h5>{{data.product}}</h5>
+              <p class="weight">{{data.productkg}}</p>
+            </div>
+
+            <div class="item-price">
+              ₹{{data.amount}}
+            </div>
+
+            <div class="qty-box">
+              <button (click)="decreaseQty(data.product_id)">−</button>
+              <span>{{ quantity[data.product_id] }}</span>
+              <button (click)="increaseQty(data.product_id)">+</button>
+            </div>
+
+            <div class="item-total">
+              ₹{{totalprice[data.product_id]}}
+            </div>
+
+            <div class="remove-btn" (click)="deletep(data.product_id)">
+              <i class="fas fa-trash"></i>
+            </div>
+
+          </div>
+
+          }
+
+        </div>
+      </div>
+
+      <!-- ORDER SUMMARY -->
+      <div class="col-lg-4">
+        <div class="summary-card">
+
+          <h4>Order Summary</h4>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>₹{{sum}}</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Delivery</span>
+            <span>₹20</span>
+          </div>
+
+          <div class="summary-row total">
+            <span>Total</span>
+            <span>₹{{sum+20}}</span>
+          </div>
+
+          <button class="checkout-btn" (click)="gotolocation()">
+            <i class="fas fa-lock"></i> Secure Checkout
+          </button>
+
+          <p class="eco-text">
+            ♻ Eco-friendly delivery guaranteed
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  }
+</div>

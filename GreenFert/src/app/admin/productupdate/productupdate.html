@@ -1,0 +1,96 @@
+<div class="admin-neo">
+
+  <!-- HEADER -->
+  <header class="neo-header">
+    <div class="header-inner">
+      <h1>Stock Update</h1>
+      <p>Update product stock and pricing details</p>
+
+      <div class="product-preview">
+        <span class="label">Product:</span>
+        <span class="value">{{productarray[0]?.product}}</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- FORM CONTAINER -->
+  <div class="neo-container">
+
+    <form class="neo-form" [formGroup]="stockfg">
+
+      <!-- CURRENT DETAILS -->
+      <section class="neo-section">
+        <h3>Current Details</h3>
+
+        <div class="neo-grid">
+
+          <div class="form-group">
+            <label class="form-label">Current Stock</label>
+            <input 
+              type="text"
+              class="neo-input preview-input"
+              formControlName="newstock"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Current Price</label>
+            <input 
+              type="text"
+              class="neo-input preview-input"
+              formControlName="newprice"
+              readonly
+            />
+          </div>
+
+        </div>
+      </section>
+
+      <!-- UPDATE DETAILS -->
+      <section class="neo-section">
+        <h3>Update Details</h3>
+
+        <div class="neo-grid">
+
+          <div class="form-group">
+            <label class="form-label">New Stock Quantity</label>
+            <input 
+              type="number"
+              class="neo-input"
+              formControlName="nstock"
+            />
+            <label *ngIf="stockfg.controls['nstock'].errors?.['required'] && savestatus" class="text-danger">
+              New Stock is required
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">New Price</label>
+            <input 
+              type="number"
+              class="neo-input"
+              formControlName="nprice"
+            />
+            <label *ngIf="stockfg.controls['nprice'].errors?.['required'] && savestatus" class="text-danger">
+              New Price is required
+            </label>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ACTION -->
+      <div class="neo-actions">
+        <button
+          class="neo-btn"
+          type="submit"
+          (click)="updatestock()">
+          <i class="fas fa-sync-alt me-2"></i> Update Stock
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

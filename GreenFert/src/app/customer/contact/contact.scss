@@ -1,0 +1,90 @@
+/* =========================
+   CONTACT PAGE – STYLED
+   ========================= */
+
+.styled-contact {
+  background: linear-gradient(180deg, #ffffff, #f7f9fc);
+}
+
+.contact-subtext {
+  max-width: 720px;
+  margin: auto;
+  color: #666;
+  font-size: 15px;
+}
+
+/* Contact Cards */
+.contact-card {
+  background: #fff;
+  padding: 35px 25px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+  transition: 0.35s ease;
+  height: 100%;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 65px rgba(0,0,0,0.12);
+}
+
+.contact-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 15px;
+  background: linear-gradient(135deg, #f28123, #f5a04d);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-icon i {
+  color: #fff;
+  font-size: 26px;
+}
+
+.contact-card h4 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Project Note */
+.project-note {
+  background: #dde7e9;
+  color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.project-note i {
+  font-size: 36px;
+  color: #f28123;
+}
+
+.project-note p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Bottom Strip */
+.green-strip {
+  background: linear-gradient(135deg, #0f5132, #198754);
+  color: #fff;
+  padding: 20px 0;
+}
+
+.green-strip p {
+  margin: 0;
+  font-weight: 500;
+}

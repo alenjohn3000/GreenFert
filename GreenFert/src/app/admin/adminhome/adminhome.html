@@ -1,0 +1,244 @@
+<div class="dashboard">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-title-row">
+        <div>
+          <div class="eyebrow">GreenFert Admin</div>
+          <h1>Operations Dashboard</h1>
+        </div>
+        <div class="filter-title-right">
+          <div class="filter-trigger" #filterBox>
+            <button class="gf-btn ghost filter-btn" (click)="toggleFilter()">Filter</button>
+            <div class="filter-pop" *ngIf="showFilter">
+              <div class="filter-title">Filter</div>
+              <div class="filter-modes">
+                <label class="mode-pill">
+                  <input type="radio" name="filterMode" value="month" [checked]="filterMode==='month'" (change)="setFilterMode('month')" />
+                  <span>Month</span>
+                </label>
+                <label class="mode-pill">
+                  <input type="radio" name="filterMode" value="year" [checked]="filterMode==='year'" (change)="setFilterMode('year')" />
+                  <span>Year</span>
+                </label>
+                <label class="mode-pill">
+                  <input type="radio" name="filterMode" value="range" [checked]="filterMode==='range'" (change)="setFilterMode('range')" />
+                  <span>Date Range</span>
+                </label>
+                <label class="mode-pill">
+                  <input type="radio" name="filterMode" value="all" [checked]="filterMode==='all'" (change)="setFilterMode('all')" />
+                  <span>All Time</span>
+                </label>
+              </div>
+
+              <div class="filter-controls">
+                <select class="gf-select" [disabled]="filterMode!=='month'" (change)="onMonthYearChange('month', $event)">
+                  <option value="" selected>Month</option>
+                  <option value="1">Jan</option>
+                  <option value="2">Feb</option>
+                  <option value="3">Mar</option>
+                  <option value="4">Apr</option>
+                  <option value="5">May</option>
+                  <option value="6">Jun</option>
+                  <option value="7">Jul</option>
+                  <option value="8">Aug</option>
+                  <option value="9">Sep</option>
+                  <option value="10">Oct</option>
+                  <option value="11">Nov</option>
+                  <option value="12">Dec</option>
+                </select>
+                <select class="gf-select" [disabled]="filterMode!=='month' && filterMode!=='year'" (change)="onMonthYearChange('year', $event)">
+                  <option value="" selected>Year</option>
+                  <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+                </select>
+                <input class="gf-date" type="date" [disabled]="filterMode!=='range'" (change)="onDateChange('from', $event)" />
+                <span class="filter-sep">to</span>
+                <input class="gf-date" type="date" [disabled]="filterMode!=='range'" (change)="onDateChange('to', $event)" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="subtitle">Fertilizer sales and waste collection at a glance.</p>
+
+      <div class="hero-actions">
+        <div class="export-row">
+          <button class="gf-btn ghost" (click)="exportOrdersCSV()">Export Orders</button>
+          <button class="gf-btn ghost" (click)="exportWasteCSV()">Export Waste</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-title">Revenue (Paid)</div>
+        <div class="hero-card-value">&#8377;{{ formatNumber(stats.revenue) }}</div>
+        <div class="hero-card-sub">Total paid payments</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Waste Collected</div>
+        <div class="hero-card-value">{{ formatNumber(stats.waste) }} kg</div>
+        <div class="hero-card-sub">All time</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPI GRID -->
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-label">Customers</div>
+      <div class="kpi-value">{{ formatNumber(stats.customers) }}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Shop Owners</div>
+      <div class="kpi-value">{{ formatNumber(stats.shopowners) }}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Collectors</div>
+      <div class="kpi-value">{{ formatNumber(stats.collectors) }}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Orders</div>
+      <div class="kpi-value">{{ formatNumber(stats.orders) }}</div>
+    </div>
+  </div>
+
+  <!-- QUICK ACTIONS -->
+  <div class="quick-actions">
+    <div class="qa-head">
+      <div class="qa-title">Quick Actions</div>
+      <div class="qa-sub">Most used admin tasks</div>
+    </div>
+
+    <div class="qa-grid">
+      <button class="qa-btn" *ngFor="let qa of quickActions; let i = index" [ngClass]="'qa-style-' + (i % 4)" (click)="viewAll(qa.route)">
+        <span>{{ qa.title }}</span>
+      </button>
+      <button class="qa-btn ghost qa-style-2" (click)="viewAll('/adminmaster/orderview')">View Orders</button>
+      <button class="qa-btn ghost qa-style-3" (click)="viewAll('/adminmaster/wcview')">View Collection</button>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="insights">
+    <div class="chart-box large">
+      <div class="box-head">
+        <div>
+          <h3>Orders & Waste Collection</h3>
+          <p>Last 6 months volume</p>
+        </div>
+      </div>
+      <canvas id="ordersWasteChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <div class="box-head">
+        <div>
+          <h3>User Distribution</h3>
+          <p>Customers vs Shop Owners vs Collectors</p>
+        </div>
+      </div>
+      <canvas id="revenueChart"></canvas>
+    </div>
+  </div>
+
+  <!-- OPS GRID -->
+  <div class="ops-grid">
+    <div class="op-card">
+      <div class="op-head">Top Products</div>
+      <div class="op-row" *ngFor="let p of topProducts">
+        <div class="op-name">{{ p.product }}</div>
+        <div class="op-meta">{{ formatNumber(p.qty) }} sold</div>
+        <div class="op-value">&#8377;{{ formatNumber(p.revenue) }}</div>
+      </div>
+      <div *ngIf="!topProducts || topProducts.length===0" class="text-muted">No data</div>
+    </div>
+
+    <div class="op-card">
+      <div class="op-head">Low Stock Alerts</div>
+      <div class="op-row" *ngFor="let p of lowStock">
+        <div class="op-name">{{ p.product }}</div>
+        <div class="op-meta">Stock: {{ formatNumber(p.stock) }}</div>
+        <div class="op-value">&#8377;{{ formatNumber(p.amount) }}</div>
+      </div>
+      <div *ngIf="!lowStock || lowStock.length===0" class="text-muted">No low stock items</div>
+    </div>
+
+    <div class="op-card">
+      <div class="op-head">Top Collectors</div>
+      <div class="op-row" *ngFor="let c of topCollectors">
+        <div class="op-name">{{ c.collectorname }}</div>
+        <div class="op-meta">{{ formatNumber(c.pickups) }} pickups</div>
+        <div class="op-value">{{ formatNumber(c.qty) }} kg</div>
+      </div>
+      <div *ngIf="!topCollectors || topCollectors.length===0" class="text-muted">No data</div>
+    </div>
+  </div>
+
+  <!-- TABLES -->
+  <div class="tables">
+    <div class="table-card">
+      <div class="card-head">
+        <h3>Recent Orders</h3>
+        <a (click)="viewAll('/adminmaster/orderview')" class="link">View all</a>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="!filteredOrders || filteredOrders.length===0">
+              <td colspan="4" class="text-muted">No recent orders</td>
+            </tr>
+            <tr *ngFor="let o of filteredOrders; let $odd = odd">
+              <td>{{ o.order_id }}</td>
+              <td>{{ o.customername }}</td>
+              <td>&#8377;{{ formatNumber(o.totalamount) }}</td>
+              <td>
+                <span class="status" [ngClass]="o.status ? o.status.toLowerCase() : ''">{{ o.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="card-head">
+        <h3>Waste Collection</h3>
+        <a (click)="viewAll('/adminmaster/wcview')" class="link">View all</a>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Shop</th>
+              <th>Collector</th>
+              <th>Qty</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="!filteredWaste || filteredWaste.length===0">
+              <td colspan="4" class="text-muted">No recent waste records</td>
+            </tr>
+            <tr *ngFor="let w of filteredWaste; let $odd = odd">
+              <td>{{ w.shopname }}</td>
+              <td>{{ w.collectorname }}</td>
+              <td>{{ formatNumber(w.quantitycollected) }} kg</td>
+              <td>{{ w.collecteddate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

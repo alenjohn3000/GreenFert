@@ -1,0 +1,220 @@
+/* PAGE */
+.page-wrapper {
+  padding: 140px 0 100px;
+  background: linear-gradient(180deg, #f8fafc, #ffffff);
+}
+
+.page-title {
+  font-weight: 700;
+}
+
+.page-subtitle {
+  color: #666;
+  font-size: 15px;
+}
+
+/* CARD */
+.shop-card.modern {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.shop-card.not-available {
+  opacity: 0.6;
+}
+
+/* IMAGE */
+.shop-image {
+  position: relative;
+  height: 170px;
+}
+
+.shop-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* STATUS */
+.status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.green {
+  background: #e7f8ef;
+  color: #1e8e3e;
+}
+
+.red {
+  background: #fdecea;
+  color: #d93025;
+}
+
+.grey {
+  background: #ececec;
+  color: #555;
+}
+
+/* CONTENT */
+.shop-content {
+  padding: 18px 20px 22px;
+}
+
+.shop-content h5 {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.shop-content p {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.shop-content i {
+  margin-right: 6px;
+  color: #f28123;
+}
+
+/* TOGGLE */
+.collect-toggle {
+  display: none;
+}
+
+/* BUTTON */
+.collect-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 18px;
+  background: #f28123;
+  color: #fff;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.collect-btn:hover {
+  background: #e36f12;
+}
+
+/* COLLECTED */
+.collected-text {
+  display: block;
+  margin-top: 14px;
+  padding-left: 14px;
+  border-left: 3px solid #2f7d32;
+  color: #2f7d32;
+  font-weight: 600;
+  font-size: 14px;
+}/* ===========================
+   COLLECTED STATUS – CLEAN
+=========================== */
+.collected-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+
+  padding: 8px 14px;
+  border-radius: 20px;
+
+  background: #e8f5ec;
+  color: #2f7d32;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  border: 1px solid #cde7d5;
+}
+
+.collected-text i {
+  font-size: 15px;
+}
+
+
+
+/* STATE CHANGE */
+.collect-toggle:checked ~ .shop-image .status-available {
+  display: none;
+}
+
+.collect-toggle:checked ~ .shop-image .status-collected {
+  display: inline-block;
+}
+
+.collect-toggle:checked ~ .shop-content .collect-btn {
+  display: none;
+}
+
+.collect-toggle:checked ~ .shop-content .collected-text {
+  display: block;
+}
+
+.collect-toggle:checked ~ .shop-content,
+.collect-toggle:checked ~ .shop-image {
+  opacity: 0.6;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ===========================
+   SHOP CARD HOVER EFFECT
+=========================== */
+.shop-card.modern {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #ececec;
+  transition: all 0.25s ease;
+  height: 100%;
+}
+
+/* HOVER */
+.shop-card.modern:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+  border-color: #dcdcdc;
+}
+
+/* IMAGE ZOOM (VERY SUBTLE) */
+.shop-card.modern .shop-image img {
+  transition: transform 0.35s ease;
+}
+
+.shop-card.modern:hover .shop-image img {
+  transform: scale(1.04);
+}
+
+
+/* REMOVE BLACK BORDER / OUTLINE FROM BUTTON */
+.collect-btn {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.collect-btn:focus,
+.collect-btn:active,
+.collect-btn:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+

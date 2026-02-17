@@ -1,0 +1,69 @@
+<br><br><br><br>
+<div class="profile-page">
+
+  <div class="profile-container">
+
+    <!-- ================= PROFILE CARD ================= -->
+    <div class="profile-card" *ngIf="!loading && profile; else loadState">
+
+      <!-- HEADER -->
+      <div class="profile-header">
+        <div class="avatar">
+          <span>{{ profile.customername?.charAt(0) }}</span>
+        </div>
+
+        <div class="header-info">
+          <h2>{{ profile.customername }}</h2>
+          <p>{{ profile.customeremail }}</p>
+        </div>
+
+        <a routerLink="/customermaster/profileedit" class="btn-edit">
+          <i class="fas fa-pen"></i> Edit Profile
+        </a>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="divider"></div>
+
+      <!-- DETAILS GRID -->
+      <div class="profile-grid">
+
+        <div class="profile-item">
+          <label>Full Name</label>
+          <p>{{ profile.customername }}</p>
+        </div>
+
+        <div class="profile-item">
+          <label>Email Address</label>
+          <p>{{ profile.customeremail }}</p>
+        </div>
+
+        <div class="profile-item">
+          <label>Contact Number</label>
+          <p>{{ profile.customercontact }}</p>
+        </div>
+
+        <div class="profile-item">
+          <label>Username</label>
+          <p>{{ profile.username }}</p>
+        </div>
+
+        <div class="profile-item">
+          <label>Registered On</label>
+          <p>{{ profile.customer_regdate | date:'dd MMM yyyy' }}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= LOADING STATE ================= -->
+    <ng-template #loadState>
+      <div class="profile-card loading-card">
+        <p>{{ loading ? 'Loading profile...' : 'Profile not found.' }}</p>
+      </div>
+    </ng-template>
+
+  </div>
+
+</div>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GreenFert</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="/guest/assets/img/favicon.png">
+
+	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+
+	<!-- css -->
+	<link rel="stylesheet" href="/guest/assets/css/all.min.css">
+	<link rel="stylesheet" href="/guest/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/guest/assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="/guest/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="/guest/assets/css/animate.css">
+	<link rel="stylesheet" href="/guest/assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="/guest/assets/css/main.css">
+	<link rel="stylesheet" href="/guest/assets/css/responsive.css">
+
+	<!-- ⭐ HEADER STYLE ⭐ -->
+	<style>
+		#sticker, .top-header-area {
+			background: #07181c !important;
+			padding: 8px 0 !important;
+			border-bottom: 1px solid #0e2227;
+		}
+
+		.main-menu-wrap {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 20px;
+		}
+
+		.logo-text {
+			color: #fff;
+			font-size: 30px;
+			font-weight: 700;
+			font-family: 'Poppins', sans-serif;
+			text-decoration: none;
+		}
+
+		.main-menu {
+			flex: 1;
+			text-align: center;
+		}
+
+		.main-menu ul {
+			display: inline-flex;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.main-menu ul li a {
+			color: #e88325;
+			font-weight: 600;
+			text-decoration: none;
+		}
+
+		/* PROFILE DROPDOWN */
+		.profile-dropdown {
+			position: relative;
+		}
+
+		.profile-toggle {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			color: #fff;
+			cursor: pointer;
+			font-weight: 600;
+			font-size: 14px;
+		}
+
+		.profile-toggle img {
+			width: 34px;
+			height: 34px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		.dropdown-menu {
+			right: 0;
+			left: auto;
+			margin-top: 10px;
+			border-radius: 6px;
+			box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+		}
+
+		.dropdown-header {
+			font-size: 13px;
+			color: #666;
+		}
+
+		.dropdown-item {
+			font-size: 14px;
+		}
+	</style>
+</head>
+
+<body>
+
+<!-- ⭐ SHOP OWNER HEADER WITH PROFILE DROPDOWN ⭐ -->
+<div class="top-header-area" id="sticker">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+
+				<div class="main-menu-wrap">
+
+					<!-- LOGO -->
+					<div class="site-logo">
+						<a routerLink="/wcmaster/wchome" class="logo-text">
+							Green<span style="color:#e8a230;">Fert</span>
+						</a>
+					</div>
+
+					<!-- CENTER MENU -->
+					<nav class="main-menu">
+						<ul>
+							<li>
+								<a routerLink="/wcmaster/wchome">Pickup Locations</a>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<a routerLink="/wcmaster/pickedup">Picked Up Locations</a>
+							</li>
+						</ul>
+					</nav>
+					
+
+					<!-- PROFILE DROPDOWN -->
+					<div class="profile-dropdown dropdown">
+
+						<div
+							class="profile-toggle dropdown-toggle"
+							data-bs-toggle="dropdown"
+							aria-expanded="false">
+
+							<img src="/guest/assets/img/avaters/avatar1.png" alt="Profile">
+							<span>Waste Collector</span>
+						</div>
+
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">
+								<i class="fas fa-truck"></i> Profile
+							</li>
+							<li><a class="dropdown-item" routerLink="/wcmaster/profile"><i class="fas fa-user"></i> My Profile</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item text-danger" routerLink="/login">
+									<i class="fas fa-sign-out-alt"></i> Logout
+								</a>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ⭐ END HEADER ⭐ -->
+
+<!-- PAGE CONTENT -->
+<router-outlet></router-outlet>
+
+
+
+<!-- FOOTER (UNCHANGED) -->
+<div class="footer-area">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-box about-widget">
+          <h2 class="widget-title">GreenFert</h2>
+          <p>
+            GreenFert provides fresh, organic and eco-friendly fertilizers made from natural waste.
+            We focus on sustainable farming and quality products for both customers and shops.
+          </p>
+          <p><strong>Course:</strong> BCA — Final Year Project</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-box get-in-touch">
+          <h2 class="widget-title">Team & Supervisor</h2>
+          <ul>
+            <li><strong>Team:</strong> Alen John</li>
+            <li><strong>Roll No:</strong> 230021080642</li>
+            <li><strong>Supervisor:</strong> Ms. Jinu Sabu</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-box pages">
+          <h2 class="widget-title">Project Links</h2>
+          <ul>
+            <li><a routerLink="/guesthome">Home</a></li>
+            <li><a routerLink="/about">About</a></li>
+            <li><a routerLink="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-box subscribe">
+          <h2 class="widget-title">Contact</h2>
+          <ul>
+            <li>Santhigiri College of Computer Science</li>
+            <li>support@greenfert.com</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="copyright">
+  <div class="container">
+    <p>© 2025 GreenFert — Final Year Project</p>
+  </div>
+</div>
+
+</body>
+</html>

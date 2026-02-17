@@ -1,0 +1,90 @@
+<div class="admin-neo">
+
+  <!-- HEADER -->
+  <header class="neo-header">
+    <div class="header-inner">
+      <h1>Category Registration</h1>
+      <p>Create a new product category</p>
+    </div>
+  </header>
+
+  <!-- FORM CONTAINER -->
+  <div class="neo-container">
+
+    <form class="neo-form"
+          [formGroup]="categoryfg"
+          enctype="multipart/form-data">
+
+      <!-- CATEGORY INFO -->
+      <section class="neo-section reveal">
+        <h3>Category Information</h3>
+
+        <div class="neo-grid">
+          <input
+            class="neo-input"
+            placeholder="Category Name"
+            formControlName="categoryname"
+          />
+          <label *ngIf="categoryfg.controls['categoryname'].errors?.['required'] && savestatus" class="text-danger">
+            Category Name is required
+          </label>
+          <label *ngIf="categoryfg.controls['categoryname'].errors?.['pattern'] && savestatus" class="text-danger">
+            Category Name can only contain letters and spaces
+          </label>
+        </div>
+      </section>
+
+      <!-- IMAGE UPLOAD -->
+      <section class="neo-section reveal delay-1">
+        <h3>Category Image</h3>
+
+        <div class="image-upload">
+
+          <!-- PREVIEW -->
+          <div class="image-preview" *ngIf="previewUrl; else uploadBox">
+            <img [src]="previewUrl" alt="Category Image Preview">
+            <label class="overlay">
+              <span>Change Image</span>
+              <input
+                type="file"
+                hidden
+                formControlName="image"
+                (change)="selectFile($event)"
+              >
+            </label>
+          </div>
+
+          <!-- UPLOAD BOX -->
+          <ng-template #uploadBox>
+            <label class="upload-box">
+              <input
+                type="file"
+                hidden
+                formControlName="image"
+                (change)="selectFile($event)"
+              >
+              <div class="upload-content">
+                <i class="fa-solid fa-image"></i>
+                <p>Upload Category Image</p>
+                <span>PNG or JPG · Max 5MB</span>
+              </div>
+            </label>
+            <label *ngIf="categoryfg.controls['image'].errors?.['required'] && savestatus" class="text-danger">
+              Category Image is required
+            </label>
+          </ng-template>
+
+        </div>
+      </section>
+
+      <!-- ACTION -->
+      <div class="neo-actions reveal delay-2">
+        <button class="neo-btn" type="submit" (click)="scategory()">
+          Add Category
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

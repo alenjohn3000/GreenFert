@@ -1,0 +1,176 @@
+<div class="about-page">
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="hero-particles">
+      <div class="particle" *ngFor="let i of particles" [style.left.%]="i.x" [style.top.%]="i.y" [style.animation-delay.s]="i.delay"></div>
+    </div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge-top">MY PROJECT</div>
+      <h1 class="hero-title">
+        <span class="title-line">GreenFert</span>
+        <span class="title-subtitle">Waste to Wealth Revolution</span>
+      </h1>
+      <p class="hero-description">
+        Transforming organic waste from registered shops into premium quality fertilizers
+      </p>
+      <div class="hero-stats-quick">
+        <div class="quick-stat">
+          <span class="stat-icon">🏪</span>
+          <span class="stat-text">Shop Collection</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="quick-stat">
+          <span class="stat-icon">♻️</span>
+          <span class="stat-text">Waste Processing</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="quick-stat">
+          <span class="stat-icon">🌱</span>
+          <span class="stat-text">Fertilizer Production</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Model Section -->
+  <section class="business-section">
+    <div class="container">
+      <div class="section-header-premium">
+        <span class="premium-tag">THE PROJECT</span>
+        <h2 class="premium-title">How It Works</h2>
+        <p class="premium-subtitle">A complete ecosystem that transforms waste into valuable resources</p>
+      </div>
+      
+      <div class="process-flow">
+        <div class="process-card" *ngFor="let step of processSteps; let i = index">
+          <div class="process-number">{{ i + 1 }}</div>
+          <div class="process-icon" [innerHTML]="step.icon"></div>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+          <div class="process-arrow" *ngIf="i < processSteps.length - 1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section class="impact-section">
+    <div class="impact-overlay"></div>
+    <div class="container">
+      <div class="section-header-premium centered">
+        <span class="premium-tag light">OUR IMPACT</span>
+        <h2 class="premium-title light">Making a Real Difference</h2>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-card" *ngFor="let impact of impacts">
+          <div class="impact-icon-wrapper">
+            <div class="impact-glow"></div>
+            <div class="impact-icon" [innerHTML]="impact.icon"></div>
+          </div>
+          <div class="impact-value">{{ impact.value }}</div>
+          <div class="impact-label">{{ impact.label }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header-premium centered">
+        <span class="premium-tag">PLATFORM FEATURES</span>
+        <h2 class="premium-title">Built for Efficiency</h2>
+        <p class="premium-subtitle">Everything you need in one powerful platform</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" *ngFor="let feature of features">
+          <div class="feature-shine"></div>
+          <div class="feature-icon" [innerHTML]="feature.icon"></div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <div class="benefits-layout">
+        <div class="benefits-content">
+          <span class="premium-tag">WHY CHOOSE US</span>
+          <h2 class="premium-title">Benefits for Everyone</h2>
+          <div class="benefits-list">
+            <div class="benefit-item" *ngFor="let benefit of benefits">
+              <div class="benefit-icon" [innerHTML]="benefit.icon"></div>
+              <div class="benefit-text">
+                <h4>{{ benefit.title }}</h4>
+                <p>{{ benefit.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="benefits-visual">
+          <div class="visual-circle circle-1"></div>
+          <div class="visual-circle circle-2"></div>
+          <div class="visual-circle circle-3"></div>
+          <div class="visual-icon">♻️</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section class="vision-section">
+    <div class="container">
+      <div class="vision-card">
+        <div class="vision-content">
+          <span class="premium-tag light">THE VISION</span>
+          <h2 class="vision-title">Creating a Circular Economy</h2>
+          <p class="vision-text">
+            GreenFert represents a complete solution to organic waste management. By collecting waste 
+            from registered shops across the region, we ensure efficient waste removal while creating 
+            value. Our advanced processing facilities convert this organic waste into high-quality 
+            fertilizers that enrich soil and support sustainable agriculture.
+          </p>
+          <p class="vision-text">
+            This closed-loop system benefits everyone: shops get reliable waste collection, customers 
+            purchase premium organic fertilizers, and the environment wins with reduced waste and 
+            sustainable farming practices.
+          </p>
+          <div class="vision-signature">
+            <div class="signature-line"></div>
+            <span class="signature-text">Building a greener tomorrow, today</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Be Part of the Solution</h2>
+        <p class="cta-subtitle">Join our platform and contribute to a sustainable future</p>
+        <div class="cta-buttons">
+          <a routerLink="/shopowner/shome" class="cta-btn primary">
+            <span>Explore Platform</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a routerLink="/shopowner/scontact" class="cta-btn secondary">
+            <span>Get in Touch</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

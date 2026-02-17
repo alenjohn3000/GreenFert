@@ -1,0 +1,100 @@
+<div class="page-wrapper">
+
+  <!-- PAGE TITLE -->
+  <div class="container mb-5 text-center">
+    <h2 class="page-title">Assigned Shops</h2>
+    <p class="page-subtitle">
+      Shops assigned to you for waste collection
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      @for (data of sarray; track data) {
+
+      @if(data.wstatus !='collected'){
+      <!-- ===============================
+             NORMAL CARD (WASTE AVAILABLE)
+        ================================ -->
+      <div class="col-lg-4 col-md-6 mb-4" *ngIf="data.wstatus !== 'NOT_AVAILABLE'">
+        <div class="shop-card modern">
+
+          <!-- IMAGE -->
+          <div class="shop-image">
+            <img src="http://localhost:3000/images/{{data.shopimg}}" alt="Shop" />
+
+            <span class="status-badge green">
+              Available
+            </span>
+          </div>
+
+          <!-- CONTENT -->
+          <div class="shop-content">
+            <h5>{{ data.shopname }}</h5>
+
+            <p>
+              <i class="fas fa-envelope"></i>
+              {{ data.shopemail }}
+            </p>
+
+            <p>
+              <i class="fas fa-location-dot"></i>
+              {{ data.districtname }}, {{ data.locationname }}
+            </p>
+
+            <p>
+              <i class="fas fa-phone"></i>
+              +91 {{ data.shopcontact }}
+            </p>
+
+
+            <!-- BUTTON ONLY IF NOT COLLECTED -->
+            <button class="collect-btn" [routerLink]="['/wcmaster/adddetails',data.owner_id]">
+              Mark as Collected
+            </button>
+
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===============================
+             NO WASTE CARD
+        ================================ -->
+      <div class="col-lg-4 col-md-6 mb-4" *ngIf="data.wstatus == 'NOT_AVAILABLE'">
+        <div class="shop-card modern not-available">
+
+          <div class="shop-image">
+            <img src="http://localhost:3000/images/{{data.shopimg}}" alt="Shop" />
+
+            <span class="status-badge red">
+              No Waste
+            </span>
+          </div>
+
+          <div class="shop-content">
+            <h5>{{ data.shopname }}</h5>
+
+            <p>
+              <i class="fas fa-location-dot"></i>
+              {{ data.districtname }}, {{ data.locationname }}
+            </p>
+
+            <p>
+              <i class="fas fa-phone"></i>
+              +91 {{ data.shopcontact }}
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      }
+      }
+
+    </div>
+  </div>
+
+</div>

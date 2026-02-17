@@ -1,0 +1,38 @@
+<br><br><br>
+<div class="categories-2026">
+
+  <!-- HERO -->
+  <section class="category-hero">
+    <h1>Explore Categories</h1>
+    <p>Find the right fertilizer for every crop and soil type</p>
+  </section>
+
+  <!-- CATEGORY GRID -->
+  <section class="category-grid container">
+
+    @for (data of categoryarray; track data) {
+
+      <a
+        [routerLink]="['/customermaster/categoryp', data.category_id]"
+        class="category-card">
+
+        <div class="category-image">
+          <img
+            src="http://localhost:3000/images/{{ data.image }}"
+            alt="{{ data.categoryname }}" />
+        </div>
+
+        <div class="category-content">
+          <h3>{{ data.categoryname }}</h3>
+          <span class="view-link">
+            View Products →
+          </span>
+        </div>
+
+      </a>
+
+    }
+
+  </section>
+
+</div>

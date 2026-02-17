@@ -1,0 +1,242 @@
+/* =====================================
+   PAGE BACKGROUND
+===================================== */
+.crx-page {
+  min-height: 100vh;
+  padding: 40px;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(40,167,69,0.08), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(40,167,69,0.05), transparent 40%),
+    #f7f9fc;
+  font-family: 'Inter', sans-serif;
+}
+
+/* =====================================
+   HERO SECTION
+===================================== */
+.crx-hero {
+  position: relative;
+  padding: 50px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.replied-hero {
+  background: linear-gradient(135deg, #28a745, #34d058);
+  box-shadow: 0 30px 70px rgba(40,167,69,0.35);
+}
+
+.crx-hero::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.crx-hero h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.crx-hero p {
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+/* =====================================
+   BUTTON
+===================================== */
+.crx-btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(5px);
+  transition: 0.25s ease;
+}
+
+.crx-btn:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* =====================================
+   GRID LAYOUT (2 PER ROW)
+===================================== */
+.crx-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* =====================================
+   CARD
+===================================== */
+.crx-card {
+  position: relative;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(18px);
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.crx-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+}
+
+.crx-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-radius: 20px 0 0 20px;
+  background: linear-gradient(#28a745, #34d058);
+}
+
+/* =====================================
+   TOP SECTION
+===================================== */
+.crx-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.crx-top h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* =====================================
+   INLINE DATE ROW
+===================================== */
+.crx-meta-inline {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #555;
+  flex-wrap: wrap;
+}
+
+.crx-meta-inline strong {
+  font-weight: 600;
+  color: #2f3a56;
+}
+
+.dot-divider {
+  font-size: 16px;
+  color: #bbb;
+}
+
+/* =====================================
+   STATUS BADGE
+===================================== */
+.crx-status {
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  background: #e6f9ec;
+  color: #1f8f4e;
+}
+
+/* =====================================
+   MESSAGE BODY
+===================================== */
+.crx-body {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* =====================================
+   REPLY BOX
+===================================== */
+.crx-reply-view {
+  margin-top: 20px;
+  background: rgba(40,167,69,0.05);
+  border-radius: 14px;
+  padding: 18px;
+  border-left: 4px solid #28a745;
+}
+
+.reply-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f8f4e;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reply-content {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+.crx-empty {
+  grid-column: span 2;
+  background: rgba(255,255,255,0.9);
+  padding: 60px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+  color: #777;
+}
+
+.crx-empty i {
+  font-size: 42px;
+  color: #28a745;
+  margin-bottom: 10px;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+@media (max-width: 992px) {
+  .crx-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .crx-empty {
+    grid-column: span 1;
+  }
+
+  .crx-page {
+    padding: 20px;
+  }
+
+  .crx-hero {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+}

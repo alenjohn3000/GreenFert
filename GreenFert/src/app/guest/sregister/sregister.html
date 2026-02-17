@@ -1,0 +1,153 @@
+<!-- FIX WRAPPER TO STOP HEADER JUMP -->
+<div class="register-fix">
+
+  <!-- Customer Register Section -->
+  <div class="register-section mt-50 mb-150">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+
+          <div class="register-card">
+            <div class="text-center mb-4">
+              <h3><span class="orange-text">Shop</span> Registration</h3>
+              <p class="reg-sub">Register your shop on GreenFert</p>
+            </div>
+
+        
+            <form [formGroup]="shopfg" enctype="multipart/form-data" >
+
+              <div class="mb-3">
+                <label class="form-label">Shop Name</label>
+                <input type="text"
+                       class="form-control reg-input"
+                       formControlName="shopname">
+                <div *ngIf="savestatus && shopfg.controls['shopname'].invalid" class="text-danger small mt-1">
+                  Enter shop name (min 3 characters).
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email"
+                       class="form-control reg-input"
+                       formControlName="shopemail">
+                <div *ngIf="savestatus && shopfg.controls['shopemail'].invalid" class="text-danger small mt-1">
+                  Enter a valid email.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Shop Contact Number</label>
+                <input type="text"
+                       class="form-control reg-input"
+                     formControlName="contact">
+
+                <div *ngIf="savestatus && shopfg.controls['contact'].invalid" class="text-danger small mt-1">
+                  Enter a 10-digit phone number.
+                </div>
+                    
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Shop Image</label>
+                <input type="file"
+                       class="form-control reg-input"
+                       formControlName="image" (change)="selectFile($event)">
+                <div *ngIf="savestatus && shopfg.controls['image'].invalid" class="text-danger small mt-1">
+                  Upload an image.
+                </div>
+              </div>
+
+              
+
+               <!-- District Dropdown -->
+          <div class="form-group mb-4">
+            <label class="form-label">Select District</label>
+            <select 
+              class="form-control gf-input"
+              formControlName="districtid"
+              (change)="onchange()">
+              <option value="">Select District</option>
+               @for(data of locationarray;track data;){ 
+
+              <option value="{{data.district_id}}" >
+               {{data.districtname}}
+              </option>
+            }
+            </select>
+            <div *ngIf="savestatus && shopfg.controls['districtid'].invalid" class="text-danger small mt-1">
+              Select a district.
+            </div>
+          </div>
+
+          <!-- Location Name -->
+ <div class="form-group mb-4">
+            <label class="form-label">Select Location</label>
+            <select 
+              class="form-control gf-input"
+              formControlName="locationid"
+            >
+              <option value="" disabled selected>Select Location</option>
+               @for(data of districtarray;track data;){ 
+
+              <option value="{{data.location_id}}" >
+               {{data.locationname}}
+              </option>
+            }
+            </select>
+            <div *ngIf="savestatus && shopfg.controls['locationid'].invalid" class="text-danger small mt-1">
+              Select a location.
+            </div>
+          </div>
+
+              <div class="mb-3">
+                <label class="form-label">Shop Licence</label>
+                <input type="text"
+                       class="form-control reg-input"
+                       formControlName="shoplicence">
+                <div *ngIf="savestatus && shopfg.controls['shoplicence'].invalid" class="text-danger small mt-1">
+                  Enter shop licence.
+                </div>
+              </div>
+
+              
+
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text"
+                       class="form-control reg-input"
+                       formControlName="username">
+                <div *ngIf="savestatus && shopfg.controls['username'].invalid" class="text-danger small mt-1">
+                  Username must be at least 4 characters (letters, numbers, _).
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="text"
+                       class="form-control reg-input"
+                       formControlName="password">
+                <div *ngIf="savestatus && shopfg.controls['password'].invalid" class="text-danger small mt-1">
+                  Password must be at least 6 characters.
+                </div>
+              </div>
+
+              <button class="boxed-btn w-100 reg-btn" type="submit" (click)="sreg()">
+                Register
+              </button>
+
+            </form>
+
+            <div class="text-center mt-4">
+              <p>Already have an account?
+                <a routerLink="/login" class="login-link">Login</a>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,9 @@
+.profile-wrap { padding: 28px 0; }
+.profile-card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 12px 24px rgba(17,24,39,.08); }
+.card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+.card-head h2 { margin: 0; color: #152238; }
+.btn-edit { background: #f08a24; color: #fff; text-decoration: none; padding: 10px 16px; border-radius: 10px; font-weight: 600; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.item { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; }
+.item label { font-size: 12px; color: #64748b; display: block; margin-bottom: 4px; }
+.item p { margin: 0; font-size: 16px; color: #1f2937; font-weight: 600; }

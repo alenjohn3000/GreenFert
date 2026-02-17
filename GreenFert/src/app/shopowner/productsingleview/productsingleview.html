@@ -1,0 +1,186 @@
+﻿<!-- =======================
+     PRODUCT SINGLE VIEW PAGE
+======================= -->
+<div class="product-single-page">
+    <!-- HERO BREADCRUMB -->
+    <div class="product-hero">
+        <div class="container">
+            <a routerLink="/smaster/sshop" class="breadcrumb-back">
+                <i class="fas fa-arrow-left"></i> Back to Shop
+            </a>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAILS SECTION -->
+    <div class="product-details-section">
+        <div class="container">
+            @if (product.length > 0) {
+                @for (data of product; track data.product_id) {
+                    <div class="product-grid">
+                        <!-- IMAGE SECTION -->
+                        <div class="product-image-section">
+                            <div class="product-image-main">
+                                <img src="http://localhost:3000/images/{{data.productimage}}" alt="{{data.product}}" />
+                                
+                                <!-- BADGES OVERLAY -->
+                                @if (data.stock === 0) {
+                                    <div class="product-badge out-of-stock">
+                                        <i class="fas fa-ban"></i> Out of Stock
+                                    </div>
+                                } @else if (data.stock < 5) {
+                                    <div class="product-badge low-stock">
+                                        <i class="fas fa-exclamation-circle"></i> Only {{ data.stock }} Left
+                                    </div>
+                                } @else {
+                                    <div class="product-badge in-stock">
+                                        <i class="fas fa-check-circle"></i> In Stock
+                                    </div>
+                                }
+                            </div>
+
+                            <!-- TRUST BADGES -->
+                            <div class="trust-badges">
+                                <div class="badge-item">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Lab Certified</span>
+                                </div>
+                                <div class="badge-item">
+                                    <i class="fas fa-leaf"></i>
+                                    <span>100% Organic</span>
+                                </div>
+                                <div class="badge-item">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Fast Delivery</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DETAILS SECTION -->
+                        <div class="product-details">
+                            <!-- CATEGORY TAG -->
+                            <span class="product-category">{{ data.categoryname }}</span>
+
+                            <!-- PRODUCT NAME -->
+                            <h1 class="product-name">{{ data.product }}</h1>
+
+                            <!-- RATING & STOCK INFO -->
+                            <div class="product-meta">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-text">(4.5) 128 Reviews</span>
+                                </div>
+                                <div class="stock-info">
+                                    @if (data.stock > 5) {
+                                        <span class="stock-status available">
+                                            <i class="fas fa-circle"></i> {{ data.stock }} in Stock
+                                        </span>
+                                    } @else if (data.stock > 0) {
+                                        <span class="stock-status low">
+                                            <i class="fas fa-exclamation-triangle"></i> Hurry! {{ data.stock }} left
+                                        </span>
+                                    } @else {
+                                        <span class="stock-status unavailable">
+                                            <i class="fas fa-times-circle"></i> Out of Stock
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- PRICE & WEIGHT -->
+                            <div class="price-section">
+                                <div class="price-container">
+                                    <span class="current-price">₹{{ sum }}</span>
+                                    <span class="weight-badge">{{ data.productkg }}</span>
+                                </div>
+                                <div class="price-info">
+                                    <span class="original-price">₹{{ data.amount * 1.2 | number:'1.0-0' }}</span>
+                                    <span class="discount-badge">-20% OFF</span>
+                                </div>
+                            </div>
+
+                            <!-- DESCRIPTION -->
+                            <p class="product-description">
+                                {{ data.description }}
+                            </p>
+
+                            <!-- FEATURES -->
+                            <div class="product-features">
+                                <h3 class="features-title">Key Features</h3>
+                                <ul class="features-list">
+                                    <li><i class="fas fa-check"></i> Premium quality certified</li>
+                                    <li><i class="fas fa-check"></i> 100% pure organic materials</li>
+                                    <li><i class="fas fa-check"></i> Highly effective & long-lasting</li>
+                                    <li><i class="fas fa-check"></i> Easy to use and apply</li>
+                                </ul>
+                            </div>
+
+                            <!-- QUANTITY SELECTOR -->
+                            @if (data.stock > 0) {
+                                <div class="quantity-section">
+                                    <label class="qty-label">Quantity:</label>
+                                    <div class="quantity-selector">
+                                        <button class="qty-btn minus" (click)="decreaseQty(data.product_id)">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="number" class="qty-input" [value]="quantity[data.product_id]" readonly />
+                                        <button class="qty-btn plus" (click)="increaseQty(data.product_id)">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- ACTION BUTTONS -->
+                                <div class="action-buttons">
+                                    <button class="btn-add-cart" (click)="addtocart(data.product_id)">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Add to Cart
+                                    </button>
+                                    <button class="btn-buy-now" (click)="buy(data.product_id)">
+                                        <i class="fas fa-bolt"></i>
+                                        Buy Now
+                                    </button>
+                                </div>
+
+                                <!-- SAFE CHECKOUT -->
+                                <div class="safe-checkout">
+                                    <div class="checkout-item">
+                                        <i class="fas fa-lock"></i>
+                                        <span>Secure Checkout</span>
+                                    </div>
+                                    <div class="checkout-item">
+                                        <i class="fas fa-undo"></i>
+                                        <span>30-Day Returns</span>
+                                    </div>
+                                    <div class="checkout-item">
+                                        <i class="fas fa-headset"></i>
+                                        <span>24/7 Support</span>
+                                    </div>
+                                </div>
+                            } @else {
+                                <div class="out-of-stock-section">
+                                    <i class="fas fa-inbox"></i>
+                                    <h3>Product Currently Unavailable</h3>
+                                    <p>This product is out of stock. Please check back later or explore similar products.</p>
+                                    <a routerLink="/smaster/sshop" class="btn-continue-shopping">
+                                        <i class="fas fa-arrow-right"></i> Continue Shopping
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            } @else {
+                <div class="product-not-found">
+                    <i class="fas fa-search"></i>
+                    <h3>Product Not Found</h3>
+                    <p>The product you're looking for doesn't exist.</p>
+                    <a routerLink="/smaster/sshop" class="btn-back-shop">Back to Shop</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
